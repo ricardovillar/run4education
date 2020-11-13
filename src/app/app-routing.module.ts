@@ -4,14 +4,8 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
-  {
-    path: 'map',
-    component: MapComponent
-  },
-  {
-    path: '',
-    component: AppComponent
-  }
+  { path: 'map', component: MapComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'map' }
 ];
 
 @NgModule({

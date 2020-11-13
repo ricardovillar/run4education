@@ -67,18 +67,18 @@ export class MapComponent implements AfterViewInit {
         icon: icon({
           iconSize: [25, 41],
           iconAnchor: [13, 41],
-          iconUrl: 'marker-icon.png',
-          iconRetinaUrl: 'marker-icon-2x.png',
-          shadowUrl: 'marker-shadow.png'
+          iconUrl: 'assets/images/marker-icon.png',
+          iconRetinaUrl: 'assets/images/marker-icon-2x.png',
+          shadowUrl: 'assets/images/marker-shadow.png'
         })
       }),
       marker(this.bcn, {
         icon: icon({
           iconSize: [25, 41],
           iconAnchor: [13, 41],
-          iconUrl: 'marker-icon.png',
-          iconRetinaUrl: 'marker-icon-2x.png',
-          shadowUrl: 'marker-shadow.png'
+          iconUrl: 'assets/images/marker-icon.png',
+          iconRetinaUrl: 'assets/images/marker-icon-2x.png',
+          shadowUrl: 'assets/images/marker-shadow.png'
         })
       }),
       polyline(this.routeTraveled, {
