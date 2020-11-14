@@ -102,22 +102,35 @@ export class MapComponent implements OnInit {
   private subscribeFullRoute() {
     let sub = this.store.select(fromRoot.getFullRoute)
       .subscribe((fullRoute: RoutePoint[]) => {
-        let fullRouteCoordinates = fullRoute.map(x => x.latLng);
-        let routePath = polyline(fullRouteCoordinates, {
-          color: 'rgb(255, 222, 1)',
-          weight: 5
-        });
-        this.layers = [routePath];
+        this.paintFullRoute(fullRoute);
       });
     this._subscriptions.push(sub);
   }
 
+  private paintFullRoute(fullRoute: RoutePoint[]) {
+    let fullRouteCoordinates = fullRoute.map(x => x.latLng);
+    let routePath = polyline(fullRouteCoordinates, {
+      color: 'rgb(255, 222, 1)',
+      weight: 7,
+      opacity: 0.5
+    });
+
+    let layers: Layer[] = [routePath];
+    let markers = fullRoute.map(routePoint => {
+      if (routePoint.detail) {
+        let marker = toRouteMarker(routePoint);
+        marker.bindPopup(routePoint.name + ": " + routePoint.detail);
+        layers.push(marker);
+      }
+    });
+    this.layers = layers;
+  }
 }
 
 
 function toRouteMarker(routePoint: RoutePoint): Marker {
   let iconOptions: IconOptions = {
-    iconSize: [25, 41],
+    iconSize: [20, 31],
     iconAnchor: [13, 41],
     iconUrl: 'assets/images/marker-icon.png',
     iconRetinaUrl: 'assets/images/marker-icon-2x.png',
