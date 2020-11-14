@@ -1,12 +1,20 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { icon, latLng, Layer, marker, polyline, tileLayer } from 'leaflet';
+import { RoutePoint } from '@model/route-point';
+import { OnInit, Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { icon, IconOptions, latLng, Layer, Marker, marker, polyline, tileLayer } from 'leaflet';
+import { Subscription } from 'rxjs';
+
+import * as fromStore from "@store/reducers/index";
+import * as fromRoot from "@store/reducers";
+import * as mapActions from '@store/actions/map/map.actions';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements OnInit {
+  private _subscriptions: Array<Subscription> = [];
   private _pointsTraveled = 1;
 
   ghana = latLng(5.604588, -0.186888);
@@ -24,7 +32,7 @@ export class MapComponent implements AfterViewInit {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' })
     ],
-    zoom: 4,
+    zoom: 3,
     center: latLng(26.2120138, 2.7012783)
   };
 
@@ -47,11 +55,13 @@ export class MapComponent implements AfterViewInit {
 
   layers: Layer[];
 
-  constructor() {
+  constructor(private store: Store<fromStore.State>) {
+    this.subscribeFullRoute();
     this.layers = this.getLayers();
   }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
+    this.store.dispatch(mapActions.loadRoutes());
   }
 
   run() {
@@ -82,9 +92,36 @@ export class MapComponent implements AfterViewInit {
         })
       }),
       polyline(this.routeTraveled, {
-        color: 'red',
-        weight: 3
+        color: 'rgb(255, 222, 1)',
+        weight: 5,
+        smoothFactor: 0.5
       })
     ];
   }
+
+  private subscribeFullRoute() {
+    let sub = this.store.select(fromRoot.getFullRoute)
+      .subscribe((fullRoute: RoutePoint[]) => {
+        let fullRouteCoordinates = fullRoute.map(x => x.latLng);
+        let routePath = polyline(fullRouteCoordinates, {
+          color: 'rgb(255, 222, 1)',
+          weight: 5
+        });
+        this.layers = [routePath];
+      });
+    this._subscriptions.push(sub);
+  }
+
+}
+
+
+function toRouteMarker(routePoint: RoutePoint): Marker {
+  let iconOptions: IconOptions = {
+    iconSize: [25, 41],
+    iconAnchor: [13, 41],
+    iconUrl: 'assets/images/marker-icon.png',
+    iconRetinaUrl: 'assets/images/marker-icon-2x.png',
+    shadowUrl: 'assets/images/marker-shadow.png'
+  };
+  return marker(routePoint.latLng, { icon: icon(iconOptions) });
 }
