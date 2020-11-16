@@ -52,7 +52,7 @@ export class RoutesService {
       new RoutePoint("Nouakchott (Mauritania)", { lat: 18.0671201, lng: -16.0936509 }, 42, "hacer vídeo con Abdul ,compañero de patera de ousman. Vive en santa coloma, eder a él."),
       new RoutePoint("Fuerteventura (España)", { lat: 28.4007635, lng: -14.4463875 }, 43),
       new RoutePoint("Málaga (España)", { lat: 36.7183391, lng: -4.5193069 }, 44),
-      new RoutePoint("Barcelona (España)", { lat: 41.3948976, lng: 2.0787279 }, 45)
+      new RoutePoint("Barcelona (España)", { lat: 41.3948976, lng: 2.0787279 }, 45, "vídeo de ousman en Barcelona dando una conferencia y explicando NASCO Feeding Minds")
 
     ];
     return of(routes);
