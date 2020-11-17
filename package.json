@@ -25,6 +25,8 @@
     "@ngrx/effects": "^10.0.1",
     "@ngrx/store": "^10.0.1",
     "@ngrx/store-devtools": "^10.0.1",
+    "angular-cli-ghpages": "^0.6.2",
+    "geo-point": "^1.2.2",
     "leaflet": "^1.7.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

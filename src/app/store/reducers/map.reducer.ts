@@ -1,5 +1,6 @@
 import { RoutePoint } from '@model/route-point';
 import { Action, createReducer, on } from '@ngrx/store';
+import { cloneDeep } from 'lodash';
 
 import * as mapActions from '@store/actions/map/map.actions';
 
@@ -17,7 +18,22 @@ export const reducer = createReducer(
   initialState,
   on(
     mapActions.loadRoutesSuccess,
-    (state, { routes }) => ({ ...state, fullRoute: routes })
+    (state, { routes }) => {
+      let clonedRoutes: RoutePoint[] = [];
+      if (routes) {
+        let previous: RoutePoint;
+        routes.forEach(x => {
+          const routePoint: RoutePoint = cloneDeep(x);
+          if (previous) {
+            routePoint.previousRoutePoint = previous;
+            previous.nextRoutePoint = routePoint;
+          }
+          previous = routePoint;
+          clonedRoutes.push(routePoint);
+        })
+      }
+      return ({ ...state, fullRoute: clonedRoutes });
+    }
   )
 );
 

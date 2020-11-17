@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "run4education"
+  "defaultProject": "run4education",
+  "cli": {
+    "analytics": false
+  }
 }
