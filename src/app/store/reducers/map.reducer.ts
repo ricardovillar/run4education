@@ -26,7 +26,6 @@ export const reducer = createReducer(
           const routePoint: RoutePoint = cloneDeep(x);
           if (previous) {
             routePoint.previousRoutePoint = previous;
-            previous.nextRoutePoint = routePoint;
           }
           previous = routePoint;
           clonedRoutes.push(routePoint);

@@ -1,5 +1,5 @@
 import { RoutePoint } from '@model/route-point';
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { icon, IconOptions, LatLng, latLng, Layer, Marker, marker, polyline, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
@@ -14,24 +14,12 @@ import * as mapActions from '@store/actions/map/map.actions';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
   private _subscriptions: Array<Subscription> = [];
-  private _pointsTraveled = 1;
   private _fullRoute: RoutePoint[] = [];
 
   traveledKMs: number[] = [];
   totalDistance: number = 0;
-
-  ghana = latLng(5.604588, -0.186888);
-  niger = latLng(17.343158, 9.118531);
-  libya = latLng(27.037762, 17.513061);
-  algeria = latLng(35.4022524, 1.3337043);
-  mali = latLng(20.016038, 2.257073);
-  morocco = latLng(33.975837, -6.843321);
-  mauritania = latLng(20.305133, -16.906029);
-  tenerife = latLng(28.469513, -16.269579);
-  malaga = latLng(36.718408, -4.419904);
-  bcn = latLng(41.375078, 2.1480167);
 
   options = {
     layers: [
@@ -41,73 +29,34 @@ export class MapComponent implements OnInit {
     center: latLng(26.2120138, 2.7012783)
   };
 
-  routePoints = [
-    this.ghana,
-    this.niger,
-    this.libya,
-    this.algeria,
-    this.mali,
-    this.morocco,
-    this.mauritania,
-    this.tenerife,
-    this.malaga,
-    this.bcn,
-  ];
 
-  routeTraveled = [
-    this.ghana
-  ];
+  routeTraveled: LatLng[] = [];
 
   layers: Layer[];
 
   constructor(private store: Store<fromStore.State>) {
     this.subscribeFullRoute();
-    //this.layers = this.getLayers();
   }
 
   ngOnInit(): void {
     this.store.dispatch(mapActions.loadRoutes());
   }
 
-  run() {
-    this.traveledKMs.push(2);
-    this.fillMap();
+  ngOnDestroy() {
+    this._subscriptions.forEach(s => s.unsubscribe());
   }
 
-  // private getLayers() {
-  //   return [
-  //     marker(this.ghana, {
-  //       icon: icon({
-  //         iconSize: [25, 41],
-  //         iconAnchor: [13, 41],
-  //         iconUrl: 'assets/images/marker-icon.png',
-  //         iconRetinaUrl: 'assets/images/marker-icon-2x.png',
-  //         shadowUrl: 'assets/images/marker-shadow.png'
-  //       })
-  //     }),
-  //     marker(this.bcn, {
-  //       icon: icon({
-  //         iconSize: [25, 41],
-  //         iconAnchor: [13, 41],
-  //         iconUrl: 'assets/images/marker-icon.png',
-  //         iconRetinaUrl: 'assets/images/marker-icon-2x.png',
-  //         shadowUrl: 'assets/images/marker-shadow.png'
-  //       })
-  //     }),
-  //     polyline(this.routeTraveled, {
-  //       color: 'rgb(255, 222, 1)',
-  //       weight: 5,
-  //       smoothFactor: 0.5
-  //     })
-  //   ];
-
-  // }
+  run() {
+    this.traveledKMs.push(3);
+    this.fillMap();
+  }
 
   private subscribeFullRoute() {
     let sub = this.store.select(fromRoot.getFullRoute)
       .subscribe((fullRoute: RoutePoint[]) => {
         this._fullRoute = [];
         this._fullRoute = fullRoute;
+        console.log(fullRoute);
         this.calcFullRouteDistance();
         this.fillMap();
       });
@@ -115,14 +64,13 @@ export class MapComponent implements OnInit {
   }
 
   private calcFullRouteDistance() {
-    this.totalDistance = 0;
-    let previousPoint: RoutePoint;
-    this._fullRoute.forEach(nextPoint => {
-      if (previousPoint) {
-        this.totalDistance += nextPoint.calcDistanceFrom(previousPoint);
-      }
-      previousPoint = nextPoint;
-    });
+    if (this._fullRoute.length > 0) {
+      let lastPoint = this._fullRoute[this._fullRoute.length - 1];
+      this.totalDistance = lastPoint.initialKm;
+    }
+    else {
+      this.totalDistance = 0;
+    }
   }
 
   private fillMap() {
@@ -158,18 +106,16 @@ export class MapComponent implements OnInit {
       return;
     }
 
-    this.routeTraveled = [this._fullRoute[0].latLng];
+    let initialRoutePoint = this._fullRoute[0];
 
-    const startPoint = new GeoPoint(this._fullRoute[0].coordinates.lat, this._fullRoute[0].coordinates.lng);
-    const endPoint = new GeoPoint(this._fullRoute[1].coordinates.lat, this._fullRoute[1].coordinates.lng);
-    const bearing = startPoint.calculateBearing(endPoint);
-    let currentTraveledGeoPoint = startPoint;
-    for (let index = 0; index < this.traveledKMs.length - 1; index++) {
-      const distance = this.traveledKMs[index] * 1000;
-      let nextTraveledGeoPoint = currentTraveledGeoPoint.calculateDestination(distance, bearing);
-      let traveledRoutePoint = latLng(nextTraveledGeoPoint.latitude, nextTraveledGeoPoint.longitude);
-      this.routeTraveled.push(traveledRoutePoint);
-      currentTraveledGeoPoint = nextTraveledGeoPoint;
+    this.routeTraveled = [initialRoutePoint.latLng];
+
+    let traveledKmsCounted = 0;
+    for (let index = 0; index < this.traveledKMs.length; index++) {
+      let distanceInKm = this.traveledKMs[index];
+      let travelDestinationPoint = this.calcTravelDestinationPoint(traveledKmsCounted, distanceInKm * 1000);
+      this.routeTraveled.push(travelDestinationPoint);
+      traveledKmsCounted += distanceInKm;
     }
 
     let traveledRoutePolyline = polyline(this.routeTraveled, {
@@ -180,6 +126,25 @@ export class MapComponent implements OnInit {
 
     layers.push(traveledRoutePolyline);
   }
+
+  private calcTravelDestinationPoint(initialKm: number, distanceInMeters: number): LatLng {
+    let routeSectionStartPoint = this.getInitialRoutePointForDistance(initialKm);
+    let routeSectionEndPoint = routeSectionStartPoint.nextRoutePoint;
+    let startPoint = new GeoPoint(routeSectionStartPoint.coordinates.lat, routeSectionStartPoint.coordinates.lng);
+    let endPoint = new GeoPoint(routeSectionEndPoint.coordinates.lat, routeSectionEndPoint.coordinates.lng);
+    let bearing = startPoint.calculateBearing(endPoint);
+    let distanceFromSectionStarting = (initialKm - routeSectionStartPoint.initialKm) * 1000;
+    let initialKmGeoPoint = startPoint.calculateDestination(distanceFromSectionStarting, bearing);
+    let nextTraveledGeoPoint = initialKmGeoPoint.calculateDestination(distanceInMeters, bearing);
+    let travelDestinationPoint = latLng(nextTraveledGeoPoint.latitude, nextTraveledGeoPoint.longitude);
+    return travelDestinationPoint;
+  }
+
+  private getInitialRoutePointForDistance(distance: number): RoutePoint {
+    let routePoint = this._fullRoute.find(x => x.initialKm <= distance && x.finalKm >= distance);
+    return routePoint;
+  }
+
 }
 
 

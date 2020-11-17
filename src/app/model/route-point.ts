@@ -3,14 +3,25 @@ import { LatLng, latLng } from 'leaflet';
 export class RoutePoint {
     private _next: RoutePoint;
     private _previous: RoutePoint;
+    private _initialKm: number = 0;
+    private _finalKm: number = 0;
 
     public latLng: LatLng;
+
+    get initialKm(): number {
+        return this._initialKm;
+    }
+
+    get finalKm(): number {
+        return this._finalKm;
+    }
 
     get nextRoutePoint(): RoutePoint {
         return this._next;
     }
     set nextRoutePoint(value: RoutePoint) {
         this._next = value;
+        this._finalKm = this._initialKm + this.calcDistanceFrom(this._next);
     }
 
     get previousRoutePoint(): RoutePoint {
@@ -18,6 +29,8 @@ export class RoutePoint {
     }
     set previousRoutePoint(value: RoutePoint) {
         this._previous = value;
+        this.previousRoutePoint.nextRoutePoint = this;
+        this._initialKm = this._previous.finalKm;
     }
 
     constructor(
@@ -29,11 +42,7 @@ export class RoutePoint {
         this.latLng = latLng(coordinates.lat, coordinates.lng);
     }
 
-    setNextRoutePoint(value: RoutePoint) {
-        this._next = value;
-    }
-
-    public calcDistanceFrom(routePoint: RoutePoint) {
+    calcDistanceFrom(routePoint: RoutePoint) {
         const R = 6371;
         let lat1 = this.coordinates.lat;
         let lng1 = this.coordinates.lng;
@@ -50,25 +59,6 @@ export class RoutePoint {
         return distance;
     }
 
-
-
-    // private getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-    //     var R = 6371; // Radius of the earth in km
-    //     var dLat = deg2rad(lat2-lat1);  // deg2rad below
-    //     var dLon = deg2rad(lon2-lon1); 
-    //     var a = 
-    //       Math.sin(dLat/2) * Math.sin(dLat/2) +
-    //       Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-    //       Math.sin(dLon/2) * Math.sin(dLon/2)
-    //       ; 
-    //     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-    //     var d = R * c; // Distance in km
-    //     return d;
-    //   }
-
-    //   function deg2rad(deg) {
-    //     return deg * (Math.PI/180)
-    //   }
 }
 
 function deg2rad(deg: number): number {
