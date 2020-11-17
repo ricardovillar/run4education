@@ -47,7 +47,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   run() {
-    this.traveledKMs.push(3);
+    this.traveledKMs.push(12.785);
     this.fillMap();
   }
 
@@ -105,17 +105,17 @@ export class MapComponent implements OnInit, OnDestroy {
     if (this._fullRoute.length == 0) {
       return;
     }
-
-    let initialRoutePoint = this._fullRoute[0];
-
-    this.routeTraveled = [initialRoutePoint.latLng];
+    this.routeTraveled = [this._fullRoute[0].latLng];
 
     let traveledKmsCounted = 0;
     for (let index = 0; index < this.traveledKMs.length; index++) {
       let distanceInKm = this.traveledKMs[index];
-      let travelDestinationPoint = this.calcTravelDestinationPoint(traveledKmsCounted, distanceInKm * 1000);
-      this.routeTraveled.push(travelDestinationPoint);
-      traveledKmsCounted += distanceInKm;
+      while (distanceInKm > 0) {
+        let travel = this.makeTravelForDistanceFrom(traveledKmsCounted, distanceInKm * 1000);
+        this.routeTraveled.push(travel.travelDestinationPoint);
+        traveledKmsCounted += (distanceInKm - travel.remainingKm);
+        distanceInKm = travel.remainingKm;
+      }
     }
 
     let traveledRoutePolyline = polyline(this.routeTraveled, {
@@ -127,26 +127,35 @@ export class MapComponent implements OnInit, OnDestroy {
     layers.push(traveledRoutePolyline);
   }
 
-  private calcTravelDestinationPoint(initialKm: number, distanceInMeters: number): LatLng {
+  private makeTravelForDistanceFrom(initialKm: number, distanceInMeters: number): { travelDestinationPoint: LatLng, remainingKm: number } {
     let routeSectionStartPoint = this.getInitialRoutePointForDistance(initialKm);
+    let remainingKm = 0;
     let routeSectionEndPoint = routeSectionStartPoint.nextRoutePoint;
     let startPoint = new GeoPoint(routeSectionStartPoint.coordinates.lat, routeSectionStartPoint.coordinates.lng);
     let endPoint = new GeoPoint(routeSectionEndPoint.coordinates.lat, routeSectionEndPoint.coordinates.lng);
     let bearing = startPoint.calculateBearing(endPoint);
-    let distanceFromSectionStarting = (initialKm - routeSectionStartPoint.initialKm) * 1000;
-    let initialKmGeoPoint = startPoint.calculateDestination(distanceFromSectionStarting, bearing);
-    let nextTraveledGeoPoint = initialKmGeoPoint.calculateDestination(distanceInMeters, bearing);
-    let travelDestinationPoint = latLng(nextTraveledGeoPoint.latitude, nextTraveledGeoPoint.longitude);
-    return travelDestinationPoint;
+    let travelDestinationPoint: LatLng;
+    let travelKMs = distanceInMeters / 1000;
+    let travelFinalKm = initialKm + travelKMs;
+    if (routeSectionStartPoint.finalKm > travelFinalKm) {
+      let distanceFromSectionStarting = (initialKm - routeSectionStartPoint.initialKm) * 1000;
+      let initialKmGeoPoint = startPoint.calculateDestination(distanceFromSectionStarting, bearing);
+      let nextTraveledGeoPoint = initialKmGeoPoint.calculateDestination(distanceInMeters, bearing);
+      travelDestinationPoint = latLng(nextTraveledGeoPoint.latitude, nextTraveledGeoPoint.longitude);
+    }
+    else {
+      travelDestinationPoint = routeSectionEndPoint.latLng;
+      remainingKm = travelFinalKm - routeSectionEndPoint.initialKm;
+    }
+    return { travelDestinationPoint, remainingKm };
   }
 
   private getInitialRoutePointForDistance(distance: number): RoutePoint {
-    let routePoint = this._fullRoute.find(x => x.initialKm <= distance && x.finalKm >= distance);
+    let routePoint = this._fullRoute.find(x => x.initialKm <= distance && x.finalKm > distance);
     return routePoint;
   }
 
 }
-
 
 function toRouteMarker(routePoint: RoutePoint): Marker {
   let iconOptions: IconOptions = {
