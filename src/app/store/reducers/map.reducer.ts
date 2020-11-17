@@ -1,5 +1,6 @@
+import { createReducer, on } from '@ngrx/store';
 import { RoutePoint } from '@model/route-point';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Travel } from '@model/travel';
 import { cloneDeep } from 'lodash';
 
 import * as mapActions from '@store/actions/map/map.actions';
@@ -7,11 +8,13 @@ import * as mapActions from '@store/actions/map/map.actions';
 export const mapFeatureKey = 'map';
 
 export interface State {
-  fullRoute: RoutePoint[]
+  fullRoute: RoutePoint[],
+  travels: Travel[]
 }
 
 export const initialState: State = {
-  fullRoute: []
+  fullRoute: [],
+  travels: []
 };
 
 export const reducer = createReducer(
@@ -33,9 +36,25 @@ export const reducer = createReducer(
       }
       return ({ ...state, fullRoute: clonedRoutes });
     }
+  ),
+  on(
+    mapActions.loadTravelsSuccess,
+    (state, { travels }) => ({ ...state, travels })
+  ),
+  on(
+    mapActions.addTravel,
+    (state, { travel }) => {
+      let travels = state.travels.map(x => cloneDeep(x));
+      travels.push(travel);
+      return ({ ...state, travels });
+    }
   )
 );
 
 export const getFullRoute = (state: State) => {
   return state.fullRoute;
+}
+
+export const getTravels = (state: State) => {
+  return state.travels;
 }

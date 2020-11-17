@@ -1,6 +1,10 @@
-<button type="button" (click)="run()">Run 3 KM</button>
+<input type="text" [(ngModel)]="sponsor" />
+<input type="number" [(ngModel)]="distance" />
+<button type="button" (click)="add()">Add</button>
 
 <div class="map-container" leaflet [leafletOptions]="options" [leafletLayers]="layers">
 </div>
+
+
 
 <span>Total distance: {{ totalDistance }}km</span>

@@ -1,3 +1,4 @@
+import { Travel } from '@app/model/travel';
 import { RoutePoint } from '@model/route-point';
 import { createAction, props } from '@ngrx/store';
 
@@ -13,4 +14,23 @@ export const loadRoutesSuccess = createAction(
 export const loadRoutesFailure = createAction(
   '[Route] Load Routes Failure',
   props<{ error: any }>()
+);
+
+export const loadTravels = createAction(
+  '[Travel] Load Travels'
+);
+
+export const loadTravelsSuccess = createAction(
+  '[Travel] Load Travels Success',
+  props<{ travels: Travel[] }>()
+);
+
+export const loadTravelsFailure = createAction(
+  '[Travel] Load Travels Failure',
+  props<{ error: any }>()
+);
+
+export const addTravel = createAction(
+  '[Travel] Add Travel',
+  props<{ travel: Travel }>()
 );

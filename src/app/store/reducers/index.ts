@@ -20,6 +20,6 @@ export const reducers: ActionReducerMap<State> = {
 // Map state
 export const selectMapState = createFeatureSelector<fromMap.State>(fromMap.mapFeatureKey);
 export const getFullRoute = createSelector(selectMapState, fromMap.getFullRoute);
-
+export const getTravels = createSelector(selectMapState, fromMap.getTravels);
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

@@ -1,13 +1,15 @@
-import { RoutePoint } from '@model/route-point';
 import { OnInit, Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { icon, IconOptions, LatLng, latLng, Layer, Marker, marker, polyline, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
+import { RoutePoint } from '@model/route-point';
+import { Travel } from '@model/travel';
 import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
 import * as mapActions from '@store/actions/map/map.actions';
+import { addTravel } from '@store/actions/map/map.actions';
 
 @Component({
   selector: 'app-map',
@@ -17,8 +19,10 @@ import * as mapActions from '@store/actions/map/map.actions';
 export class MapComponent implements OnInit, OnDestroy {
   private _subscriptions: Array<Subscription> = [];
   private _fullRoute: RoutePoint[] = [];
+  private _travels: Travel[] = [];
 
-  traveledKMs: number[] = [];
+  sponsor: string;
+  distance: number;
   totalDistance: number = 0;
 
   options = {
@@ -29,26 +33,28 @@ export class MapComponent implements OnInit, OnDestroy {
     center: latLng(26.2120138, 2.7012783)
   };
 
-
   routeTraveled: LatLng[] = [];
-
   layers: Layer[];
 
   constructor(private store: Store<fromStore.State>) {
     this.subscribeFullRoute();
+    this.subscribeTravels();
   }
 
   ngOnInit(): void {
     this.store.dispatch(mapActions.loadRoutes());
+    this.store.dispatch(mapActions.loadTravels());
   }
 
   ngOnDestroy() {
     this._subscriptions.forEach(s => s.unsubscribe());
   }
 
-  run() {
-    this.traveledKMs.push(12.785);
-    this.fillMap();
+  add() {
+    if (this.sponsor && this.distance) {
+      let travel = new Travel(this.sponsor, this.distance);
+      this.store.dispatch(addTravel({ travel }));
+    }
   }
 
   private subscribeFullRoute() {
@@ -56,8 +62,16 @@ export class MapComponent implements OnInit, OnDestroy {
       .subscribe((fullRoute: RoutePoint[]) => {
         this._fullRoute = [];
         this._fullRoute = fullRoute;
-        console.log(fullRoute);
         this.calcFullRouteDistance();
+        this.fillMap();
+      });
+    this._subscriptions.push(sub);
+  }
+
+  private subscribeTravels() {
+    let sub = this.store.select(fromRoot.getTravels)
+      .subscribe((travels: Travel[]) => {
+        this._travels = travels;
         this.fillMap();
       });
     this._subscriptions.push(sub);
@@ -85,7 +99,7 @@ export class MapComponent implements OnInit, OnDestroy {
     let fullRouteCoordinates = this._fullRoute.map(routePoint => routePoint.latLng);
     let routePath = polyline(fullRouteCoordinates, {
       color: 'rgb(255, 222, 1)',
-      weight: 10,
+      weight: 15,
       opacity: 0.5
     });
     layers.push(routePath);
@@ -106,25 +120,35 @@ export class MapComponent implements OnInit, OnDestroy {
       return;
     }
     this.routeTraveled = [this._fullRoute[0].latLng];
-
+    let travelPoints = [this._fullRoute[0].latLng];
     let traveledKmsCounted = 0;
-    for (let index = 0; index < this.traveledKMs.length; index++) {
-      let distanceInKm = this.traveledKMs[index];
+
+    let color = 'red';
+    this._travels.forEach(travel => {
+      let distanceInKm = travel.distance;
       while (distanceInKm > 0) {
         let travel = this.makeTravelForDistanceFrom(traveledKmsCounted, distanceInKm * 1000);
-        this.routeTraveled.push(travel.travelDestinationPoint);
+        travelPoints.push(travel.travelDestinationPoint);
         traveledKmsCounted += (distanceInKm - travel.remainingKm);
         distanceInKm = travel.remainingKm;
       }
-    }
 
-    let traveledRoutePolyline = polyline(this.routeTraveled, {
-      color: 'red',
-      weight: 3,
-      smoothFactor: 0.5
+      let travelPolyline = polyline(travelPoints, {
+        color: color,
+        weight: 5,
+        smoothFactor: 0.5
+      });
+
+
+      travelPolyline.bindTooltip("This section was sponsored by " + travel.sponsor);
+      travelPolyline.bindPopup("This section was sponsored by " + travel.sponsor);
+      layers.push(travelPolyline);
+      travelPoints.splice(0, travelPoints.length - 1);
+
+      color = color == 'red' ? 'blue' : 'red';
     });
 
-    layers.push(traveledRoutePolyline);
+
   }
 
   private makeTravelForDistanceFrom(initialKm: number, distanceInMeters: number): { travelDestinationPoint: LatLng, remainingKm: number } {
