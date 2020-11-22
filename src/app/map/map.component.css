@@ -26,3 +26,54 @@
       border: 1px solid #000!important;
       margin-right: 10px;
   }
+
+  .popup-card-person {
+    max-width: 100px;
+    width: 100px;
+  }
+
+  .tooltip-card-person {
+    max-width: 50px;
+    width: 50px;
+  }
+
+  .popup-card-person span, 
+  .popup-card-company span, 
+  .tooltip-card-person span, 
+  .tooltip-card-company span {
+    margin-right: 5px; 
+  }
+
+  .popup-card-person img, .tooltip-card-person img {
+    max-width: 50px; 
+    width: 50px; 
+    max-height: 50px; 
+    height: 50px;
+  }
+
+  .popup-card-company {
+    max-width: 200px;
+    width: 200px;
+    padding: 10px;
+    color: rgb(51, 51, 51);
+    background-color: rgb(255, 222, 1);
+    font-family: 'Anton',sans-serif;
+    border: 1px solid #000!important;
+  }
+
+  .tooltip-card-company {
+    max-width: 150px;
+    width: 150px;
+    padding: 10px;
+    color: rgb(51, 51, 51);
+    background-color: rgb(255, 222, 1);
+    font-family: 'Anton',sans-serif;
+    border: 1px solid #000!important;
+  }
+
+  .popup-card-company img, .tooltip-card-company img {
+    max-width: 100px; 
+    width: 100px; 
+    max-height: 100px; 
+    height: 100px;
+  }

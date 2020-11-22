@@ -1,5 +1,34 @@
-<p>contribution works!</p>
+<p>
+    <label>First name:</label>
+    <input type="text" [(ngModel)]="firstName" />
+</p>
+<p>
+    <label>Last name:</label>
+    <input type="text" [(ngModel)]="lastName" />
+</p>
+<p>
+    <label>Distance:</label>
+    <input type="number" [(ngModel)]="distance" />
+</p>
+<p>
+    <label>Sport:</label>
+    <select>
+        <option [value]="Running">Running</option>
+        <option [value]="Trekking">Trekking</option>
+        <option [value]="Cycling">Cycling</option>
+        <option [value]="Swimming">Swimming</option>
+    </select>
+</p>
 
-<input type="text" [(ngModel)]="sponsor" />
-<input type="number" [(ngModel)]="distance" />
+
+<!-- <div class="fb-share-button" data-href="https://www.correralpaisdelosblancos.com" data-layout="button"
+    data-size="large">
+    <a target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.correralpaisdelosblancos.com%2F&amp;src=sdkpreparse"
+        class="fb-xfbml-parse-ignore">
+        Share
+    </a>
+</div> -->
+
+
 <button type="button" (click)="add()">Add</button>

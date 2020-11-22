@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(mapActions.loadRoutes());
-    this.store.dispatch(mapActions.loadTravels());
+    this.store.dispatch(mapActions.loadJourneyContributions());
   }
 
 }

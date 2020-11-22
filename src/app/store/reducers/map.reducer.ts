@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { RoutePoint } from '@model/route-point';
-import { Travel } from '@model/travel';
+import { JourneyContribution } from '@app/model/journey-contribution';
 import { cloneDeep } from 'lodash';
 
 import * as mapActions from '@store/actions/map/map.actions';
@@ -9,12 +9,12 @@ export const mapFeatureKey = 'map';
 
 export interface State {
   fullRoute: RoutePoint[],
-  travels: Travel[]
+  journeyContributions: JourneyContribution[]
 }
 
 export const initialState: State = {
   fullRoute: [],
-  travels: []
+  journeyContributions: []
 };
 
 export const reducer = createReducer(
@@ -38,15 +38,15 @@ export const reducer = createReducer(
     }
   ),
   on(
-    mapActions.loadTravelsSuccess,
-    (state, { travels }) => ({ ...state, travels })
+    mapActions.loadJourneyContributionsSuccess,
+    (state, { contributions: contributions }) => ({ ...state, journeyContributions: contributions })
   ),
   on(
-    mapActions.addTravel,
-    (state, { travel }) => {
-      let travels = state.travels.map(x => cloneDeep(x));
-      travels.push(travel);
-      return ({ ...state, travels });
+    mapActions.addJourneyContribution,
+    (state, { contribution: contribution }) => {
+      let contributions = state.journeyContributions.map(x => cloneDeep(x));
+      contributions.push(contribution);
+      return ({ ...state, journeyContributions: contributions });
     }
   )
 );
@@ -55,6 +55,6 @@ export const getFullRoute = (state: State) => {
   return state.fullRoute;
 }
 
-export const getTravels = (state: State) => {
-  return state.travels;
+export const getJourneyContributions = (state: State) => {
+  return state.journeyContributions;
 }

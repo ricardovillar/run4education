@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '@app/app.component';
 import { ContributionComponent } from '@app/contribution/contribution.component';
 import { MapComponent } from '@app/map/map.component';
+import { ThankYouComponent } from '@app/thank-you/thank-you.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     component: AppComponent,
     children: [
       { path: 'contribute', component: ContributionComponent },
+      { path: 'thank-you', component: ThankYouComponent },
       { path: '', component: MapComponent },
     ]
   }

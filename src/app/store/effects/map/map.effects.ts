@@ -8,8 +8,8 @@ import { Store } from '@ngrx/store';
 import { RoutesService } from '@services/routes.service';
 
 import * as mapActions from '@store/actions/map/map.actions';
-import { TravelsService } from '@app/services/travels.service';
-import { Travel } from '@app/model/travel';
+import { ContributionsService } from '@app/services/contributions.service';
+import { JourneyContribution } from '@app/model/journey-contribution';
 
 @Injectable()
 export class MapEffects {
@@ -18,7 +18,7 @@ export class MapEffects {
   constructor(
     private actions$: Actions,
     private routesService: RoutesService,
-    private travelsService: TravelsService) { }
+    private contributionsService: ContributionsService) { }
 
   @Effect()
   loadFullRoute$: Observable<Action> = this.actions$.pipe(
@@ -30,11 +30,11 @@ export class MapEffects {
   );
 
   @Effect()
-  loadTravels$: Observable<Action> = this.actions$.pipe(
-    ofType(mapActions.loadTravels.type),
-    switchMap(() => this.travelsService.getAllTravels()
+  loadJourneyContributions$: Observable<Action> = this.actions$.pipe(
+    ofType(mapActions.loadJourneyContributions.type),
+    switchMap(() => this.contributionsService.getJourneyContributions()
       .pipe(
-        map((travels) => mapActions.loadTravelsSuccess({ travels }))
+        map((contributions) => mapActions.loadJourneyContributionsSuccess({ contributions: contributions }))
       ))
   );
 

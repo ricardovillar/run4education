@@ -1,36 +1,45 @@
 import { OnInit, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Travel } from '@model/travel';
-import { addTravel } from '@store/actions/map/map.actions';
+import { JourneyContribution } from '@app/model/journey-contribution';
+import { addJourneyContribution } from '@store/actions/map/map.actions';
+import { Router } from '@angular/router';
+import { SportEnum } from '@app/model/sport.enum';
 
 import * as fromStore from "@store/reducers/index";
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contribution',
+  selector: 'contribution',
   templateUrl: './contribution.component.html',
   styleUrls: ['./contribution.component.css']
 })
 export class ContributionComponent implements OnInit {
-
-  sponsor: string;
+  firstName: string;
+  lastName: string;
   distance: number;
+  sport: SportEnum;
 
+  Running = SportEnum.Running;
+  Trekking = SportEnum.Trekking;
+  Cycling = SportEnum.Cycling;
+  Swimming = SportEnum.Swimming;
 
   constructor(
     private store: Store<fromStore.State>,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
 
   add() {
-    if (this.sponsor && this.distance) {
-      let travel = new Travel(this.sponsor, this.distance);
-      this.store.dispatch(addTravel({ travel }));
-      this.router.navigate(['']);
+    if (this.firstName && this.distance) {
+      let journeyContribution = new JourneyContribution(this.firstName, this.lastName, this.distance);
+      journeyContribution.sport = this.sport;
+      this.store.dispatch(addJourneyContribution({ contribution: journeyContribution }));
+      this.router.navigate(['thank-you']);
     }
   }
+
 
 }
