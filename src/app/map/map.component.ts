@@ -8,21 +8,18 @@ import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
-import * as mapActions from '@store/actions/map/map.actions';
-import { addTravel } from '@store/actions/map/map.actions';
+
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnDestroy {
   private _subscriptions: Array<Subscription> = [];
   private _fullRoute: RoutePoint[] = [];
   private _travels: Travel[] = [];
 
-  sponsor: string;
-  distance: number;
   totalDistance: number = 0;
 
   options = {
@@ -41,20 +38,8 @@ export class MapComponent implements OnInit, OnDestroy {
     this.subscribeTravels();
   }
 
-  ngOnInit(): void {
-    this.store.dispatch(mapActions.loadRoutes());
-    this.store.dispatch(mapActions.loadTravels());
-  }
-
   ngOnDestroy() {
     this._subscriptions.forEach(s => s.unsubscribe());
-  }
-
-  add() {
-    if (this.sponsor && this.distance) {
-      let travel = new Travel(this.sponsor, this.distance);
-      this.store.dispatch(addTravel({ travel }));
-    }
   }
 
   private subscribeFullRoute() {
@@ -147,7 +132,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
       color = color == 'red' ? 'blue' : 'red';
     });
-
 
   }
 

@@ -1,10 +1,6 @@
-<input type="text" [(ngModel)]="sponsor" />
-<input type="number" [(ngModel)]="distance" />
-<button type="button" (click)="add()">Add</button>
+<a routerLink="contribute">Contribute</a>
 
 <div class="map-container" leaflet [leafletOptions]="options" [leafletLayers]="layers">
 </div>
-
-
 
 <span>Total distance: {{ totalDistance }}km</span>

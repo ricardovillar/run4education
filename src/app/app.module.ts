@@ -15,11 +15,13 @@ import { environment } from '@environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from '@store/effects/app.effects';
 import { MapEffects } from '@store/effects/map/map.effects';
+import { ContributionComponent } from './contribution/contribution.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    ContributionComponent
   ],
   imports: [
     BrowserModule,
