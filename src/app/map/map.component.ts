@@ -40,6 +40,7 @@ export class MapComponent implements OnDestroy {
       })
     ],
     zoom: 4,
+    maxZoom: 10,
     center: latLng(26.2120138, 2.7012783)
   };
 
@@ -94,8 +95,8 @@ export class MapComponent implements OnDestroy {
     let fullRouteCoordinates = this._fullRoute.map(routePoint => routePoint.latLng);
     let routePath = polyline(fullRouteCoordinates, {
       color: 'rgb(255, 222, 1)',
-      weight: 15,
-      opacity: 0.5
+      dashArray: '1,10',
+      weight: 8
     });
     layers.push(routePath);
   }
@@ -129,9 +130,9 @@ export class MapComponent implements OnDestroy {
       }
 
       let journeyContributionsPolyline = polyline(contributedPoints, {
-        color: contribution.isCompany ? 'green' : color,
-        weight: 5,
-        smoothFactor: 0.5
+        color: this.getColorForContribution(contribution),
+        dashArray: '1,10',
+        weight: 8
       });
 
       const getTooltipCard = ((layer: Layer | any) => {
@@ -155,6 +156,23 @@ export class MapComponent implements OnDestroy {
       color = color == 'red' ? 'blue' : 'red';
     });
 
+  }
+
+  private getColorForContribution(contribution: JourneyContribution): string {
+    if (contribution.isCompany) {
+      return '#fb7400';
+    }
+    switch (contribution.sport) {
+      case SportEnum.Trekking:
+        return '#b125cc';
+      case SportEnum.Swimming:
+        return '#1b4585';
+      case SportEnum.Cycling:
+        return '#ba1b17';
+      case SportEnum.Running:
+      default:
+        return '#702426';
+    }
   }
 
   private makeJourneyContribution(initialKm: number, distanceInMeters: number): { contributionDestinationPoint: LatLng, remainingKm: number } {
