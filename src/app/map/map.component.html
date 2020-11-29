@@ -8,49 +8,39 @@
 <div [hidden]="true">
     <ng-container *ngFor="let contribution of journeyContributions">
         <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution.id">
-            <span>{{ contribution.firstName }}</span>
-            <ng-container [ngSwitch]="contribution.sport">
-                <span *ngSwitchCase="Running">ran</span>
-                <span *ngSwitchCase="Trekking">walked</span>
-                <span *ngSwitchCase="Cycling">cycled</span>
-                <span *ngSwitchCase="Swimming">swam</span>
-                <span *ngSwitchDefault>ran</span>
-            </ng-container>
-            <span>{{ contribution.distance }} km</span>
-            <span>with Ousman!</span>
-            <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
+            <div class="w-100 text-center">
+                <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
+                <img *ngIf="!contribution.pictureUrl" src="/assets/images/avatar.png" />
+            </div>
+            <div class="w-100 text-center">
+                <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
+            </div>
+            <div class="w-100 text-center">
+                <span>ha sumado {{ contribution.distance }}km con Ousman</span>
+            </div>
         </div>
+
         <div *ngIf="!contribution.isCompany" class="tooltip-card-person" [id]="'tooltip-card-' + contribution.id">
-            <span>{{ contribution.firstName }}</span>
-            <ng-container [ngSwitch]="contribution.sport">
-                <span *ngSwitchCase="Running">ran</span>
-                <span *ngSwitchCase="Trekking">walked</span>
-                <span *ngSwitchCase="Cycling">cycled</span>
-                <span *ngSwitchCase="Swimming">swam</span>
-                <span *ngSwitchDefault>ran</span>
-            </ng-container>
-            <span>{{ contribution.distance }} km</span>
-            <span>with Ousman!</span>
             <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
+            <img *ngIf="!contribution.pictureUrl" src="/assets/images/avatar.png" />
+            <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
         </div>
 
         <div *ngIf="contribution.isCompany" class="popup-card-company" [id]="'popup-card-' + contribution.id">
-            <span>{{ contribution.firstName }}</span>
-            <ng-container [ngSwitch]="contribution.sport">
-                <span *ngSwitchCase="Running">ran</span>
-                <span *ngSwitchCase="Trekking">walked</span>
-                <span *ngSwitchCase="Cycling">cycled</span>
-                <span *ngSwitchCase="Swimming">swam</span>
-                <span *ngSwitchDefault>ran</span>
-            </ng-container>
-            <span>{{ contribution.distance }} km</span>
-            <span>with Ousman!</span>
-            <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
+            <div class="w-100 text-center">
+                <img [src]="contribution.pictureUrl" />
+            </div>
+            <div class="w-100 text-center">
+                <span>{{ contribution.firstName }}</span>
+            </div>
+            <div class="w-100 text-center">
+                <span>ha sumado {{ contribution.distance }}km con Ousman</span>
+            </div>
         </div>
+
         <div *ngIf="contribution.isCompany" class="tooltip-card-company" [id]="'tooltip-card-' + contribution.id">
-            <span>This {{ contribution.distance }} km section is sponsored by</span>
+            <img [src]="contribution.pictureUrl" />
             <span>{{ contribution.firstName }}</span>
-            <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
         </div>
 
     </ng-container>

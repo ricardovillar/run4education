@@ -20,11 +20,6 @@ export class MapComponent implements OnDestroy {
   private _subscriptions: Array<Subscription> = [];
   private _fullRoute: RoutePoint[] = [];
 
-  Running = SportEnum.Running;
-  Trekking = SportEnum.Trekking;
-  Cycling = SportEnum.Cycling;
-  Swimming = SportEnum.Swimming;
-
   journeyContributions: JourneyContribution[] = [];
   contributedRoutes: LatLng[] = [];
   layers: Layer[];
@@ -151,12 +146,12 @@ export class MapComponent implements OnDestroy {
       let journeyContributionsPolyline = this.createPathPolyline(contributedPoints, color);
 
       const getTooltipCard = ((layer: Layer | any) => {
-        let card = document.getElementById('popup-card-' + layer.contributionId);
+        let card = document.getElementById('tooltip-card-' + layer.contributionId);
         return card;
       });
 
       const getPopupCard = ((layer: Layer | any) => {
-        let card = document.getElementById('tooltip-card-' + layer.contributionId);
+        let card = document.getElementById('popup-card-' + layer.contributionId);
         return card;
       });
 

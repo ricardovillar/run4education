@@ -25,9 +25,9 @@ export class ContributionsService {
     thaisContribution.pictureUrl = 'https://instagram.fbcn9-1.fna.fbcdn.net/v/t51.2885-19/s320x320/26065860_2039367192951737_5004053189545164800_n.jpg?_nc_ht=instagram.fbcn9-1.fna.fbcdn.net&_nc_ohc=3P4Vqu2Y9q8AX_jALzt&tp=1&oh=8b5980f32fcdcb53f987692343a35b47&oe=5FE42ABC';
     contributions.push(thaisContribution);
 
-    let pukkasContribution = new JourneyContribution("Pukkas", "", 100);
+    let pukkasContribution = new JourneyContribution("Pukkas Webs design SL", "", 100);
     pukkasContribution.isCompany = true;
-    pukkasContribution.pictureUrl = "https://pukkas.com/wp-content/uploads/2019/07/PUKKAS-LOGO.svg";
+    pukkasContribution.pictureUrl = "https://media.designrush.com/agencies/5838/conversions/Pukkas-Webs-Design-logo-profile.jpg";
     contributions.push(pukkasContribution);
 
 
