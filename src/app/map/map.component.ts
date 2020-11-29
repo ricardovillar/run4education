@@ -1,14 +1,14 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { icon, IconOptions, LatLng, latLng, Layer, Marker, marker, polyline, tileLayer } from 'leaflet';
+import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, polyline, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { RoutePoint } from '@model/route-point';
 import { JourneyContribution } from '@app/model/journey-contribution';
+import { SportEnum } from '@app/model/sport.enum';
 import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
-import { SportEnum } from '@app/model/sport.enum';
 
 
 @Component({
@@ -87,18 +87,23 @@ export class MapComponent implements OnDestroy {
     let layers: Layer[] = [];
     this.addRoutePathTo(layers);
     this.addRouteMarkersTo(layers);
+    this.addStartAndEndRouteMarkers(layers);
     this.addJourneyContributionRoutesTo(layers);
     this.layers = layers;
   }
 
   private addRoutePathTo(layers: Layer[]) {
     let fullRouteCoordinates = this._fullRoute.map(routePoint => routePoint.latLng);
-    let routePath = polyline(fullRouteCoordinates, {
-      color: 'rgb(255, 222, 1)',
+    let routePath = this.createPathPolyline(fullRouteCoordinates, 'rgb(255, 222, 1)');
+    layers.push(routePath);
+  }
+
+  private createPathPolyline(coordinates: LatLng[], color: string) {
+    return polyline(coordinates, {
+      color: color,
       dashArray: '1,10',
       weight: 8
     });
-    layers.push(routePath);
   }
 
   private addRouteMarkersTo(layers: Layer[]) {
@@ -111,6 +116,20 @@ export class MapComponent implements OnDestroy {
     });
   }
 
+  private addStartAndEndRouteMarkers(layers: Layer[]) {
+    let startRoutePoint = this._fullRoute[0];
+    let startBalloon = document.getElementById('start-point-balloon');
+    let startIconOptions: DivIconOptions = { iconSize: [1, 1], html: startBalloon };
+    let startMarker = marker(startRoutePoint.latLng, { icon: divIcon(startIconOptions) });
+    layers.push(startMarker);
+
+    let endRoutePoint = this._fullRoute[this._fullRoute.length - 1];
+    let endBalloon = document.getElementById('end-point-balloon');
+    let endIconOptions: DivIconOptions = { iconSize: [1, 1], html: endBalloon };
+    let endMarker = marker(endRoutePoint.latLng, { icon: divIcon(endIconOptions) });
+    layers.push(endMarker);
+  }
+
   private addJourneyContributionRoutesTo(layers: Layer[]) {
     if (this._fullRoute.length == 0) {
       return;
@@ -119,7 +138,6 @@ export class MapComponent implements OnDestroy {
     let contributedPoints = [this._fullRoute[0].latLng];
     let contributedKMsCounted = 0;
 
-    let color = 'red';
     this.journeyContributions.forEach(contribution => {
       let distanceInKm = contribution.distance;
       while (distanceInKm > 0) {
@@ -129,11 +147,8 @@ export class MapComponent implements OnDestroy {
         distanceInKm = contribution.remainingKm;
       }
 
-      let journeyContributionsPolyline = polyline(contributedPoints, {
-        color: this.getColorForContribution(contribution),
-        dashArray: '1,10',
-        weight: 8
-      });
+      let color = this.getColorForContribution(contribution);
+      let journeyContributionsPolyline = this.createPathPolyline(contributedPoints, color);
 
       const getTooltipCard = ((layer: Layer | any) => {
         let card = document.getElementById('popup-card-' + layer.contributionId);
@@ -153,7 +168,6 @@ export class MapComponent implements OnDestroy {
       layers.push(journeyContributionsPolyline);
       contributedPoints.splice(0, contributedPoints.length - 1);
 
-      color = color == 'red' ? 'blue' : 'red';
     });
 
   }

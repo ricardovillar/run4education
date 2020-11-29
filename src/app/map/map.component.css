@@ -77,3 +77,25 @@
     max-height: 100px; 
     height: 100px;
   }
+
+  #start-point-balloon {
+    bottom: -1px; 
+    left: -40px;
+  }
+
+  #start-point-balloon .leaflet-popup-content-wrapper, #start-point-balloon .leaflet-popup-tip {
+    background: #409401;
+  }
+
+  #end-point-balloon {
+    bottom: -5px; 
+    left: -48px;
+  }
+
+  #end-point-balloon .leaflet-popup-content-wrapper, #end-point-balloon .leaflet-popup-tip {
+    background: #e32e01;
+  }
+
+  .leaflet-popup-content {
+    color: #fff;
+  }
