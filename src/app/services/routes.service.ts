@@ -10,7 +10,7 @@ export class RoutesService {
     let routes: RoutePoint[] = [
       new RoutePoint("Fianso (Ghana)", { lat: 7.5769373, lng: -1.810956 }, 0),
       new RoutePoint("Forikrom (Ghana)", { lat: 7.5947192, lng: -1.8634536 }, 1),
-      new RoutePoint("Techiman (Ghana)", { lat: 7.5896856, lng: -1.9512214 }, 2, "tenemos vídeo de ousman en el primer taller donde aprendió"),
+      new RoutePoint("Techiman (Ghana)", { lat: 7.5896856, lng: -1.9512214 }, 2),
       new RoutePoint("Kumasi (Ghana)", { lat: 6.690251, lng: -1.6861465 }, 3),
       new RoutePoint("Tema (Ghana)", { lat: 5.6852424, lng: -0.0236622 }, 4, "donde vio el mar por 1a vez podemos hacer vídeo de ousman en la playa"),
       new RoutePoint("Bolgatanga (Ghana)", { lat: 10.7934454, lng: -0.8955796 }, 5),

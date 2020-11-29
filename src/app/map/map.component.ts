@@ -110,7 +110,7 @@ export class MapComponent implements OnDestroy {
     this._fullRoute.map(routePoint => {
       if (routePoint.detail) {
         let marker = toRouteMarker(routePoint);
-        marker.bindPopup(routePoint.name + ": " + routePoint.detail);
+        marker.bindPopup(routePoint.name + ": " + routePoint.detail, { offset: [0, -20] });
         layers.push(marker);
       }
     });
@@ -221,11 +221,11 @@ export class MapComponent implements OnDestroy {
 
 function toRouteMarker(routePoint: RoutePoint): Marker {
   let iconOptions: IconOptions = {
-    iconSize: [20, 31],
-    iconAnchor: [13, 41],
-    iconUrl: 'assets/images/marker-icon.png',
-    iconRetinaUrl: 'assets/images/marker-icon-2x.png',
-    shadowUrl: 'assets/images/marker-shadow.png'
+    iconSize: [30, 39],
+    iconAnchor: [15, 39],
+    iconUrl: 'assets/images/texto.png',
+    iconRetinaUrl: 'assets/images/texto.png',
+    // shadowUrl: 'assets/images/marker-shadow.png'
   };
   return marker(routePoint.latLng, { icon: icon(iconOptions) });
 }
