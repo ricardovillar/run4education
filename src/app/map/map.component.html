@@ -10,7 +10,7 @@
         <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution.id">
             <div class="w-100 text-center">
                 <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
-                <img *ngIf="!contribution.pictureUrl" src="/assets/images/avatar.png" />
+                <img *ngIf="!contribution.pictureUrl" src="assets/images/avatar.png" />
             </div>
             <div class="w-100 text-center">
                 <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
@@ -22,7 +22,7 @@
 
         <div *ngIf="!contribution.isCompany" class="tooltip-card-person" [id]="'tooltip-card-' + contribution.id">
             <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
-            <img *ngIf="!contribution.pictureUrl" src="/assets/images/avatar.png" />
+            <img *ngIf="!contribution.pictureUrl" src="assets/images/avatar.png" />
             <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
         </div>
 
