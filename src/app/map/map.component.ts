@@ -136,10 +136,12 @@ export class MapComponent implements OnDestroy {
     this.journeyContributions.forEach(contribution => {
       let distanceInKm = contribution.distance;
       while (distanceInKm > 0) {
-        let contribution = this.makeJourneyContribution(contributedKMsCounted, distanceInKm * 1000);
-        contributedPoints.push(contribution.contributionDestinationPoint);
-        contributedKMsCounted += (distanceInKm - contribution.remainingKm);
-        distanceInKm = contribution.remainingKm;
+
+        let journeyContribution = this.makeJourneyContribution(contributedKMsCounted, distanceInKm * 1000);
+        contributedPoints.push(journeyContribution.contributionDestinationPoint);
+        contributedKMsCounted += (distanceInKm - journeyContribution.remainingKm);
+        console.log('distanceInKm', distanceInKm, 'contribution.remainingKm', journeyContribution.remainingKm);
+        distanceInKm = journeyContribution.remainingKm;
       }
 
       let color = this.getColorForContribution(contribution);
@@ -202,7 +204,7 @@ export class MapComponent implements OnDestroy {
     }
     else {
       contributionDestinationPoint = routeSectionEndPoint.latLng;
-      remainingKm = contributionFinalKm - routeSectionEndPoint.initialKm;
+      remainingKm = contributionFinalKm - routeSectionEndPoint.initialKm - 0.001;  // advance 1 meter to avoid infine loop due to roundings differences
     }
     return { contributionDestinationPoint: contributionDestinationPoint, remainingKm };
   }

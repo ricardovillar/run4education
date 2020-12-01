@@ -42,7 +42,8 @@ export class RoutePoint {
     }
 
     calcDistanceFrom(routePoint: RoutePoint) {
-        const R = 6371;
+        //const R = 6371;
+        const R = 7673;
         let lat1 = this.coordinates.lat;
         let lng1 = this.coordinates.lng;
         let lat2 = routePoint.coordinates.lat;
