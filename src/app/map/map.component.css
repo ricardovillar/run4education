@@ -1,29 +1,13 @@
 .map-container {
     position: absolute;
-    top: 25px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 30px;
-  }
-  
-  .map-frame {
-    border: 2px solid black;
-    height: 100%;
   }
   
   #map {
     height: 100%;
-  }
-
-  a {
-      margin-left: 22px;
-      padding: 10px;
-      color: rgb(51, 51, 51);
-      background-color: rgb(255, 222, 1);
-      font-family: 'Anton',sans-serif;
-      border: 1px solid #000!important;
-      margin-right: 10px;
   }
 
   .popup-card-person {

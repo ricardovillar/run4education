@@ -1,9 +1,5 @@
-<a routerLink="contribute">Contribute</a>
-
 <div class="map-container" leaflet [leafletOptions]="options" [leafletLayers]="layers">
 </div>
-
-<span>Total distance: {{ totalDistance }}km</span>
 
 <div [hidden]="true">
     <ng-container *ngFor="let contribution of journeyContributions">
