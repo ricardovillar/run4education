@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '@app/app.component';
 import { MapComponent } from '@app/map/map.component';
 import { ContributionComponent } from '@app/contribution/contribution.component';
+import { ContributeComponent } from '@app/contribute/contribute.component';
 import { ThankYouComponent } from '@app/thank-you/thank-you.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from '@store/reducers';
@@ -23,19 +25,23 @@ import { MapEffects } from '@store/effects/map/map.effects';
     AppComponent,
     MapComponent,
     ContributionComponent,
+    ContributeComponent,
     ThankYouComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     LeafletModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects, MapEffects])
   ],
-  providers: [RoutesService],
+  providers: [
+    RoutesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

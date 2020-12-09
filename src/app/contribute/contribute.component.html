@@ -1,0 +1,27 @@
+<p>
+    <label>First name:</label>
+    <input type="text" [(ngModel)]="firstName" />
+</p>
+<p>
+    <label>Last name:</label>
+    <input type="text" [(ngModel)]="lastName" />
+</p>
+<p>
+    <label>Distance:</label>
+    <input type="number" [(ngModel)]="distance" />
+</p>
+<p>
+    <label>Sport:</label>
+    <select [(ngModel)]="sport">
+        <option [value]="Running">Running</option>
+        <option [value]="Trekking">Trekking</option>
+        <option [value]="Cycling">Cycling</option>
+        <option [value]="Swimming">Swimming</option>
+    </select>
+</p>
+
+<input style="display: none" type="file" (change)="onPictureSelected($event)" #fileInput>
+
+<button (click)="fileInput.click()">Select File</button>
+
+<button (click)="contribute()">Confirm</button>
