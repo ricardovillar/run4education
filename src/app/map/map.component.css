@@ -94,3 +94,7 @@
   .text-center {
     text-align: center;
   }
+
+  .video-player {
+    min-width: 640px;
+  }

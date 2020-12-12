@@ -19,6 +19,7 @@ import { environment } from '@environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from '@store/effects/app.effects';
 import { MapEffects } from '@store/effects/map/map.effects';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MapEffects } from '@store/effects/map/map.effects';
     HttpClientModule,
     AppRoutingModule,
     LeafletModule,
+    YouTubePlayerModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects, MapEffects])

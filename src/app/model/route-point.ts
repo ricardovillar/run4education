@@ -36,7 +36,8 @@ export class RoutePoint {
     constructor(
         public name: string,
         public coordinates: { lat: number, lng: number },
-        public detail: any = null
+        public elementId: any = null,
+        public markerType: MarkerType = null
     ) {
         this.latLng = latLng(coordinates.lat, coordinates.lng);
     }
@@ -64,3 +65,5 @@ export class RoutePoint {
 function deg2rad(deg: number): number {
     return deg * (Math.PI / 180);
 }
+
+export type MarkerType = 'text' | 'video';

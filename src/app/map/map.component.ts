@@ -1,15 +1,17 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, polyline, tileLayer } from 'leaflet';
+import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, PointExpression, polyline, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { RoutePoint } from '@model/route-point';
 import { JourneyContribution } from '@app/model/journey-contribution';
 import { SportEnum } from '@app/model/sport.enum';
+import { YouTubePlayer } from '@angular/youtube-player';
 import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
 
+let apiLoaded = false;
 
 @Component({
   selector: 'map',
@@ -17,6 +19,7 @@ import * as fromRoot from "@store/reducers";
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnDestroy {
+
   private _subscriptions: Array<Subscription> = [];
   private _fullRoute: RoutePoint[] = [];
 
@@ -42,6 +45,10 @@ export class MapComponent implements OnDestroy {
   constructor(private store: Store<fromStore.State>) {
     this.subscribeFullRoute();
     this.subscribeJourneyContributions();
+  }
+
+  ngOnInit() {
+    this.loadYoutubeApi();
   }
 
   ngOnDestroy() {
@@ -103,9 +110,12 @@ export class MapComponent implements OnDestroy {
 
   private addRouteMarkersTo(layers: Layer[]) {
     this._fullRoute.map(routePoint => {
-      if (routePoint.detail) {
+      if (routePoint.elementId) {
         let marker = toRouteMarker(routePoint);
-        marker.bindPopup(routePoint.name + ": " + routePoint.detail, { offset: [0, -20] });
+        let balloon = document.getElementById(routePoint.elementId);
+        let offset: PointExpression = [0, -20];
+        let minWidth = routePoint.markerType == "video" ? 640 : null;
+        marker.bindPopup(balloon, { offset, minWidth });
         layers.push(marker);
       }
     });
@@ -140,7 +150,6 @@ export class MapComponent implements OnDestroy {
         let journeyContribution = this.makeJourneyContribution(contributedKMsCounted, distanceInKm * 1000);
         contributedPoints.push(journeyContribution.contributionDestinationPoint);
         contributedKMsCounted += (distanceInKm - journeyContribution.remainingKm);
-        console.log('distanceInKm', distanceInKm, 'contribution.remainingKm', journeyContribution.remainingKm);
         distanceInKm = journeyContribution.remainingKm;
       }
 
@@ -214,15 +223,26 @@ export class MapComponent implements OnDestroy {
     return routePoint;
   }
 
+  private loadYoutubeApi() {
+    if (!apiLoaded) {
+      // This code loads the IFrame Player API code asynchronously, according to the instructions at
+      // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+      apiLoaded = true;
+    }
+  }
+
 }
 
 function toRouteMarker(routePoint: RoutePoint): Marker {
+  let iconUrl = routePoint.markerType == 'video' ? 'assets/images/video.png' : 'assets/images/texto.png';
   let iconOptions: IconOptions = {
     iconSize: [30, 39],
     iconAnchor: [15, 39],
-    iconUrl: 'assets/images/texto.png',
-    iconRetinaUrl: 'assets/images/texto.png',
-    // shadowUrl: 'assets/images/marker-shadow.png'
+    iconUrl: iconUrl,
+    iconRetinaUrl: iconUrl
   };
   return marker(routePoint.latLng, { icon: icon(iconOptions) });
 }
