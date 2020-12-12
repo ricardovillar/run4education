@@ -19,7 +19,7 @@ export class ThankYouComponent implements OnInit {
     this.FB.ui({
       method: 'share',
       quote: 'Ran with Ousman you too ...',
-      href: 'https://nascoict.org/',
+      href: 'https://correalpaisdelosblancos.com/',
     }, function (response) { });
   }
 

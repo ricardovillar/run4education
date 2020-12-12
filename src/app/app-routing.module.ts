@@ -12,7 +12,7 @@ const routes: Routes = [
     component: AppComponent,
     children: [
       { path: 'contribution', component: ContributionComponent },
-      { path: 'contribute', component: ContributeComponent },
+      { path: 'inscripcion', component: ContributeComponent },
       { path: 'thank-you', component: ThankYouComponent },
       { path: '', component: MapComponent },
     ]

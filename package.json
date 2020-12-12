@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod": "ng build --prod --base-href https://ricardovillar.github.io/run4education/",
-    "postbuild-prod": "angular-cli-ghpages"
+    "build-github": "ng build --prod --base-href https://ricardovillar.github.io/run4education/",
+    "postbuild-github": "angular-cli-ghpages",
+    "build-wp": "ng build --configuration=wordpress"
   },
   "private": true,
   "dependencies": {
