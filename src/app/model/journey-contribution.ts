@@ -1,9 +1,9 @@
 import { SportEnum } from '@model/sport.enum';
 
 export class JourneyContribution {
-    public id: string;
+    public _id: string;
     public sport: SportEnum;
-    public pictureUrl: string;
+    public avatarUrl: string;
     public isCompany: boolean;
 
     constructor(
@@ -11,7 +11,7 @@ export class JourneyContribution {
         public lastName: string,
         public distance: number
     ) {
-        this.id = firstName + "-" + lastName;
+        this._id = firstName + "-" + lastName;
         this.isCompany = false;
     }
 }

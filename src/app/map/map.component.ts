@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, PointExpression, polyline, tileLayer } from 'leaflet';
+import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, PointExpression, Polyline, polyline, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { RoutePoint } from '@model/route-point';
 import { JourneyContribution } from '@app/model/journey-contribution';
@@ -10,6 +10,7 @@ import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
+import { ActivatedRoute } from '@angular/router';
 
 let apiLoaded = false;
 
@@ -22,6 +23,8 @@ export class MapComponent implements OnDestroy {
 
   private _subscriptions: Array<Subscription> = [];
   private _fullRoute: RoutePoint[] = [];
+  private _markers: { [id: string]: Polyline; } = {};
+  private _highlightId: any;
 
   journeyContributions: JourneyContribution[] = [];
   contributedRoutes: LatLng[] = [];
@@ -42,9 +45,10 @@ export class MapComponent implements OnDestroy {
     center: latLng(26.2120138, 2.7012783)
   };
 
-  constructor(private store: Store<fromStore.State>) {
+  constructor(private store: Store<fromStore.State>, route: ActivatedRoute) {
     this.subscribeFullRoute();
     this.subscribeJourneyContributions();
+    route.queryParamMap.subscribe((params) => this._highlightId = params.get('c'));
   }
 
   ngOnInit() {
@@ -169,10 +173,22 @@ export class MapComponent implements OnDestroy {
       journeyContributionsPolyline.bindTooltip(getTooltipCard);
       journeyContributionsPolyline.bindPopup(getPopupCard);
 
-      journeyContributionsPolyline['contributionId'] = contribution.id;
+      journeyContributionsPolyline['contributionId'] = contribution._id;
 
       layers.push(journeyContributionsPolyline);
       contributedPoints.splice(0, contributedPoints.length - 1);
+
+      //this._markers[contribution._id] = journeyContributionsPolyline;
+      if (this._highlightId && this._highlightId == contribution._id) {
+        //this.highlight(this._highlightId);
+
+        //let latLng: any = journeyContributionsPolyline.getLatLngs()[0];
+        //journeyContributionsPolyline.openPopup(latLng);
+        //journeyContributionsPolyline.togglePopup();
+
+        journeyContributionsPolyline.fireEvent('click');
+
+      }
 
     });
 
@@ -221,6 +237,18 @@ export class MapComponent implements OnDestroy {
   private getInitialRoutePointForDistance(distance: number): RoutePoint {
     let routePoint = this._fullRoute.find(x => x.initialKm <= distance && x.finalKm > distance);
     return routePoint;
+  }
+
+  private highlight(id: any) {
+    if (!id) {
+      return;
+    }
+    let marker: Polyline = this._markers[id];
+    if (marker) {
+      let latLng: any = marker.getLatLngs()[0];
+      //marker.openPopup(latLng);
+      marker.togglePopup();
+    }
   }
 
   private loadYoutubeApi() {

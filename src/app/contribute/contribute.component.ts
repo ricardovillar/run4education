@@ -23,6 +23,7 @@ export class ContributeComponent implements OnInit {
   distance: number;
   sport: SportEnum;
   picture: File;
+  avatarPreview: any;
 
   Running = SportEnum.Running;
   Trekking = SportEnum.Trekking;
@@ -50,14 +51,22 @@ export class ContributeComponent implements OnInit {
   }
 
   onPictureSelected(event) {
-    this.picture = event.target.files[0]
+    this.picture = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(this.picture);
+    reader.onload = (_event) => {
+      this.avatarPreview = reader.result;
+    }
   }
 
   contribute() {
     let contribution = new Contribution(this.firstName, this.lastName, 'España', this.distance, 0.5, this.sport, this.picture);
     this.contributionsService.startContributionProcess(contribution)
-      .subscribe(event => {
-        console.log(event); // handle event here
+      .subscribe(contribution => {
+        if (contribution) {
+          this.store.dispatch(addJourneyContribution({ contribution }));
+          this.router.navigate(['thank-you', contribution._id]);
+        }
       });
   }
 
