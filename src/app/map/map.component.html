@@ -3,10 +3,10 @@
 
 <div [hidden]="true">
     <ng-container *ngFor="let contribution of journeyContributions">
-        <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution.id">
+        <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution._id">
             <div class="w-100 text-center">
-                <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
-                <img *ngIf="!contribution.pictureUrl" src="assets/images/avatar.png" />
+                <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
+                <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
             </div>
             <div class="w-100 text-center">
                 <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
@@ -16,15 +16,15 @@
             </div>
         </div>
 
-        <div *ngIf="!contribution.isCompany" class="tooltip-card-person" [id]="'tooltip-card-' + contribution.id">
-            <img *ngIf="contribution.pictureUrl" [src]="contribution.pictureUrl" />
-            <img *ngIf="!contribution.pictureUrl" src="assets/images/avatar.png" />
+        <div *ngIf="!contribution.isCompany" class="tooltip-card-person" [id]="'tooltip-card-' + contribution._id">
+            <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
+            <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
             <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
         </div>
 
-        <div *ngIf="contribution.isCompany" class="popup-card-company" [id]="'popup-card-' + contribution.id">
+        <div *ngIf="contribution.isCompany" class="popup-card-company" [id]="'popup-card-' + contribution._id">
             <div class="w-100 text-center">
-                <img [src]="contribution.pictureUrl" />
+                <img [src]="contribution.avatarUrl" />
             </div>
             <div class="w-100 text-center">
                 <span>{{ contribution.firstName }}</span>
@@ -34,8 +34,8 @@
             </div>
         </div>
 
-        <div *ngIf="contribution.isCompany" class="tooltip-card-company" [id]="'tooltip-card-' + contribution.id">
-            <img [src]="contribution.pictureUrl" />
+        <div *ngIf="contribution.isCompany" class="tooltip-card-company" [id]="'tooltip-card-' + contribution._id">
+            <img [src]="contribution.avatarUrl" />
             <span>{{ contribution.firstName }}</span>
         </div>
 

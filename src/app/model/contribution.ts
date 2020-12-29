@@ -1,7 +1,6 @@
 import { SportEnum } from '@model/sport.enum';
 
 export class Contribution {
-    public id: string;
 
     constructor(
         public firstName: string,
@@ -12,6 +11,5 @@ export class Contribution {
         public sport: SportEnum,
         public avatar: File
     ) {
-        this.id = firstName + "-" + lastName;
     }
 }

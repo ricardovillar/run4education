@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'thank-you',
@@ -8,8 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class ThankYouComponent implements OnInit {
   FB: any;
 
-  constructor() {
+  id: any;
+
+  constructor(route: ActivatedRoute) {
     this.initFacebook();
+    route.queryParamMap.subscribe((params) => this.id = params.get('c'));
   }
 
   ngOnInit(): void {
@@ -36,4 +42,5 @@ export class ThankYouComponent implements OnInit {
 
     this.FB.init(options);
   }
+
 }
