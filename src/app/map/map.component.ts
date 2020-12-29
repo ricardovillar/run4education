@@ -90,7 +90,7 @@ export class MapComponent implements OnDestroy {
     this.addRoutePathTo(layers);
     this.addRouteMarkersTo(layers);
     this.addStartAndEndRouteMarkers(layers);
-    this.addJourneyContributionRoutesTo(layers);
+    //this.addJourneyContributionRoutesTo(layers);
     this.layers = layers;
   }
 
