@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, PointExpression, Polyline, polyline, tileLayer } from 'leaflet';
+import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, PointExpression, Polyline, polyline, tileLayer, tooltip, TooltipOptions } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { RoutePoint } from '@model/route-point';
 import { JourneyContribution } from '@app/model/journey-contribution';
@@ -128,8 +128,18 @@ export class MapComponent implements OnDestroy {
   private addStartAndEndRouteMarkers(layers: Layer[]) {
     let startRoutePoint = this._fullRoute[0];
     let startBalloon = document.getElementById('start-point-balloon');
-    let startIconOptions: DivIconOptions = { iconSize: [1, 1], html: startBalloon };
+    let startIconOptions: DivIconOptions = { iconSize: [1, 1], html: startBalloon, className: 'icon-right' };
     let startMarker = marker(startRoutePoint.latLng, { icon: divIcon(startIconOptions) });
+    //let icon = divIcon(startIconOptions);
+
+    /*
+    icon.style.WebkitTransform = this._icon.style.WebkitTransform + ' rotate(' + this.options.iconAngle + 'deg)';
+    icon.style.MozTransform = 'rotate(' + this.options.iconAngle + 'deg)';
+    */
+
+    //let startMarker = marker(startRoutePoint.latLng, { icon });
+
+
     layers.push(startMarker);
 
     let endRoutePoint = this._fullRoute[this._fullRoute.length - 1];
