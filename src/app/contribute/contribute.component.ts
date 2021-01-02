@@ -24,6 +24,7 @@ export class ContributeComponent implements OnInit {
   sport: SportEnum;
   picture: File;
   avatarPreview: any;
+  termsAccepted: boolean = false;
 
   Running = SportEnum.Running;
   Trekking = SportEnum.Trekking;

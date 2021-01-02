@@ -1,5 +1,93 @@
+:host {
+    display: inline-block;
+    width: 100%;
+    background-color: #f4d84d;
+    color: #000000;
+}
+
 img.preview {
     border-radius: 50%;
     width: 100px;
     height: 100px;
+}
+
+input, select {
+    background-color: transparent;
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    border: solid 3px #000000;
+    padding: 0.75em;
+    font-weight: 600;
+}
+
+input::placeholder {
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;    
+}
+
+hr {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+button {
+    background-color: #000000;
+    border: none;
+    padding: 0.75em 1em;
+    color: #f4d84d;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+}
+
+.header {
+    width: 100%;
+    height: 200px;    
+}
+
+.header div.fill {
+    height: 100%;
+    width: 100%;
+    background-image: url(https://correalpaisdelosblancos.com/wp-content/uploads/2020/12/slide-consiste.jpg);
+    background-position: 51% 2%;
+}
+
+.content {
+    padding-left: 8em;
+    padding-right: 8em;    
+}
+
+.text-big {
+    font-size: 200%;
+    margin-top: 0.5em;
+}
+
+.first-name {
+    width: 30%;
+    margin-right: 2em;
+    float: left;   
+}
+
+.last-name {
+    width: 40%;
+    margin-right: 2em;
+    float: left;   
+}
+
+.distance {
+    width: 20%;
+    margin-right: 2em;
+    float: left;   
+}
+
+.value {
+    width: 15%;
+    margin-right: 2em;
+    float: left;   
+}
+
+.sport {
+    width: 20%;
+    margin-right: 2em;
+    float: left;   
 }
