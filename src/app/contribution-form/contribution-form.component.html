@@ -1,0 +1,47 @@
+<span class="text-big float-left w-100">
+    <strong>¡Suma Kms con Ousman!</strong>
+</span>
+
+<span class="text-big float-left w-100 mb-2">
+    <strong>Participa corriendo, andando, pedaleando o nadando</strong>
+</span>
+
+<span class="float-left w-100 mb-1">
+    <strong>
+        Formulario de participación
+    </strong>
+</span>
+
+<hr class="mb-4" />
+
+<div class="w-100 mb-1 float-left">
+    <input type="text" class="first-name" [(ngModel)]="firstName" placeholder="Nombre" />
+    <input type="text" class="last-name" [(ngModel)]="lastName" placeholder="Apellidos" />
+</div>
+
+<div class="w-100 mb-1 float-left">
+    <input type="number" class="distance" min="1" step="1" [(ngModel)]="distance" placeholder="Kms recorridos" />
+    <input type="number" class="value" min="0.5" step="0.5" [(ngModel)]="value" placeholder="€ por km" />
+    <select class="sport" [(ngModel)]="sport">
+        <option selected hidden [value]="null">Modalidad</option>
+        <option [value]="Running">Running</option>
+        <option [value]="Trekking">Trekking</option>
+        <option [value]="Cycling">Cycling</option>
+        <option [value]="Swimming">Swimming</option>
+    </select>
+</div>
+
+<div class="w-100 mb-2 float-left">
+    <input style="display: none" type="file" (change)="onPictureSelected($event)" #fileInput>
+    <button (click)="fileInput.click()">Subir mi foto</button>
+    <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
+</div>
+
+<hr class="mb-2" />
+
+<div class="float-left">
+    <input type="checkbox" class="float-left mr-1" [(ngModel)]="termsAccepted" />
+    <span>He leído y acepto los términos legales</span>
+</div>
+
+<button class="float-right" (click)="contribute()">PARTICIPA</button>

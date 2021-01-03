@@ -1,9 +1,11 @@
-<p>Thank you!</p>
+<ng-container *ngIf="contribution">
+    <p>¡Gracias {{ contribution.firstName }}!</p>
 
-<p>
-    <button type="button" (click)="shareOnFacebook()">Share on Facebook</button>
-</p>
+    <p>
+        <button type="button" (click)="shareOnFacebook()">Comparte en Facebook</button>
+    </p>
 
-<p>
-    <a routerLink="" [queryParams]="{ c: id }">See your contribution on the map</a>
-</p>
+    <p>
+        <a routerLink="" [queryParams]="{ c: contribution._id }">Mira tu contribuición en el mapa</a>
+    </p>
+</ng-container>

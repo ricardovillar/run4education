@@ -1,4 +1,5 @@
-<div class="map-container" leaflet [leafletOptions]="options" [leafletLayers]="layers">
+<div class="map-container" #mapContainer leaflet [leafletOptions]="options" [leafletLayers]="layers"
+    (leafletMapReady)="onMapReady($event)">
 </div>
 
 <div [hidden]="true">

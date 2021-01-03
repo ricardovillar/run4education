@@ -20,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from '@store/effects/app.effects';
 import { MapEffects } from '@store/effects/map/map.effects';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { ContributionFormComponent } from './contribution-form/contribution-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     MapComponent,
     ContributionComponent,
     ContributeComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    ContributionFormComponent
   ],
   imports: [
     BrowserModule,

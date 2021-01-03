@@ -1,16 +1,15 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Marker, marker, PointExpression, Polyline, polyline, tileLayer, tooltip, TooltipOptions } from 'leaflet';
+import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Map, Marker, marker, PointExpression, Polyline, polyline, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
 import { RoutePoint } from '@model/route-point';
 import { JourneyContribution } from '@app/model/journey-contribution';
 import { SportEnum } from '@app/model/sport.enum';
-import { YouTubePlayer } from '@angular/youtube-player';
+import { ActivatedRoute } from '@angular/router';
 import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
-import { ActivatedRoute } from '@angular/router';
 
 let apiLoaded = false;
 
@@ -20,11 +19,11 @@ let apiLoaded = false;
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnDestroy {
-
   private _subscriptions: Array<Subscription> = [];
   private _fullRoute: RoutePoint[] = [];
   private _markers: { [id: string]: Polyline; } = {};
   private _highlightId: any;
+  private _map: Map;
 
   journeyContributions: JourneyContribution[] = [];
   contributedRoutes: LatLng[] = [];
@@ -45,10 +44,12 @@ export class MapComponent implements OnDestroy {
     center: latLng(26.2120138, 2.7012783)
   };
 
-  constructor(private store: Store<fromStore.State>, route: ActivatedRoute) {
+  constructor(
+    private store: Store<fromStore.State>,
+    route: ActivatedRoute) {
+    route.queryParamMap.subscribe((params) => this._highlightId = params.get('c'));
     this.subscribeFullRoute();
     this.subscribeJourneyContributions();
-    route.queryParamMap.subscribe((params) => this._highlightId = params.get('c'));
   }
 
   ngOnInit() {
@@ -57,6 +58,11 @@ export class MapComponent implements OnDestroy {
 
   ngOnDestroy() {
     this._subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  onMapReady(map: Map) {
+    this._map = map;
+    console.log(this._map);
   }
 
   private subscribeFullRoute() {
@@ -94,7 +100,7 @@ export class MapComponent implements OnDestroy {
     this.addRoutePathTo(layers);
     this.addRouteMarkersTo(layers);
     this.addStartAndEndRouteMarkers(layers);
-    //this.addJourneyContributionRoutesTo(layers);
+    this.addJourneyContributionRoutesTo(layers);
     this.layers = layers;
   }
 
@@ -130,15 +136,6 @@ export class MapComponent implements OnDestroy {
     let startBalloon = document.getElementById('start-point-balloon');
     let startIconOptions: DivIconOptions = { iconSize: [1, 1], html: startBalloon, className: 'icon-right' };
     let startMarker = marker(startRoutePoint.latLng, { icon: divIcon(startIconOptions) });
-    //let icon = divIcon(startIconOptions);
-
-    /*
-    icon.style.WebkitTransform = this._icon.style.WebkitTransform + ' rotate(' + this.options.iconAngle + 'deg)';
-    icon.style.MozTransform = 'rotate(' + this.options.iconAngle + 'deg)';
-    */
-
-    //let startMarker = marker(startRoutePoint.latLng, { icon });
-
 
     layers.push(startMarker);
 
@@ -188,16 +185,9 @@ export class MapComponent implements OnDestroy {
       layers.push(journeyContributionsPolyline);
       contributedPoints.splice(0, contributedPoints.length - 1);
 
-      //this._markers[contribution._id] = journeyContributionsPolyline;
+      this._markers[contribution._id] = journeyContributionsPolyline;
       if (this._highlightId && this._highlightId == contribution._id) {
-        //this.highlight(this._highlightId);
-
-        //let latLng: any = journeyContributionsPolyline.getLatLngs()[0];
-        //journeyContributionsPolyline.openPopup(latLng);
-        //journeyContributionsPolyline.togglePopup();
-
-        journeyContributionsPolyline.fireEvent('click');
-
+        this.highlight(this._highlightId);
       }
 
     });
@@ -255,10 +245,14 @@ export class MapComponent implements OnDestroy {
     }
     let marker: Polyline = this._markers[id];
     if (marker) {
-      let latLng: any = marker.getLatLngs()[0];
-      //marker.openPopup(latLng);
-      marker.togglePopup();
+      setTimeout(() => this.recenterMapAndOpenPopupOf(marker), 500);
     }
+  }
+
+  private recenterMapAndOpenPopupOf(marker: Polyline) {
+    let latLng = marker.getCenter();
+    marker.togglePopup();
+    this._map.flyTo(latLng, 8);
   }
 
   private loadYoutubeApi() {
