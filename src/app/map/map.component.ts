@@ -29,6 +29,9 @@ export class MapComponent implements OnDestroy {
   contributedRoutes: LatLng[] = [];
   layers: Layer[];
   totalDistance: number = 0;
+  playerVars: YT.PlayerVars = {
+    rel: YT.RelatedVideos.Hide
+  };
 
   options = {
     layers: [
@@ -62,7 +65,6 @@ export class MapComponent implements OnDestroy {
 
   onMapReady(map: Map) {
     this._map = map;
-    console.log(this._map);
   }
 
   private subscribeFullRoute() {
