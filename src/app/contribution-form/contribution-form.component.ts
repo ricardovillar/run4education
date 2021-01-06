@@ -22,6 +22,8 @@ export class ContributionFormComponent implements OnInit {
   sport: SportEnum = null;
   picture: File;
   avatarPreview: any;
+  futureCommunicationConsent: boolean;
+  email: string;
   termsAccepted: boolean = false;
 
   Running = SportEnum.Running;
@@ -52,6 +54,10 @@ export class ContributionFormComponent implements OnInit {
 
   contribute() {
     let contribution = new Contribution(this.firstName, this.lastName, 'España', this.distance, this.value, this.sport, this.picture);
+    if (this.futureCommunicationConsent) {
+      contribution.futureCommunicationConsent = true;
+      contribution.email = this.email;
+    }
     this.contributionsService.startContributionProcess(contribution)
       .subscribe(contribution => {
         if (contribution) {

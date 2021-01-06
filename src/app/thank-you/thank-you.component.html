@@ -1,10 +1,13 @@
 <ng-container *ngIf="contribution">
     <p>¡Gracias {{ contribution.firstName }}!</p>
-
     <p>
         <button type="button" (click)="shareOnFacebook()">Comparte en Facebook</button>
     </p>
-
+    <p>
+        <a *ngIf="whatsappSharing" [href]="whatsappSharing">
+            Comparte en Whatsapp
+        </a>
+    </p>
     <p>
         <a routerLink="" [queryParams]="{ c: contribution._id }">Mira tu contribuición en el mapa</a>
     </p>

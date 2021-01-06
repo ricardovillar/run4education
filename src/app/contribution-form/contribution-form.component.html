@@ -1,5 +1,5 @@
 <span class="text-big float-left w-100">
-    <strong>¡Suma Kms con Ousman!</strong>
+    <strong>¡Suma kilómetros con Ousman!</strong>
 </span>
 
 <span class="text-big float-left w-100 mb-2">
@@ -12,32 +12,48 @@
     </strong>
 </span>
 
-<hr class="mb-4" />
+<hr class="mb-3" />
+
+<span class="float-left w-100 mb-1">
+    <strong>
+        La donación mínima es de 0,5 € por kilómetro recorrido pero, si quieres, tienes la posibilidad de donar los €
+        que consideres por cada kilómetro.
+    </strong>
+</span>
 
 <div class="w-100 mb-1 float-left">
-    <input type="text" class="first-name" [(ngModel)]="firstName" placeholder="Nombre" />
-    <input type="text" class="last-name" [(ngModel)]="lastName" placeholder="Apellidos" />
+    <input type="text" class="first-name" [(ngModel)]="firstName" placeholder="Nombre" maxlength="1000" />
+    <input type="text" class="last-name" [(ngModel)]="lastName" placeholder="Apellidos" maxlength="1000" />
 </div>
 
 <div class="w-100 mb-1 float-left">
-    <input type="number" class="distance" min="1" step="1" [(ngModel)]="distance" placeholder="Kms recorridos" />
+    <input type="number" class="distance" min="1" step="1" [(ngModel)]="distance" placeholder="Km recorridos" />
     <input type="number" class="value" min="0.5" step="0.5" [(ngModel)]="value" placeholder="€ por km" />
     <select class="sport" [(ngModel)]="sport">
         <option selected hidden [value]="null">Modalidad</option>
-        <option [value]="Running">Running</option>
-        <option [value]="Trekking">Trekking</option>
-        <option [value]="Cycling">Cycling</option>
-        <option [value]="Swimming">Swimming</option>
+        <option [value]="Running">Carrera</option>
+        <option [value]="Trekking">Caminada</option>
+        <option [value]="Cycling">Ciclismo</option>
+        <option [value]="Swimming">Natación</option>
     </select>
 </div>
 
 <div class="w-100 mb-2 float-left">
-    <input style="display: none" type="file" (change)="onPictureSelected($event)" #fileInput>
-    <button (click)="fileInput.click()">Subir mi foto</button>
+    <input style="display: none" type="file"
+        accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
+        (change)="onPictureSelected($event)" #fileInput>
+    <button (click)="fileInput.click()">Subir mi foto (opcional)</button>
     <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
 </div>
 
 <hr class="mb-2" />
+
+<div class="float-left w-100">
+    <input type="checkbox" class="float-left mr-1" [(ngModel)]="futureCommunicationConsent" />
+    <span>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
+    <input *ngIf="futureCommunicationConsent" type="email" class="email" [(ngModel)]="email"
+        placeholder="Correo electrónico" maxlength="1000" />
+</div>
 
 <div class="float-left">
     <input type="checkbox" class="float-left mr-1" [(ngModel)]="termsAccepted" />

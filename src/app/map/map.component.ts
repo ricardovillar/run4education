@@ -6,6 +6,7 @@ import { RoutePoint } from '@model/route-point';
 import { JourneyContribution } from '@app/model/journey-contribution';
 import { SportEnum } from '@app/model/sport.enum';
 import { ActivatedRoute } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import GeoPoint from 'geo-point';
 
 import * as fromStore from "@store/reducers/index";
@@ -24,6 +25,8 @@ export class MapComponent implements OnDestroy {
   private _markers: { [id: string]: Polyline; } = {};
   private _highlightId: any;
   private _map: Map;
+  private _isMobile: boolean;
+  private _isTablet: boolean;
 
   journeyContributions: JourneyContribution[] = [];
   contributedRoutes: LatLng[] = [];
@@ -49,10 +52,13 @@ export class MapComponent implements OnDestroy {
 
   constructor(
     private store: Store<fromStore.State>,
+    deviceService: DeviceDetectorService,
     route: ActivatedRoute) {
     route.queryParamMap.subscribe((params) => this._highlightId = params.get('c'));
     this.subscribeFullRoute();
     this.subscribeJourneyContributions();
+    this._isMobile = deviceService.isMobile();
+    this._isTablet = deviceService.isTablet();
   }
 
   ngOnInit() {
@@ -113,11 +119,11 @@ export class MapComponent implements OnDestroy {
   }
 
   private createPathPolyline(coordinates: LatLng[], color: string) {
-    return polyline(coordinates, {
-      color: color,
-      dashArray: '1,10',
-      weight: 8
-    });
+    let weight = this._isMobile ? 14 :
+      this._isTablet ? 12 : 8;
+    let dashArray = this._isMobile ? '1,16' :
+      this._isTablet ? '1,14' : '1,10';
+    return polyline(coordinates, { color, dashArray, weight });
   }
 
   private addRouteMarkersTo(layers: Layer[]) {
