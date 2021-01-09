@@ -108,7 +108,6 @@
     width: 21px;
   }
   
-
   .leaflet-popup-content {
     color: #fff;
   }
@@ -121,12 +120,17 @@
     text-align: center;
   }
 
-  .video-player {
-    min-width: 640px;
-  }
-
   .icon-right {
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
+  }
+
+  .balloon span {
+    float: left;
+    margin-bottom: 1em;
+  }
+
+  .balloon img {
+    width: 100%;
   }

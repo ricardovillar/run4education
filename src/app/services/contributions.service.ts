@@ -21,12 +21,16 @@ export class ContributionsService {
   startContributionProcess(contribution: Contribution): Observable<JourneyContribution> {
     const formData = new FormData();
 
+    let futureCommunicationConsent = contribution.futureCommunicationConsent || false;
+
     formData.append('firstName', contribution.firstName);
     formData.append('lastName', contribution.lastName);
     formData.append('country', contribution.country);
     formData.append('distance', contribution.distance.toString());
     formData.append('valuePerKm', contribution.valuePerKm.toString());
     formData.append('sport', contribution.sport.toString());
+    formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
+    formData.append('email', contribution.email);
 
     if (contribution.avatar) {
       formData.append('avatar', contribution.avatar);

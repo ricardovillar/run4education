@@ -132,7 +132,7 @@ export class MapComponent implements OnDestroy {
         let marker = toRouteMarker(routePoint);
         let balloon = document.getElementById(routePoint.elementId);
         let offset: PointExpression = [0, -20];
-        let minWidth = routePoint.markerType == "video" ? 640 : null;
+        let minWidth = 640;
         marker.bindPopup(balloon, { offset, minWidth });
         layers.push(marker);
       }
