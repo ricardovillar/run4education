@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SportEnum } from '@model/sport.enum';
@@ -14,7 +14,9 @@ import * as fromStore from "@store/reducers/index";
   templateUrl: './contribution-form.component.html',
   styleUrls: ['./contribution-form.component.css']
 })
-export class ContributionFormComponent implements OnInit {
+export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('cardInfo') cardInfo: ElementRef;
+
   firstName: string;
   lastName: string;
   distance: number;
@@ -26,6 +28,10 @@ export class ContributionFormComponent implements OnInit {
   email: string;
   termsAccepted: boolean = false;
 
+  card: any;
+  cardHandler = this.onChange.bind(this);
+  cardError: string;
+
   Running = SportEnum.Running;
   Trekking = SportEnum.Trekking;
   Cycling = SportEnum.Cycling;
@@ -34,6 +40,7 @@ export class ContributionFormComponent implements OnInit {
   contributionUrl = environment.API_URL + '/contribution';
 
   constructor(
+    private cd: ChangeDetectorRef,
     private store: Store<fromStore.State>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -41,6 +48,18 @@ export class ContributionFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    if (this.card) {
+      // We remove event listener here to keep memory clean
+      this.card.removeEventListener('change', this.cardHandler);
+      this.card.destroy();
+    }
+  }
+
+  ngAfterViewInit() {
+    this.initiateCardElement();
   }
 
   onPictureSelected(event) {
@@ -52,19 +71,66 @@ export class ContributionFormComponent implements OnInit {
     }
   }
 
-  contribute() {
-    let contribution = new Contribution(this.firstName, this.lastName, 'España', this.distance, this.value, this.sport, this.picture);
+  async contribute() {
+    const { token, error } = await stripe.createToken(this.card);
+    if (token && token.id) {
+      this.startContributionProcess(token);
+    } else {
+      this.onError(error);
+    }
+  }
+
+  private initiateCardElement() {
+    // Giving a base style here, but most of the style is in scss file
+    const cardStyle = {
+      base: {
+        color: '#000000',
+        fontFamily: '"Open Sans", sans-serif',
+        fontWeight: 600,
+        fontSmoothing: 'antialiased',
+        '::placeholder': {
+          color: '#000000',
+          fontFamily: '"Open Sans", sans-serif',
+          fontWeight: 600
+        },
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a',
+      },
+    };
+    this.card = elements.create('card', { cardStyle });
+    this.card.mount(this.cardInfo.nativeElement);
+    this.card.addEventListener('change', this.cardHandler);
+  }
+
+  private onChange({ error }) {
+    if (error) {
+      this.cardError = error.message;
+    } else {
+      this.cardError = null;
+    }
+    this.cd.detectChanges();
+  }
+
+  private startContributionProcess(token: { id: string }) {
+    let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
     if (this.futureCommunicationConsent) {
       contribution.futureCommunicationConsent = true;
-      contribution.email = this.email;
     }
-    this.contributionsService.startContributionProcess(contribution)
+    this.contributionsService.startContributionProcess(contribution, token.id)
       .subscribe(contribution => {
         if (contribution) {
           this.store.dispatch(addJourneyContribution({ contribution }));
           this.router.navigate(['./thank-you'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
         }
       });
+  }
+
+  private onError(error) {
+    if (error.message) {
+      this.cardError = error.message;
+    }
   }
 
 }

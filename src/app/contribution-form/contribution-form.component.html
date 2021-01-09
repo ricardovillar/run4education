@@ -21,43 +21,75 @@
     </strong>
 </span>
 
-<div class="w-100 mb-1 float-left">
-    <input type="text" class="first-name" [(ngModel)]="firstName" placeholder="Nombre" maxlength="1000" />
-    <input type="text" class="last-name" [(ngModel)]="lastName" placeholder="Apellidos" maxlength="1000" />
-</div>
+<form (ngSubmit)="contribute()">
 
-<div class="w-100 mb-1 float-left">
-    <input type="number" class="distance" min="1" step="1" [(ngModel)]="distance" placeholder="Km recorridos" />
-    <input type="number" class="value" min="0.5" step="0.5" [(ngModel)]="value" placeholder="€ por km" />
-    <select class="sport" [(ngModel)]="sport">
-        <option selected hidden [value]="null">Modalidad</option>
-        <option [value]="Running">Carrera</option>
-        <option [value]="Trekking">Caminada</option>
-        <option [value]="Cycling">Ciclismo</option>
-        <option [value]="Swimming">Natación</option>
-    </select>
-</div>
+    <div class="w-100 mb-1 float-left">
+        <input type="text" class="first-name" name="firstName" [(ngModel)]="firstName" placeholder="Nombre"
+            maxlength="1000" />
+        <input type="text" class="last-name" name="lastName" [(ngModel)]="lastName" placeholder="Apellidos"
+            maxlength="1000" />
+    </div>
 
-<div class="w-100 mb-2 float-left">
-    <input style="display: none" type="file"
-        accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
-        (change)="onPictureSelected($event)" #fileInput>
-    <button (click)="fileInput.click()">Subir mi foto (opcional)</button>
-    <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
-</div>
+    <div class="w-100 mb-1 float-left">
+        <input type="number" class="distance" min="1" step="1" name="distance" [(ngModel)]="distance"
+            placeholder="Km recorridos" />
+        <input type="number" class="value" min="0.5" step="0.5" name="value" [(ngModel)]="value"
+            placeholder="€ por km" />
+        <select class="sport" name="sport" [(ngModel)]="sport">
+            <option selected hidden [value]="null">Modalidad</option>
+            <option [value]="Running">Carrera</option>
+            <option [value]="Trekking">Caminada</option>
+            <option [value]="Cycling">Ciclismo</option>
+            <option [value]="Swimming">Natación</option>
+        </select>
+    </div>
 
-<hr class="mb-2" />
+    <div class="w-100 mb-1 float-left">
+        <input type="email" class="email" name="email" [(ngModel)]="email" placeholder="Correo electrónico"
+            maxlength="1000" />
+    </div>
 
-<div class="float-left w-100">
-    <input type="checkbox" class="float-left mr-1" [(ngModel)]="futureCommunicationConsent" />
-    <span>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
-    <input *ngIf="futureCommunicationConsent" type="email" class="email" [(ngModel)]="email"
-        placeholder="Correo electrónico" maxlength="1000" />
-</div>
+    <div class="w-100 mb-1 float-left">
+        <div id="form-field">
+            <div id="card-info" #cardInfo>
+                <label for="card-info">Card Info</label>
+            </div>
+        </div>
+    </div>
 
-<div class="float-left">
-    <input type="checkbox" class="float-left mr-1" [(ngModel)]="termsAccepted" />
-    <span>He leído y acepto los términos legales</span>
-</div>
+    <div class="w-100 mb-2 float-left">
+        <input style="display: none" type="file"
+            accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
+            (change)="onPictureSelected($event)" #fileInput>
+        <button type="button" (click)="fileInput.click()">Subir mi foto (opcional)</button>
+        <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
+    </div>
 
-<button class="float-right" (click)="contribute()">PARTICIPA</button>
+    <hr class="mb-2" />
+
+    <div class="float-left w-100">
+        <input type="checkbox" class="float-left mr-1" name="futureCommunicationConsent"
+            [(ngModel)]="futureCommunicationConsent" />
+        <span>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
+    </div>
+
+    <div class="float-left">
+        <input type="checkbox" class="float-left mr-1" name="termsAccepted" [(ngModel)]="termsAccepted" />
+        <span>He leído y acepto los términos legales</span>
+    </div>
+
+    <button class="float-right" type="submit">PARTICIPA</button>
+    <div *ngIf="cardError">
+        {{ cardError }}
+    </div>
+    <!-- <button id="submit-button" type="submit">
+        Pay ${{_totalAmount}}
+    </button>
+    <mat-error id="card-errors" role="alert" *ngIf="cardError">
+        <mat-icon style="color: #f44336">cancel</mat-icon>
+        &nbsp;{{ cardError }}
+    </mat-error> -->
+
+
+
+</form>

@@ -4,7 +4,7 @@ img.preview {
     height: 100px;
 }
 
-input, select {
+input, select, #card-info {
     background-color: transparent;
     color: #000000;
     font-family: "Open Sans", sans-serif;
@@ -17,6 +17,10 @@ input::placeholder {
     color: #000000;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;    
+}
+
+#card-info {
+    width: 400px;
 }
 
 hr {
@@ -48,6 +52,10 @@ button {
     width: 40%;
     margin-right: 2em;
     float: left;   
+}
+
+.email {
+    width: 50%;
 }
 
 .distance {

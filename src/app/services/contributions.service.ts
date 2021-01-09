@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JourneyContribution } from '@model/journey-contribution';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Contribution } from '@model/contribution';
 import { environment } from '@environment';
@@ -12,25 +12,23 @@ export class ContributionsService {
   }
 
   getJourneyContributions(): Observable<JourneyContribution[]> {
-    let contributions: JourneyContribution[] = [];
-
     const url = environment.API_URL + '/contributions';
     return this.http.get<JourneyContribution[]>(url);
   }
 
-  startContributionProcess(contribution: Contribution): Observable<JourneyContribution> {
+  startContributionProcess(contribution: Contribution, stripeToken: string): Observable<JourneyContribution> {
     const formData = new FormData();
 
     let futureCommunicationConsent = contribution.futureCommunicationConsent || false;
 
     formData.append('firstName', contribution.firstName);
     formData.append('lastName', contribution.lastName);
-    formData.append('country', contribution.country);
+    formData.append('email', contribution.email);
     formData.append('distance', contribution.distance.toString());
     formData.append('valuePerKm', contribution.valuePerKm.toString());
     formData.append('sport', contribution.sport.toString());
     formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
-    formData.append('email', contribution.email);
+    formData.append('tid', stripeToken);
 
     if (contribution.avatar) {
       formData.append('avatar', contribution.avatar);
