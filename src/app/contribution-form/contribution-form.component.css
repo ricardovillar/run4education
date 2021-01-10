@@ -4,9 +4,7 @@ img.preview {
     height: 100px;
 }
 
-input, input:-webkit-autofill, input:-internal-autofill-selected, 
-select, select:-webkit-autofill, 
-#card-info {
+input, select, #card-info {
     background-color: transparent !important;
     color: #000000 !important;
     font-family: "Open Sans", sans-serif;

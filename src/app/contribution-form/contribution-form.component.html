@@ -82,21 +82,13 @@
 
     <div class="float-left">
         <input type="checkbox" class="float-left mr-1" name="termsAccepted" [(ngModel)]="termsAccepted" />
-        <span>He leído y acepto los términos legales</span>
+        <span>He leído y acepto los <a href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/"
+                target="_blank">términos legales</a></span>
     </div>
 
     <button class="float-right" type="submit">PARTICIPA</button>
     <div *ngIf="cardError">
         {{ cardError }}
     </div>
-    <!-- <button id="submit-button" type="submit">
-        Pay ${{_totalAmount}}
-    </button>
-    <mat-error id="card-errors" role="alert" *ngIf="cardError">
-        <mat-icon style="color: #f44336">cancel</mat-icon>
-        &nbsp;{{ cardError }}
-    </mat-error> -->
-
-
 
 </form>
