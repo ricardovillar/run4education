@@ -2,6 +2,8 @@ import { SportEnum } from '@model/sport.enum';
 
 export class Contribution {
     public futureCommunicationConsent: boolean;
+    public country: string;
+    public city: string;
 
     constructor(
         public firstName: string,

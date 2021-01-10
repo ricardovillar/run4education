@@ -22,6 +22,8 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   distance: number;
   value: number;
   sport: SportEnum = null;
+  country: string;
+  city: string;
   picture: File;
   avatarPreview: any;
   futureCommunicationConsent: boolean;
@@ -52,7 +54,6 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   ngOnDestroy() {
     if (this.card) {
-      // We remove event listener here to keep memory clean
       this.card.removeEventListener('change', this.cardHandler);
       this.card.destroy();
     }
@@ -115,6 +116,8 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   private startContributionProcess(token: { id: string }) {
     let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
+    contribution.city = this.city;
+    contribution.country = this.country;
     if (this.futureCommunicationConsent) {
       contribution.futureCommunicationConsent = true;
     }
@@ -122,7 +125,7 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
       .subscribe(contribution => {
         if (contribution) {
           this.store.dispatch(addJourneyContribution({ contribution }));
-          this.router.navigate(['./thank-you'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
+          this.router.navigate(['./gracias'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
         }
       });
   }

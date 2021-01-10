@@ -27,6 +27,8 @@ export class ContributionsService {
     formData.append('distance', contribution.distance.toString());
     formData.append('valuePerKm', contribution.valuePerKm.toString());
     formData.append('sport', contribution.sport.toString());
+    formData.append('city', contribution.city);
+    formData.append('country', contribution.country);
     formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
     formData.append('tid', stripeToken);
 

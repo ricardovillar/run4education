@@ -37,7 +37,7 @@ export class ContributionComponent implements OnInit {
       let journeyContribution = new JourneyContribution(this.firstName, this.lastName, this.distance);
       journeyContribution.sport = this.sport;
       this.store.dispatch(addJourneyContribution({ contribution: journeyContribution }));
-      this.router.navigate(['thank-you']);
+      this.router.navigate(['gracias']);
     }
   }
 

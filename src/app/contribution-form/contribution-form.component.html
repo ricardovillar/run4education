@@ -21,7 +21,7 @@
     </strong>
 </span>
 
-<form (ngSubmit)="contribute()">
+<form (ngSubmit)="contribute()" autocomplete="off">
 
     <div class="w-100 mb-1 float-left">
         <input type="text" class="first-name" name="firstName" [(ngModel)]="firstName" placeholder="Nombre"
@@ -46,7 +46,14 @@
 
     <div class="w-100 mb-1 float-left">
         <input type="email" class="email" name="email" [(ngModel)]="email" placeholder="Correo electrónico"
-            maxlength="1000" />
+            maxlength="1000" autocomplete="none" />
+    </div>
+
+    <div class="w-100 mb-1 float-left">
+        <input type="text" class="country" name="country" [(ngModel)]="country" placeholder="País" maxlength="500"
+            autocomplete="none" />
+        <input type="text" class="city" name="city" [(ngModel)]="city" placeholder="Ciudad" maxlength="500"
+            autocomplete="none" />
     </div>
 
     <div class="w-100 mb-1 float-left">

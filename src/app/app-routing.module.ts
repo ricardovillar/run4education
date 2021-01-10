@@ -8,20 +8,14 @@ import { ThankYouComponent } from '@app/thank-you/thank-you.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
+    path: 'inscripcion',
+    component: ContributeComponent,
     children: [
-      {
-        path: 'inscripcion',
-        component: ContributeComponent,
-        children: [
-          { path: 'thank-you', component: ThankYouComponent },
-          { path: '', component: ContributionFormComponent }
-        ]
-      },
-      { path: '', component: MapComponent },
+      { path: 'gracias', component: ThankYouComponent },
+      { path: '', component: ContributionFormComponent }
     ]
-  }
+  },
+  { path: '', component: MapComponent },
 ];
 
 @NgModule({

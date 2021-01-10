@@ -4,9 +4,11 @@ img.preview {
     height: 100px;
 }
 
-input, select, #card-info {
-    background-color: transparent;
-    color: #000000;
+input, input:-webkit-autofill, input:-internal-autofill-selected, 
+select, select:-webkit-autofill, 
+#card-info {
+    background-color: transparent !important;
+    color: #000000 !important;
     font-family: "Open Sans", sans-serif;
     border: solid 3px #000000;
     padding: 0.75em;
@@ -56,6 +58,17 @@ button {
 
 .email {
     width: 50%;
+}
+
+.country {
+    width: 40%;
+    margin-right: 2em;
+    float: left;
+}
+
+.city {
+    width: 40%;
+    float: left;
 }
 
 .distance {
