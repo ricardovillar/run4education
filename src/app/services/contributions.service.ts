@@ -16,7 +16,7 @@ export class ContributionsService {
     return this.http.get<JourneyContribution[]>(url);
   }
 
-  startContributionProcess(contribution: Contribution, stripeToken: string): Observable<JourneyContribution> {
+  startContributionProcess(contribution: Contribution, captcha: string, stripeToken: string): Observable<JourneyContribution> {
     const formData = new FormData();
 
     let futureCommunicationConsent = contribution.futureCommunicationConsent || false;
@@ -31,6 +31,7 @@ export class ContributionsService {
     formData.append('country', contribution.country);
     formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
     formData.append('tid', stripeToken);
+    formData.append('cpt', captcha);
 
     if (contribution.avatar) {
       formData.append('avatar', contribution.avatar);

@@ -13,7 +13,7 @@
     </strong>
 </span>
 
-<form #f (ngSubmit)="contribute()" autocomplete="off">
+<form autocomplete="off">
 
     <div class="w-100 mb-1 float-left">
         <input type="text" class="first-name" name="firstName" [(ngModel)]="firstName" placeholder="Nombre"
@@ -80,26 +80,20 @@
         <span>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
     </div>
 
-    <div class="float-left">
+    <div class="float-left w-100 mb-1">
         <input type="checkbox" class="float-left mr-1" name="termsAccepted" [(ngModel)]="termsAccepted" />
         <span>He leído y acepto los <a href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/"
                 target="_blank">términos legales</a></span>
     </div>
 
     <div class="float-right">
-
-        <!-- <re-captcha #captchaRef (resolved)="$event && f.submit()"></re-captcha> -->
-
-        <!-- <button (click)="captchaRef.execute()"> -->
-        <button type="submit">
+        <button (click)="captchaRef.execute()">
             <span class="float-left">PARTICIPA</span>
             <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
         </button>
-    </div>
-
-
-    <div *ngIf="cardError">
-        {{ cardError }}
+        <re-captcha #captchaRef="reCaptcha" (resolved)="contribute($event)" (error)="onCaptchaError($event)"
+            errorMode="handled">
+        </re-captcha>
     </div>
 
 </form>

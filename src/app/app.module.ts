@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { RECAPTCHA_V3_SITE_KEY, RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaV3Module, RecaptchaModule } from "ng-recaptcha";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '@app/app.component';
@@ -40,13 +41,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     LeafletModule,
     YouTubePlayerModule,
+    RecaptchaModule,
+    RecaptchaV3Module,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects, MapEffects]),
     FontAwesomeModule
   ],
   providers: [
-    RoutesService
+    RoutesService,
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.RECAPTCHA_SITE_KEY
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: { siteKey: environment.RECAPTCHA_SITE_KEY, size: 'invisible' } as RecaptchaSettings,
+    }
   ],
   bootstrap: [AppComponent]
 })

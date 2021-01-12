@@ -8,6 +8,7 @@ import { addJourneyContribution } from '@store/actions/map/map.actions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import * as fromStore from "@store/reducers/index";
+import { RecaptchaErrorParameters } from 'ng-recaptcha';
 
 @Component({
   selector: 'contribution-form',
@@ -38,6 +39,7 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   card: any;
   cardHandler = this.onChange.bind(this);
   cardError: string;
+  captcha: string;
 
   Running = SportEnum.Running;
   Trekking = SportEnum.Trekking;
@@ -75,11 +77,15 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     }
   }
 
-  async contribute() {
+  onCaptchaError(errorDetails: RecaptchaErrorParameters): void {
+    console.log(`reCAPTCHA error encountered; details:`, errorDetails);
+  }
+
+  async contribute(captcha: string) {
     this.isProcessing = true;
     const { token, error } = await stripe.createToken(this.card);
-    if (token && token.id) {
-      this.startContributionProcess(token);
+    if (captcha && token && token.id) {
+      this.startContributionProcess(captcha, token);
     } else {
       this.isProcessing = false;
       this.onError(error);
@@ -120,14 +126,14 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     this.cd.detectChanges();
   }
 
-  private startContributionProcess(token: { id: string }) {
+  private startContributionProcess(captcha: string, token: { id: string }) {
     let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
     contribution.city = this.city;
     contribution.country = this.country;
     if (this.futureCommunicationConsent) {
       contribution.futureCommunicationConsent = true;
     }
-    this.contributionsService.startContributionProcess(contribution, token.id)
+    this.contributionsService.startContributionProcess(contribution, captcha, token.id)
       .subscribe(
         contribution => {
           if (contribution) {
