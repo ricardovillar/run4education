@@ -21,6 +21,7 @@ import { AppEffects } from '@store/effects/app.effects';
 import { MapEffects } from '@store/effects/map/map.effects';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ContributionFormComponent } from './contribution-form/contribution-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ContributionFormComponent } from './contribution-form/contribution-form
     YouTubePlayerModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects, MapEffects])
+    EffectsModule.forRoot([AppEffects, MapEffects]),
+    FontAwesomeModule
   ],
   providers: [
     RoutesService

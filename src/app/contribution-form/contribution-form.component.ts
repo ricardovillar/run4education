@@ -5,7 +5,7 @@ import { SportEnum } from '@model/sport.enum';
 import { Contribution } from '@model/contribution';
 import { ContributionsService } from '@services/contributions.service';
 import { addJourneyContribution } from '@store/actions/map/map.actions';
-import { environment } from '@environment';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import * as fromStore from "@store/reducers/index";
 
@@ -17,10 +17,12 @@ import * as fromStore from "@store/reducers/index";
 export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
+  faSpinner = faSpinner;
+
   firstName: string;
   lastName: string;
-  distance: number;
-  value: number;
+  distance: number = null;
+  value: number = null;
   sport: SportEnum = null;
   country: string;
   city: string;
@@ -29,6 +31,9 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   futureCommunicationConsent: boolean;
   email: string;
   termsAccepted: boolean = false;
+  isProcessing: boolean = false;
+  kms = Array.from({ length: 991 }, (_, i) => i + 10);
+  valuesPerKm = Array.from({ length: 200 }, (_, i) => 0.5 + i * 0.5);
 
   card: any;
   cardHandler = this.onChange.bind(this);
@@ -38,8 +43,6 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   Trekking = SportEnum.Trekking;
   Cycling = SportEnum.Cycling;
   Swimming = SportEnum.Swimming;
-
-  contributionUrl = environment.API_URL + '/contribution';
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -73,10 +76,12 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   }
 
   async contribute() {
+    this.isProcessing = true;
     const { token, error } = await stripe.createToken(this.card);
     if (token && token.id) {
       this.startContributionProcess(token);
     } else {
+      this.isProcessing = false;
       this.onError(error);
     }
   }
@@ -122,12 +127,18 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
       contribution.futureCommunicationConsent = true;
     }
     this.contributionsService.startContributionProcess(contribution, token.id)
-      .subscribe(contribution => {
-        if (contribution) {
-          this.store.dispatch(addJourneyContribution({ contribution }));
-          this.router.navigate(['./gracias'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
+      .subscribe(
+        contribution => {
+          if (contribution) {
+            this.store.dispatch(addJourneyContribution({ contribution }));
+            this.isProcessing = false;
+            this.router.navigate(['./gracias'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
+          }
+        },
+        _ => {
+          this.isProcessing = false;
         }
-      });
+      );
   }
 
   private onError(error) {

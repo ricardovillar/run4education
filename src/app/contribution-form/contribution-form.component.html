@@ -31,16 +31,24 @@
     </div>
 
     <div class="w-100 mb-1 float-left">
-        <input type="number" class="distance" min="1" step="1" name="distance" [(ngModel)]="distance"
-            placeholder="Km recorridos" />
-        <input type="number" class="value" min="0.5" step="0.5" name="value" [(ngModel)]="value"
-            placeholder="€ por km" />
+
+        <select class="distance" name="distance" [(ngModel)]="distance">
+            <option selected hidden [value]="null">Km recorridos</option>
+            <option *ngFor="let km of kms" [value]="km">{{ km }}</option>
+        </select>
+
+
+        <select class="value" name="value" [(ngModel)]="value">
+            <option selected hidden [value]="null">€ por km</option>
+            <option *ngFor="let valuePerKm of valuesPerKm" [value]="valuePerKm">{{ valuePerKm | currency:'€' }}</option>
+        </select>
+
         <select class="sport" name="sport" [(ngModel)]="sport">
             <option selected hidden [value]="null">Modalidad</option>
-            <option [value]="Running">Carrera</option>
-            <option [value]="Trekking">Caminada</option>
-            <option [value]="Cycling">Ciclismo</option>
-            <option [value]="Swimming">Natación</option>
+            <option [value]="Running">Corriendo</option>
+            <option [value]="Trekking">Andando</option>
+            <option [value]="Cycling">Pedaleando</option>
+            <option [value]="Swimming">Nadando</option>
         </select>
     </div>
 
@@ -86,7 +94,14 @@
                 target="_blank">términos legales</a></span>
     </div>
 
-    <button class="float-right" type="submit">PARTICIPA</button>
+    <div class="float-right">
+        <button type="submit">
+            <span class="float-left">PARTICIPA</span>
+            <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
+        </button>
+    </div>
+
+
     <div *ngIf="cardError">
         {{ cardError }}
     </div>

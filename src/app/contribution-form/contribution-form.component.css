@@ -37,6 +37,10 @@ button {
     font-family: "Open Sans", sans-serif;
 }
 
+fa-icon {
+    margin-left: 0.5rem;
+}
+
 .text-big {
     font-size: 200%;
     margin-top: 0.5em;
