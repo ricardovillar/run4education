@@ -1,11 +1,3 @@
-<span class="text-big float-left w-100">
-    <strong>¡Suma kilómetros con Ousman!</strong>
-</span>
-
-<span class="text-big float-left w-100 mb-2">
-    <strong>Participa corriendo, andando, pedaleando o nadando</strong>
-</span>
-
 <span class="float-left w-100 mb-1">
     <strong>
         Formulario de participación
@@ -21,7 +13,7 @@
     </strong>
 </span>
 
-<form (ngSubmit)="contribute()" autocomplete="off">
+<form #f (ngSubmit)="contribute()" autocomplete="off">
 
     <div class="w-100 mb-1 float-left">
         <input type="text" class="first-name" name="firstName" [(ngModel)]="firstName" placeholder="Nombre"
@@ -95,6 +87,10 @@
     </div>
 
     <div class="float-right">
+
+        <!-- <re-captcha #captchaRef (resolved)="$event && f.submit()"></re-captcha> -->
+
+        <!-- <button (click)="captchaRef.execute()"> -->
         <button type="submit">
             <span class="float-left">PARTICIPA</span>
             <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>

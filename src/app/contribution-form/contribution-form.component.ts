@@ -32,8 +32,8 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   email: string;
   termsAccepted: boolean = false;
   isProcessing: boolean = false;
-  kms = Array.from({ length: 991 }, (_, i) => i + 10);
-  valuesPerKm = Array.from({ length: 200 }, (_, i) => 0.5 + i * 0.5);
+  kms = Array.from({ length: 100 }, (_, i) => i + 1);
+  valuesPerKm = [0.5, 1, 2, 3, 4, 5, 10, 20];
 
   card: any;
   cardHandler = this.onChange.bind(this);
@@ -88,9 +88,10 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   private initiateCardElement() {
     // Giving a base style here, but most of the style is in scss file
-    const cardStyle = {
+    const style = {
       base: {
         color: '#000000',
+        iconColor: '#000000',
         fontFamily: '"Open Sans", sans-serif',
         fontWeight: 600,
         fontSmoothing: 'antialiased',
@@ -105,7 +106,7 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
         iconColor: '#fa755a',
       },
     };
-    this.card = elements.create('card', { cardStyle });
+    this.card = elements.create('card', { style });
     this.card.mount(this.cardInfo.nativeElement);
     this.card.addEventListener('change', this.cardHandler);
   }
