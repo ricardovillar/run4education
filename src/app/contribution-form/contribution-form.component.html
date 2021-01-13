@@ -64,12 +64,17 @@
         </div>
     </div>
 
-    <div class="w-100 mb-2 float-left">
+    <div class="w-100 mb-1 float-left">
         <input style="display: none" type="file"
             accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
             (change)="onPictureSelected($event)" #fileInput>
         <button type="button" (click)="fileInput.click()">Subir mi foto (opcional)</button>
 
+    </div>
+    <div class="w-100 mb-1 float-left">
+        <span class="font-italic consentimiento-uso-imagen">Doy mi consentimiento para que nasco pueda usar mi imagen
+            para promocionar contenido en sus redes
+            sociales.</span>
     </div>
     <div class="w-100 mb-2 ml-5 float-left">
         <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
