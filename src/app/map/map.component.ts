@@ -1,3 +1,4 @@
+import { Contribution } from './../model/contribution';
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { divIcon, DivIconOptions, icon, IconOptions, LatLng, latLng, Layer, Map, Marker, marker, PointExpression, Polyline, polyline, tileLayer } from 'leaflet';
@@ -85,9 +86,18 @@ export class MapComponent implements OnDestroy {
   }
 
   private subscribeJourneyContributions() {
+    const R = 0.9348896076501195;
     let sub = this.store.select(fromRoot.getJourneyContributions)
       .subscribe((contributions: JourneyContribution[]) => {
-        this.journeyContributions = contributions;
+        this.journeyContributions = contributions.map(contribution => {
+          let distance = contribution.distance * R;
+          let c = new JourneyContribution(contribution.firstName, contribution.lastName, distance);
+          c._id = contribution._id;
+          c.sport = contribution.sport;
+          c.avatarUrl = contribution.avatarUrl;
+          c.isCompany = contribution.isCompany;
+          return c;
+        });
         this.fillMap();
       });
     this._subscriptions.push(sub);
@@ -123,6 +133,7 @@ export class MapComponent implements OnDestroy {
       this._isTablet ? 12 : 8;
     let dashArray = this._isMobile ? '1,16' :
       this._isTablet ? '1,14' : '1,10';
+
     return polyline(coordinates, { color, dashArray, weight });
   }
 
@@ -165,7 +176,6 @@ export class MapComponent implements OnDestroy {
     this.journeyContributions.forEach(contribution => {
       let distanceInKm = contribution.distance;
       while (distanceInKm > 0) {
-
         let journeyContribution = this.makeJourneyContribution(contributedKMsCounted, distanceInKm * 1000);
         contributedPoints.push(journeyContribution.contributionDestinationPoint);
         contributedKMsCounted += (distanceInKm - journeyContribution.remainingKm);
@@ -239,7 +249,7 @@ export class MapComponent implements OnDestroy {
       contributionDestinationPoint = routeSectionEndPoint.latLng;
       remainingKm = contributionFinalKm - routeSectionEndPoint.initialKm - 0.001;  // advance 1 meter to avoid infine loop due to roundings differences
     }
-    return { contributionDestinationPoint: contributionDestinationPoint, remainingKm };
+    return { contributionDestinationPoint, remainingKm };
   }
 
   private getInitialRoutePointForDistance(distance: number): RoutePoint {

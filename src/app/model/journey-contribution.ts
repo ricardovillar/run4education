@@ -1,3 +1,4 @@
+import { RoutePoint } from './route-point';
 import { SportEnum } from '@model/sport.enum';
 
 export class JourneyContribution {
@@ -6,12 +7,16 @@ export class JourneyContribution {
     public avatarUrl: string;
     public isCompany: boolean;
 
+    public initialKm: number;
+    public finalKm: number;
+    public initialRoutePoint: RoutePoint;
+    public finalRoutePoint: RoutePoint;
+
     constructor(
         public firstName: string,
         public lastName: string,
         public distance: number
     ) {
-        this._id = firstName + "-" + lastName;
         this.isCompany = false;
     }
 }
