@@ -13,6 +13,8 @@ import GeoPoint from 'geo-point';
 import * as fromStore from "@store/reducers/index";
 import * as fromRoot from "@store/reducers";
 
+const R = 0.9348896076501195;
+
 let apiLoaded = false;
 
 @Component({
@@ -86,12 +88,10 @@ export class MapComponent implements OnDestroy {
   }
 
   private subscribeJourneyContributions() {
-    const R = 0.9348896076501195;
     let sub = this.store.select(fromRoot.getJourneyContributions)
       .subscribe((contributions: JourneyContribution[]) => {
         this.journeyContributions = contributions.map(contribution => {
-          let distance = contribution.distance * R;
-          let c = new JourneyContribution(contribution.firstName, contribution.lastName, distance);
+          let c = new JourneyContribution(contribution.firstName, contribution.lastName, contribution.distance);
           c._id = contribution._id;
           c.sport = contribution.sport;
           c.avatarUrl = contribution.avatarUrl;
@@ -174,7 +174,7 @@ export class MapComponent implements OnDestroy {
     let contributedKMsCounted = 0;
 
     this.journeyContributions.forEach(contribution => {
-      let distanceInKm = contribution.distance;
+      let distanceInKm = contribution.distance * R;
       while (distanceInKm > 0) {
         let journeyContribution = this.makeJourneyContribution(contributedKMsCounted, distanceInKm * 1000);
         contributedPoints.push(journeyContribution.contributionDestinationPoint);
