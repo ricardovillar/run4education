@@ -1,5 +1,5 @@
 <span class="float-left w-100 mb-1">
-    <strong>
+    <strong i18n>
         Formulario de participación
     </strong>
 </span>
@@ -7,59 +7,68 @@
 <hr class="mb-3" />
 
 <span class="float-left w-100 mb-1">
-    <strong>
+    <strong i18n>
         La donación mínima es de 0,5 € por kilómetro recorrido pero, si quieres, tienes la posibilidad de donar los €
         que consideres por cada kilómetro.
     </strong>
 </span>
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="registerForm">
 
-    <div class="w-100 mb-1 float-left">
-        <input type="text" class="first-name" name="firstName" [(ngModel)]="firstName" placeholder="Nombre"
-            maxlength="1000" />
-        <input type="text" class="last-name" name="lastName" [(ngModel)]="lastName" placeholder="Apellidos"
-            maxlength="1000" />
+    <div class="w-100 mb-1 float-left form-group">
+
+        <input type="text" class="first-name form-control" name="firstName" formControlName="firstName"
+            [(ngModel)]="firstName" placeholder="Nombre" i18n-placeholder=""
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" maxlength="1000" />
+
+        <input type="text" class="last-name form-control" name="lastName" formControlName="lastName"
+            [(ngModel)]="lastName" placeholder="Apellidos" i18n-placeholder="" maxlength="1000"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
     </div>
 
     <div class="w-100 mb-1 float-left">
 
-        <select class="distance" name="distance" [(ngModel)]="distance">
-            <option selected hidden [value]="null">Km recorridos</option>
+        <select class="distance form-control" name="distance" [(ngModel)]="distance" formControlName="distance"
+            [ngClass]="{ 'is-invalid': submitted && f.distance.errors }">
+            <option selected hidden [value]="null" i18n>Km
+                recorridos</option>
             <option *ngFor="let km of kms" [value]="km">{{ km }}</option>
         </select>
 
 
-        <select class="value" name="value" [(ngModel)]="value">
-            <option selected hidden [value]="null">€ por km</option>
+        <select class="value form-control" name="value" [(ngModel)]="value" formControlName="value"
+            [ngClass]="{ 'is-invalid': submitted && f.value.errors }">
+            <option selected hidden [value]="null" i18n>€ por km</option>
             <option *ngFor="let valuePerKm of valuesPerKm" [value]="valuePerKm">{{ valuePerKm | currency:'€' }}</option>
         </select>
 
-        <select class="sport" name="sport" [(ngModel)]="sport">
-            <option selected hidden [value]="null">Modalidad</option>
-            <option [value]="Running">Corriendo</option>
-            <option [value]="Trekking">Andando</option>
-            <option [value]="Cycling">Pedaleando</option>
-            <option [value]="Swimming">Nadando</option>
+        <select class="sport form-control" name="sport" [(ngModel)]="sport" formControlName="sport"
+            [ngClass]="{ 'is-invalid': submitted && f.sport.errors }">
+            <option selected hidden [value]="null" i18n>Modalidad</option>
+            <option [value]="Running" i18n>Corriendo</option>
+            <option [value]="Trekking" i18n>Andando</option>
+            <option [value]="Cycling" i18n>Pedaleando</option>
+            <option [value]="Swimming" i18n>Nadando</option>
         </select>
     </div>
 
     <div class="w-100 mb-1 float-left">
-        <input type="email" class="email" name="email" [(ngModel)]="email" placeholder="Correo electrónico"
-            maxlength="1000" autocomplete="none" />
+        <input type="email" class="email form-control" name="email" [(ngModel)]="email" placeholder="Correo electrónico"
+            i18n-placeholder="" maxlength="1000" autocomplete="none" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
     </div>
 
     <div class="w-100 mb-1 float-left">
-        <input type="text" class="country" name="country" [(ngModel)]="country" placeholder="País" maxlength="500"
-            autocomplete="none" />
+        <input type="text" class="country form-control" name="country" [(ngModel)]="country" placeholder="País"
+            i18n-placeholder="" maxlength="500" autocomplete="none" />
         <input type="text" class="city" name="city" [(ngModel)]="city" placeholder="Ciudad" maxlength="500"
-            autocomplete="none" />
+            i18n-placeholder="" autocomplete="none" />
     </div>
 
     <div class="w-100 mb-1 float-left">
         <div id="form-field">
             <div id="card-info" #cardInfo>
-                <label for="card-info">Card Info</label>
+                <label for="card-info" i18n>Card Info</label>
             </div>
         </div>
     </div>
@@ -69,12 +78,13 @@
             accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
             (change)="onPictureSelected($event)" #fileInput>
         <button type="button" (click)="fileInput.click()">Subir mi foto (opcional)</button>
-
     </div>
     <div class="w-100 mb-1 float-left">
-        <span class="font-italic consentimiento-uso-imagen">Doy mi consentimiento para que nasco pueda usar mi imagen
+        <span class="font-italic consentimiento-uso-imagen">
+            Doy mi consentimiento para que nasco pueda usar mi imagen
             para promocionar contenido en sus redes
-            sociales.</span>
+            sociales.
+        </span>
     </div>
     <div class="w-100 mb-2 ml-5 float-left">
         <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
@@ -85,18 +95,21 @@
     <div class="float-left w-100">
         <input type="checkbox" class="float-left mr-1" name="futureCommunicationConsent"
             [(ngModel)]="futureCommunicationConsent" />
-        <span>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
+        <span i18n>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
     </div>
 
     <div class="float-left w-100 mb-1">
-        <input type="checkbox" class="float-left mr-1" name="termsAccepted" [(ngModel)]="termsAccepted" />
-        <span>He leído y acepto los <a href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/"
-                target="_blank">términos legales</a></span>
+        <!-- input add form-check-input para validar e deixar vermelho o span que precisa clicar. porem some com o checkbox -->
+        <input type="checkbox" class="float-left mr-1" name="termsAccepted" [(ngModel)]="termsAccepted"
+            formControlName="termsAccepted" [ngClass]="{ 'is-invalid': submitted && f.termsAccepted.errors }" />
+        <span class="form-check-label" i18n>He leído y acepto los <a
+                href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/" target="_blank">términos
+                legales</a></span>
     </div>
 
     <div class="float-right">
-        <button (click)="captchaRef.execute()">
-            <span class="float-left">PARTICIPA</span>
+        <button (click)="onSubmit(captchaRef)">
+            <span class="float-left" i18n>PARTICIPA</span>
             <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
         </button>
         <re-captcha #captchaRef="reCaptcha" (resolved)="contribute($event)" (error)="onCaptchaError($event)"

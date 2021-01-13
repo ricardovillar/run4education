@@ -1,9 +1,9 @@
 <ng-container *ngIf="contribution">
-    <p class="title">¡Gracias {{ contribution.firstName }}!</p>
+    <p class="title" i18n>¡Gracias {{ contribution.firstName }}!</p>
 
-    <p>Te hemos enviado un email con la confirmación de tu participación</p>
+    <p i18n>Te hemos enviado un email con la confirmación de tu participación</p>
 
-    <p class="share-icon">
+    <p class="share-icon" i18n>
         Comparte en:
     </p>
     <p class="social-media">
@@ -19,7 +19,7 @@
     <p class="see-contribution">
         <a routerLink="" class="float-left" [queryParams]="{ c: contribution._id }">
             <input type="image" class="icon-social-media" src="assets/images/icons/map-icon.png">
-            <span>Mira tu contribuición en el mapa</span>
+            <span i18n>Mira tu contribuición en el mapa</span>
         </a>
     </p>
 </ng-container>

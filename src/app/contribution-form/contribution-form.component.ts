@@ -9,6 +9,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import * as fromStore from "@store/reducers/index";
 import { RecaptchaErrorParameters } from 'ng-recaptcha';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'contribution-form',
@@ -19,6 +20,10 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
   faSpinner = faSpinner;
+
+  registerForm: FormGroup;
+  submitted = false;
+
 
   firstName: string;
   lastName: string;
@@ -51,10 +56,36 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     private store: Store<fromStore.State>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private contributionsService: ContributionsService) {
+    private contributionsService: ContributionsService,
+    private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      distance: ['', Validators.required],
+      value: ['', Validators.required],
+      sport: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      termsAccepted: [false, Validators.requiredTrue]
+
+    });
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  onSubmit(captchaRef: any) {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+    captchaRef.execute();
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
   }
 
   ngOnDestroy() {
