@@ -12,7 +12,9 @@
             rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
             <input type="image" class="icon-social-media" src="assets/images/icons/facebook.png">
         </a>
-        <a *ngIf="whatsappSharing" [href]="whatsappSharing">
+        <a *ngIf="whatsappSharing" [href]="whatsappSharing" data-label="Whatsapp"
+            onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+            rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
             <input type="image" class="icon-social-media" src="assets/images/icons/whatsapp.png">
         </a>
     </p>
