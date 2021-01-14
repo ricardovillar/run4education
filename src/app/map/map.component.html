@@ -3,7 +3,21 @@
 </div>
 
 <div [hidden]="true">
-    <ng-container *ngFor="let contribution of journeyContributions">
+    <div class="popup-card-person" id="popup-card-60006f58be918d0020e485a1">
+        <div class="w-100 text-center">
+            <img src="https://correalpaisdelosblancos.com/avatars/avatar-1610641236854.jpeg" />
+        </div>
+        <div class="w-100 text-center">
+            <span>Ousman ha empezado su viaje al país de los blancos</span>
+        </div>
+    </div>
+
+    <div class="tooltip-card-person" id="tooltip-card-60006f58be918d0020e485a1">
+        <img src="https://correalpaisdelosblancos.com/avatars/avatar-1610641236854.jpeg" />
+        <span>Ousman Umar</span>
+    </div>
+
+    <ng-container *ngFor="let contribution of journeyContributions | slice: 1">
 
         <ng-container *ngIf="contribution.firstName; else anonymousTemplate">
             <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution._id">
@@ -33,7 +47,7 @@
                     <span>{{ contribution.firstName }}</span>
                 </div>
                 <div class="w-100 text-center">
-                    <span>ha sumado {{ contribution.distance }}km con Ousman</span>
+                    <span>ha recorrido {{ contribution.distance }} km con Ousman</span>
                 </div>
             </div>
 
