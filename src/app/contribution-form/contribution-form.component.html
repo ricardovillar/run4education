@@ -103,13 +103,14 @@
     </div>
 
     <div class="float-left w-100 mb-1">
-        <!-- input add form-check-input para validar e deixar vermelho o span que precisa clicar. porem some com o checkbox -->
-        <input type="checkbox" class="float-left mr-1" #termsAcceptedField="ngModel" name="termsAccepted"
-            [(ngModel)]="termsAccepted"
-            [ngClass]="{ 'is-invalid': (termsAcceptedField.touched || f.submitted) && termsAcceptedField.invalid }" />
-        <span class="form-check-label" i18n>He leído y acepto los <a
-                href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/" target="_blank">términos
-                legales</a></span>
+        <div class="float-left pr-1" [class.terms-not-accepted]="f.submitted && !termsAccepted">
+            <input type="checkbox" class="float-left mr-1" #termsAcceptedField="ngModel" name="termsAccepted"
+                [(ngModel)]="termsAccepted" />
+            <span class="form-check-label" i18n>He leído y acepto los <a
+                    href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/" target="_blank"
+                    [ngClass]="{ 'is-invalid': (termsAcceptedField.touched || f.submitted) && termsAcceptedField.invalid }">términos
+                    legales</a></span>
+        </div>
     </div>
 
     <div class="float-right">

@@ -115,3 +115,11 @@ select option:not(:first-of-type) {
 .form-control.is-invalid {
     background-image: none;
 }
+
+input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+div.terms-not-accepted {
+    border: solid 3px #dc3545;
+}

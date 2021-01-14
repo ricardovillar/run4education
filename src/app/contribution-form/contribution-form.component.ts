@@ -24,7 +24,6 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   registerForm: FormGroup;
   submitted = false;
 
-
   firstName: string;
   lastName: string;
   distance: number = null;
@@ -116,9 +115,13 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     if (form.invalid) {
       return;
     }
+    if (!this.termsAccepted) {
+      return;
+    }
     this.isProcessing = true;
     const { token, error } = await stripe.createToken(this.card);
     if (this.captcha && token && token.id) {
+
       this.startContributionProcess(token);
     } else {
       this.isProcessing = false;
