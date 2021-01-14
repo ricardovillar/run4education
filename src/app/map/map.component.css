@@ -25,7 +25,7 @@
   .tooltip-card-person span, 
   .tooltip-card-company span {
     margin-right: 5px; 
-    font-size: 0.9em;
+    font-size: 0.9em;    
   }
 
   .popup-card-person img, .tooltip-card-person img {
@@ -53,11 +53,10 @@
   }
 
   .tooltip-card-person span, .tooltip-card-company span {
+    width: 100%;
     white-space: nowrap;
-    position: absolute;
-    left: 30px;
-    top: 5px;
-    display: inline-block;
+    margin-left: 0.25rem;
+    margin-top: 0.25rem;
   }
 
   .popup-card-company img {

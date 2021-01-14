@@ -9,6 +9,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import * as fromStore from "@store/reducers/index";
 import { RecaptchaErrorParameters } from 'ng-recaptcha';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'contribution-form',
@@ -19,6 +20,10 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
   faSpinner = faSpinner;
+
+  registerForm: FormGroup;
+  submitted = false;
+
 
   firstName: string;
   lastName: string;
@@ -39,7 +44,8 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   card: any;
   cardHandler = this.onChange.bind(this);
-  cardError: string;
+  cardError: boolean = false;
+  cardErrorMessage: string;
   captcha: string;
 
   Running = SportEnum.Running;
@@ -52,10 +58,28 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     private store: Store<fromStore.State>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private contributionsService: ContributionsService) {
+    private contributionsService: ContributionsService,
+    private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      distance: ['', Validators.required],
+      value: ['', Validators.required],
+      sport: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      termsAccepted: [false, Validators.requiredTrue]
+
+    });
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
   }
 
   ngOnDestroy() {
@@ -82,11 +106,20 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     console.log(`reCAPTCHA error encountered; details:`, errorDetails);
   }
 
-  async contribute(captcha: string) {
+  async onCaptchaResolved(captcha: string, submit: any) {
+    this.cardErrorMessage = null;
+    this.captcha = captcha;
+    submit.click();
+  }
+
+  async contribute(form: any) {
+    if (form.invalid) {
+      return;
+    }
     this.isProcessing = true;
     const { token, error } = await stripe.createToken(this.card);
-    if (captcha && token && token.id) {
-      this.startContributionProcess(captcha, token);
+    if (this.captcha && token && token.id) {
+      this.startContributionProcess(token);
     } else {
       this.isProcessing = false;
       this.onError(error);
@@ -120,20 +153,22 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   private onChange({ error }) {
     if (error) {
-      this.cardError = error.message;
+      this.cardError = true;
+      this.cardErrorMessage = error.message;
     } else {
-      this.cardError = null;
+      this.cardError = false;
+      this.cardErrorMessage = null;
     }
     this.cd.detectChanges();
   }
 
-  private startContributionProcess(captcha: string, token: { id: string }) {
+  private startContributionProcess(token: { id: string }) {
     let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
     contribution.city = this.city;
     contribution.country = this.country;
     contribution.futureCommunicationConsent = this.futureCommunicationConsent;
     contribution.anonymous = this.anonymous;
-    this.contributionsService.startContributionProcess(contribution, captcha, token.id)
+    this.contributionsService.startContributionProcess(contribution, this.captcha, token.id)
       .subscribe(
         contribution => {
           if (contribution) {
@@ -150,7 +185,8 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   private onError(error) {
     if (error.message) {
-      this.cardError = error.message;
+      this.cardError = true;
+      this.cardErrorMessage = error.message;
     }
   }
 

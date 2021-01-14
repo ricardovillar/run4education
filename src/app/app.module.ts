@@ -2,7 +2,7 @@ import { RoutesService } from './services/routes.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { RECAPTCHA_V3_SITE_KEY, RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaV3Module, RecaptchaModule } from "ng-recaptcha";
@@ -43,6 +43,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     YouTubePlayerModule,
     RecaptchaModule,
     RecaptchaV3Module,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects, MapEffects]),

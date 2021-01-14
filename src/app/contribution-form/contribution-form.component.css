@@ -9,8 +9,9 @@ input, select, #card-info {
     color: #000000 !important;
     font-family: "Open Sans", sans-serif;
     border: solid 3px #000000;
-    padding: 0.75em;
+    padding: 0.5em;
     font-weight: 600;
+    line-height: normal;
 }
 
 input::placeholder {
@@ -20,12 +21,15 @@ input::placeholder {
 }
 
 #card-info {
-    width: 400px;
+    width: 370px;
 }
 
 hr {
-    background-color: #000000;
-    border-color: #000000;
+    border: solid 1px #000000;
+    float: left;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 button {
@@ -39,6 +43,10 @@ button {
 
 fa-icon {
     margin-left: 0.5rem;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 .first-name {
@@ -84,4 +92,26 @@ fa-icon {
     width: 20%;
     margin-right: 2em;
     float: left;   
+}
+
+select option:not(:first-of-type) {
+    color: black;
+} 
+
+.form-control {
+    border-radius: 0;
+    height: auto;
+}
+
+.image-consent {
+    font-size: 11px;
+    color: #4d4d4d;
+}
+
+#card-info.is-invalid {
+    border-color: #dc3545;
+}
+
+.form-control.is-invalid {
+    background-image: none;
 }

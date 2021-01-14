@@ -1,103 +1,125 @@
-<span class="float-left w-100 mb-1">
-    <strong>
+<span class="float-left w-100">
+    <strong i18n>
         Formulario de participación
     </strong>
 </span>
 
-<hr class="mb-3" />
+<hr />
 
-<span class="float-left w-100 mb-1">
-    <strong>
+<span class="float-left w-100 mb-1 mt-4">
+    <strong i18n>
         La donación mínima es de 0,5 € por kilómetro recorrido pero, si quieres, tienes la posibilidad de donar los €
         que consideres por cada kilómetro.
     </strong>
 </span>
 
-<form autocomplete="off">
+<form autocomplete="off" #f="ngForm" (ngSubmit)="contribute(f)">
+    <div class="w-100 mb-3 float-left form-group">
 
-    <div class="w-100 mb-1 float-left">
-        <input type="text" class="first-name" name="firstName" [(ngModel)]="firstName" placeholder="Nombre"
-            maxlength="1000" />
-        <input type="text" class="last-name" name="lastName" [(ngModel)]="lastName" placeholder="Apellidos"
-            maxlength="1000" />
+        <input type="text" class="first-name form-control" #firstNameField="ngModel" name="firstName"
+            [(ngModel)]="firstName" placeholder="Nombre" i18n-placeholder=""
+            [ngClass]="{ 'is-invalid': (firstNameField.touched || f.submitted) && firstNameField.invalid }"
+            maxlength="1000" required />
+
+        <input type="text" class="last-name form-control" #lastNameField="ngModel" name="lastName"
+            [(ngModel)]="lastName" placeholder="Apellidos" i18n-placeholder="" maxlength="1000"
+            [ngClass]="{ 'is-invalid': (lastNameField.touched || f.submitted) && lastNameField.invalid }" required />
     </div>
 
-    <div class="w-100 mb-1 float-left">
+    <div class="w-100 mb-3 float-left">
 
-        <select class="distance" name="distance" [(ngModel)]="distance">
-            <option selected hidden [value]="null">Km recorridos</option>
+        <select class="distance form-control" #distanceField="ngModel" name="distance" [(ngModel)]="distance"
+            [ngClass]="{ 'is-invalid': (distanceField.touched || f.submitted) && distanceField.invalid }" required>
+            <option selected hidden [value]="null" i18n>Km recorridos</option>
             <option *ngFor="let km of kms" [value]="km">{{ km }}</option>
         </select>
 
 
-        <select class="value" name="value" [(ngModel)]="value">
-            <option selected hidden [value]="null">€ por km</option>
+        <select class="value form-control" #valueField="ngModel" name="value" [(ngModel)]="value"
+            [ngClass]="{ 'is-invalid': (valueField.touched || f.submitted) && valueField.invalid }" required>
+            <option selected hidden [value]="null" i18n>€ por km</option>
             <option *ngFor="let valuePerKm of valuesPerKm" [value]="valuePerKm">{{ valuePerKm | currency:'€' }}</option>
         </select>
 
-        <select class="sport" name="sport" [(ngModel)]="sport">
-            <option selected hidden [value]="null">Modalidad</option>
-            <option [value]="Running">Corriendo</option>
-            <option [value]="Trekking">Andando</option>
-            <option [value]="Cycling">Pedaleando</option>
-            <option [value]="Swimming">Nadando</option>
+        <select class="sport form-control" #sportField="ngModel" name="sport" [(ngModel)]="sport"
+            [ngClass]="{ 'is-invalid': (sportField.touched || f.submitted) && sportField.invalid }" required>
+            <option selected hidden [value]="null" i18n>Modalidad</option>
+            <option [value]="Running" i18n>Corriendo</option>
+            <option [value]="Trekking" i18n>Andando</option>
+            <option [value]="Cycling" i18n>Pedaleando</option>
+            <option [value]="Swimming" i18n>Nadando</option>
         </select>
     </div>
 
-    <div class="w-100 mb-1 float-left">
-        <input type="email" class="email" name="email" [(ngModel)]="email" placeholder="Correo electrónico"
-            maxlength="1000" autocomplete="none" />
+    <div class="w-100 mb-3 float-left">
+        <input type="email" class="email form-control" #emailField="ngModel" name="email"
+            placeholder="Correo electrónico" i18n-placeholder="" maxlength="1000" autocomplete="none"
+            [(ngModel)]="email" [ngClass]="{ 'is-invalid': (emailField.touched || f.submitted) && emailField.invalid }"
+            required />
     </div>
 
-    <div class="w-100 mb-1 float-left">
-        <input type="text" class="country" name="country" [(ngModel)]="country" placeholder="País" maxlength="500"
-            autocomplete="none" />
-        <input type="text" class="city" name="city" [(ngModel)]="city" placeholder="Ciudad" maxlength="500"
-            autocomplete="none" />
+    <div class="w-100 mb-3 float-left">
+        <input type="text" class="country form-control" #countryField="ngModel" [(ngModel)]="country" name="country"
+            placeholder="País" i18n-placeholder="" maxlength="500" autocomplete="none" />
+        <input type="text" class="city" #cityField name="city" [(ngModel)]="city" placeholder="Ciudad" maxlength="500"
+            i18n-placeholder="" autocomplete="none" />
     </div>
 
-    <div class="w-100 mb-1 float-left">
+    <div class="w-100 mb-3 float-left">
         <div id="form-field">
-            <div id="card-info" #cardInfo>
-                <label for="card-info">Card Info</label>
+            <div id="card-info" [class.is-invalid]="cardError" #cardInfo>
             </div>
         </div>
     </div>
 
-    <div class="w-100 mb-2 float-left">
+    <div class="w-100 float-left">
         <input style="display: none" type="file"
             accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
             (change)="onPictureSelected($event)" #fileInput>
         <button type="button" (click)="fileInput.click()">Subir mi foto (opcional)</button>
+    </div>
+    <div class="w-100 mb-1 float-left">
+        <span class="font-italic image-consent">
+            Tu foto se publicará en el mapa virtual y podrá ser compartida en los perfiles de redes sociales de Corre al
+            País de los Blancos y/o NASCO Feeding Minds.
+        </span>
+    </div>
+    <div class="w-100 mb-4 ml-5 float-left">
         <img [src]="avatarPreview" class="preview" *ngIf="avatarPreview">
     </div>
 
-    <hr class="mb-2" />
+    <hr />
 
     <div class="float-left w-100">
-        <input type="checkbox" class="float-left mr-1" name="futureCommunicationConsent"
-            [(ngModel)]="futureCommunicationConsent" />
-        <span>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
+        <input type="checkbox" class="float-left mr-1" #futureCommunicationConsentField
+            name="futureCommunicationConsent" />
+        <span i18n>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
     </div>
 
     <div class="float-left w-100">
-        <input type="checkbox" class="float-left mr-1" name="anonymous" [(ngModel)]="anonymous" />
+        <input type="checkbox" class="float-left mr-1" #anonymousField="ngModel" name="anonymous"
+            [(ngModel)]="anonymous" />
         <span>Quiero que mis kilómetros se publiquen de forma anónima, aparecerá mi tramo recorrido sin nombre.</span>
     </div>
 
     <div class="float-left w-100 mb-1">
-        <input type="checkbox" class="float-left mr-1" name="termsAccepted" [(ngModel)]="termsAccepted" />
-        <span>He leído y acepto los <a href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/"
-                target="_blank">términos legales</a></span>
+        <!-- input add form-check-input para validar e deixar vermelho o span que precisa clicar. porem some com o checkbox -->
+        <input type="checkbox" class="float-left mr-1" #termsAcceptedField="ngModel" name="termsAccepted"
+            [(ngModel)]="termsAccepted"
+            [ngClass]="{ 'is-invalid': (termsAcceptedField.touched || f.submitted) && termsAcceptedField.invalid }" />
+        <span class="form-check-label" i18n>He leído y acepto los <a
+                href="https://nascoict.org/aviso-legal-y-politica-de-privacidad/" target="_blank">términos
+                legales</a></span>
     </div>
 
     <div class="float-right">
-        <button (click)="captchaRef.execute()">
-            <span class="float-left">PARTICIPA</span>
+        <button (click)="captchaRef.execute()" type="button">
+            <span class="float-left" i18n>PARTICIPA</span>
             <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
         </button>
-        <re-captcha #captchaRef="reCaptcha" (resolved)="contribute($event)" (error)="onCaptchaError($event)"
-            errorMode="handled">
+        <button type="submit" [hidden]="true" #submit></button>
+        <re-captcha #captchaRef="reCaptcha" (resolved)="onCaptchaResolved($event, submit)"
+            (error)="onCaptchaError($event)" errorMode="handled">
         </re-captcha>
     </div>
 
