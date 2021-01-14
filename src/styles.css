@@ -56,3 +56,11 @@ body {
     font-size: 0.70rem;
     font-family: sans-serif;
 }
+
+.leaflet-popup.mobile {
+    width: calc(90vw);
+}
+
+.leaflet-popup.mobile .leaflet-popup-content {
+    width: auto !important;
+}

@@ -38,6 +38,8 @@ export class MapComponent implements OnDestroy {
   playerVars: YT.PlayerVars = {
     rel: YT.RelatedVideos.Hide
   };
+  ytWidth: number;
+  ytHeight: number;
 
   options = {
     layers: [
@@ -62,6 +64,10 @@ export class MapComponent implements OnDestroy {
     this.subscribeJourneyContributions();
     this._isMobile = deviceService.isMobile();
     this._isTablet = deviceService.isTablet();
+    if (this._isMobile) {
+      this.ytWidth = (window.innerWidth * 0.9) - 38;
+      this.ytHeight = (this.ytWidth / 16) * 9;
+    }
   }
 
   ngOnInit() {
@@ -70,6 +76,10 @@ export class MapComponent implements OnDestroy {
 
   ngOnDestroy() {
     this._subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  ngAfterViewInit() {
+
   }
 
   onMapReady(map: Map) {
@@ -162,8 +172,12 @@ export class MapComponent implements OnDestroy {
         let marker = toRouteMarker(routePoint);
         let balloon = document.getElementById(routePoint.elementId);
         let offset: PointExpression = [0, -20];
-        let minWidth = 640;
-        marker.bindPopup(balloon, { offset, minWidth });
+        if (!this._isMobile) {
+          marker.bindPopup(balloon, { offset, minWidth: 640 });
+        }
+        else {
+          marker.bindPopup(balloon, { offset, className: 'mobile' });
+        }
         layers.push(marker);
       }
     });
