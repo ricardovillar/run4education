@@ -20,6 +20,7 @@ export class ContributionsService {
     const formData = new FormData();
 
     let futureCommunicationConsent = contribution.futureCommunicationConsent || false;
+    let anonymous = contribution.anonymous || false;
 
     formData.append('firstName', contribution.firstName);
     formData.append('lastName', contribution.lastName);
@@ -30,6 +31,7 @@ export class ContributionsService {
     formData.append('city', contribution.city);
     formData.append('country', contribution.country);
     formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
+    formData.append('anonymous', anonymous.toString());
     formData.append('tid', stripeToken);
     formData.append('cpt', captcha);
 

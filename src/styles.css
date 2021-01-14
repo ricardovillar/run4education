@@ -49,3 +49,10 @@ body {
 .ml-1 {
     margin-left: 1em;
 }
+
+.western-sahara {
+    color: #828f99;
+    font-weight: 600;
+    font-size: 0.70rem;
+    font-family: sans-serif;
+}

@@ -91,11 +91,17 @@ export class MapComponent implements OnDestroy {
     let sub = this.store.select(fromRoot.getJourneyContributions)
       .subscribe((contributions: JourneyContribution[]) => {
         this.journeyContributions = contributions.map(contribution => {
-          let c = new JourneyContribution(contribution.firstName, contribution.lastName, contribution.distance);
+          if (contribution.firstName) {
+            let c = new JourneyContribution(contribution.firstName, contribution.lastName, contribution.distance);
+            c._id = contribution._id;
+            c.sport = contribution.sport;
+            c.avatarUrl = contribution.avatarUrl;
+            c.isCompany = contribution.isCompany;
+            return c;
+          }
+          let c = new JourneyContribution(null, null, contribution.distance);
           c._id = contribution._id;
           c.sport = contribution.sport;
-          c.avatarUrl = contribution.avatarUrl;
-          c.isCompany = contribution.isCompany;
           return c;
         });
         this.fillMap();
@@ -115,11 +121,22 @@ export class MapComponent implements OnDestroy {
 
   private fillMap() {
     let layers: Layer[] = [];
+    this.addWesternSahareLabel(layers);
     this.addRoutePathTo(layers);
     this.addRouteMarkersTo(layers);
     this.addStartAndEndRouteMarkers(layers);
     this.addJourneyContributionRoutesTo(layers);
     this.layers = layers;
+  }
+
+  private addWesternSahareLabel(layers: Layer[]) {
+    let westernSaharaMarker = new Marker([25.416685367001534, -14.67749536001681], {
+      icon: divIcon({
+        className: 'western-sahara',
+        html: '<span class="western-sahara">WESTERN SAHARA</span>'
+      })
+    });
+    layers.push(westernSaharaMarker);
   }
 
   private addRoutePathTo(layers: Layer[]) {
@@ -136,6 +153,8 @@ export class MapComponent implements OnDestroy {
 
     return polyline(coordinates, { color, dashArray, weight });
   }
+
+
 
   private addRouteMarkersTo(layers: Layer[]) {
     this._fullRoute.map(routePoint => {

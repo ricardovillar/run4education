@@ -30,6 +30,7 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
   picture: File;
   avatarPreview: any;
   futureCommunicationConsent: boolean;
+  anonymous: boolean;
   email: string;
   termsAccepted: boolean = false;
   isProcessing: boolean = false;
@@ -130,9 +131,8 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
     contribution.city = this.city;
     contribution.country = this.country;
-    if (this.futureCommunicationConsent) {
-      contribution.futureCommunicationConsent = true;
-    }
+    contribution.futureCommunicationConsent = this.futureCommunicationConsent;
+    contribution.anonymous = this.anonymous;
     this.contributionsService.startContributionProcess(contribution, captcha, token.id)
       .subscribe(
         contribution => {
