@@ -396,220 +396,130 @@
           <context context-type="linenumber">344,352</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="acaba_de_pedalear" datatype="html">
-        <source>
-          <x id="PH" equiv-text="
-      case SportEnum.Cycli"/>
- acaba de pedalear <x id="PH_1" equiv-text="ocalize`:@@acaba_de_pedale"/>
- km con Ousman</source>
-        <target>
-          <x id="PH" equiv-text="
-      case SportEnum.Cycli"/>
- has just pedaled <x id="PH_1" equiv-text="ocalize`:@@acaba_de_pedale"/>
- km with Ousman</target>
+      <trans-unit id="fb_share_quote" datatype="html">
+        <source>Hola, acabo de recorrer <x id="PH" equiv-text="
+    const quote = $local"/>
+ km con Ousman Umar, lo puedes ver en:</source>
+        <target>Hi, I just completed <x id="PH" equiv-text="t here:    
+    */
+    r"/>
+ km with Ousman Umar, you can see it here:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="acaba_de_nadar" datatype="html">
-        <source>
-          <x id="PH" equiv-text="n`;
-      case SportEnum.S"/>
- acaba de nadar <x id="PH_1" equiv-text="eturn $localize`:@@acaba_d"/>
- km con Ousman</source>
-        <target>
-          <x id="PH" equiv-text="n`;
-        case SportEnum.S"/>
- has just swam <x id="PH_1" equiv-text="eturn $localize`:@@acaba_d"/>
- km with Ousman</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">83</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="acaba_de_caminar" datatype="html">
-        <source>
-          <x id="PH" equiv-text="n`;
-      case SportEnum.T"/>
- acaba de caminar <x id="PH_1" equiv-text="urn $localize`:@@acaba_de_"/>
- km con Ousman</source>
-        <target>
-          <x id="PH" equiv-text="n`;
-      case SportEnum.T"/>
- has just walked <x id="PH_1" equiv-text="urn $localize`:@@acaba_de_"/>
- km with Ousman</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">85</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="acaba_de_correr" datatype="html">
-        <source>
-          <x id="PH" equiv-text="case SportEnum.Running:
-  "/>
- acaba de correr <x id="PH_1" equiv-text="  return $localize`:@@acab"/>
- km con Ousman</source>
-        <target>
-          <x id="PH" equiv-text="case SportEnum.Running:
-  "/>
- has just run <x id="PH_1" equiv-text="  return $localize`:@@acab"/>
- km with Ousman</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">88</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="Hola_acabo_de_pedalear" datatype="html">
-        <source>Hola, acabo de pedalear <x id="PH" equiv-text="    case SportEnum.Cycling"/>
- km con Ousman, véalo en <x id="PH_1" equiv-text=":@@Hola_acabo_de_ped"/>
+      <trans-unit id="wp_share_quote" datatype="html">
+        <source>Hola, acabo de recorrer <x id="PH" equiv-text="ng() {
+    const text = $"/>
+ km con Ousman Umar, lo puedes ver en: <x id="PH_1" equiv-text="recorrer ${this.cont"/>
       </source>
-      <target>Hello, I just pedaled <x id="PH" equiv-text="    case SportEnum.Cycling"/>
- km with Ousman, see it in <x id="PH_1" equiv-text=":@@Hola_acabo_de_ped"/>
+      <target>Hi, I just completed <x id="PH" equiv-text="t here:    
+      */
+      r"/>
+  km with Ousman Umar, you can see it here: <x id="PH_1" equiv-text=" de recorrer ${this."/>
     </target>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-      <context context-type="linenumber">107</context>
+      <context context-type="linenumber">80</context>
     </context-group>
   </trans-unit>
-  <trans-unit id="Hola_acabo_de_nadar" datatype="html">
-    <source>Hola, acabo de nadar <x id="PH" equiv-text="}`;
-      case SportEnum."/>
- km con Ousman, véalo en <x id="PH_1" equiv-text="ocalize`:@@Hola_acab"/>
-  </source>
-  <target>Hello, I just swam <x id="PH" equiv-text="}`;
-      case SportEnum."/>
- km with Ousman, see it in <x id="PH_1" equiv-text="ocalize`:@@Hola_acab"/>
-</target>
-<context-group purpose="location">
-  <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-  <context context-type="linenumber">109</context>
-</context-group>
-</trans-unit>
-<trans-unit id="Hola_acabo_de_caminar" datatype="html">
-<source>Hola, acabo de caminar <x id="PH" equiv-text=";
-      case SportEnum.Tr"/>
- km con Ousman, véalo en <x id="PH_1" equiv-text="alize`:@@Hola_acabo_"/>
-</source>
-<target>Hello, I just walked <x id="PH" equiv-text=";
-      case SportEnum.Tr"/>
- km with Ousman, see it in <x id="PH_1" equiv-text="alize`:@@Hola_acabo_"/>
-</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-<context context-type="linenumber">111</context>
-</context-group>
-</trans-unit>
-<trans-unit id="Hola_acabo_de_correr" datatype="html">
-<source>Hola, acabo de correr <x id="PH" equiv-text="ase SportEnum.Running:
-  "/>
- km con Ousman, véalo en <x id="PH_1" equiv-text=" $localize`:@@Hola_a"/>
-</source>
-<target>Hello, I just run <x id="PH" equiv-text="ase SportEnum.Running:
-  "/>
- km with Ousman, see it in <x id="PH_1" equiv-text=" $localize`:@@Hola_a"/>
-</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-<context context-type="linenumber">114</context>
-</context-group>
-</trans-unit>
-<trans-unit id="b93470df24579f662168423535dda49f0fcb7390" datatype="html">
-<source>Las olas llevaron la patera hasta unas rocas de la costa de Fuerteventura. Volcó, y todavía no sé cómo conseguí salir del mar con vida, ya que no sé nadar. Tenía los pies llenos de pinchos y heridas de andar descalzo por el desierto. Muchos de mis compañeros, besaban la arena con las pocas fuerzas que les quedaban, como si hubiesen llegado a la tierra prometida. La cruz roja vino a rescatarnos y me llevaron a un lugar caliente. Estaba en el paraíso. Me llevaron al CIE y me pareció un hotel de 5 estrellas, pero hoy, viéndolo con perspectiva, era lo más parecido a una cárcel. Allí estuve 1 mes, y me comunicaron que la ley Española me amparaba; podía residir en España. </source>
-<target>The waves took the dinghy to the rocks on the coast of Fuerteventura.  It capsized and I still don’t know how I managed to get out of the sea alive as I don’t know how to swim.  My feet were full of wounds and thorns from having walked barefoot through the desert.  Many of my companions kissed the sand with the little strength they had left, as if they had arrived to the Promised Land.  The Red Cross came to rescue us and took me to a warm place.  I was in paradise.  I was taken to the CIE and to me it seemed like a five star hotel. In retrospect, it was just like a prison.  I spent one month there and was told that the Spanish law would protect me and therefore I would be able to live in Spain.</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">357,365</context>
-</context-group>
-</trans-unit>
-<trans-unit id="4acaf3c08c2124747773957011d759920430b734" datatype="html">
-<source>Nos sacaron del CIE de Fuerteventura esposados, vigilados por policías armados, y volamos así hasta Málaga. Cuando llegamos, nos llevaron en furgoneta hasta otro centro de inmigración. Allí pasé tres días, y fue donde me preguntaron dónde quería residir. Yo dije “Barça”, ya que era lo único que conocía de España, y entendieron que quería decir Barcelona. Me dieron un billete de tren, una botella de agua, un bocadillo de atún y un documento que indicaba que yo era el número 101. </source>
-<target>We were handcuffed and led out of the CIE and kept under close watch by armed police and then flown to Malaga.  Upon our arrival we were taken by van to an immigration center.  I spent 3 days there and was asked where I wanted to live.  I said “Barça” as this was the only thing I knew in Spain and of course they understood that I meant Barcelona.  I was given a train ticket, a bottle of water and a tuna sandwich and a document stating that I was number 101.</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">371,377</context>
-</context-group>
-</trans-unit>
-<trans-unit id="be4cebe56405d1c9d81615a2a4f2cf7864e4a610" datatype="html">
-<source>Al pisar el suelo de mi nueva ciudad, Barcelona, sentí una gran felicidad. Luego sentí miedo. Todo me resultaba nuevo y excitante. Era el 24 de febrero de 2005. Pero entonces me di cuenta que el paraíso no era tal y como lo había imaginado. Hacía mucho frío y no tenía donde dormir. Tras varios meses viviendo en la calle, me acogió una familia. La primera noche que dormí en su casa, lloré como un niño. ¿Por qué había sufrido tanto? ¿Por qué tanta lucha? ¿Qué había hecho mal? A la mañana siguiente entendí que la pregunta no era por qué sino para qué. ¿Para qué me serviría todo ese sufrimiento? Lo vi claro: para evitar que futuras víctimas caigan en las mismas trampas mortales en las que yo caí. Estudié castellano y catalán, me saqué el graduado escolar, dos carreras universitarias y un máster de ONGs en ESADE. En 2012 fundé NASCO Feeding Minds para brindar educación a los niños y jóvenes de Ghana y así puedan descubrir que el verdadero paraíso está en sus casas. El futuro de su país depende de ellos. Descubrí que la clave está en alimentar mentes, y desde entonces me dedico únicamente a perseguir este sueño.</source>
-<target>When I set foot in my new city, Barcelona, I felt jubilant.  Later on, I was afraid.  Everything was so new and exciting.  It was the 24th of February 2005.  But then I realized that this paradise was not quite what I had imagined.  It was very cold and I had no place to sleep.  After several months living in the streets, a family took me in.  The first night I slept in their house I cried uncontrollably just like a child.  Why had I suffered so much?  Why such a fight?  What had I done wrong?  The following morning I understood that the question was not “why”, but “for what reason”.  What purpose did all of this suffering have?  It became clear to me.  It was to avoid that future victims fall into the hands of the same deadly traps that I had been a victim of. I studied Castellano and Catalan, graduated from high school, did two university degrees and graduated with a Master’s degree in NGO management at ESADE.  In 2012 I founded the NGO, NASCO Feeding Minds to provide an education to children and the youth of Ghana and therefore they will be able to discover that the true paradise is in their homes.  The future of the country lies in their hands.  I discovered that the key is to feed minds and since then I am fully committed to pursue this dream.</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">382,393</context>
-</context-group>
-</trans-unit>
-<trans-unit id="49b56138c77457f8b7aa85b00fcc85f1b2266949" datatype="html">
-<source>ha recorrido <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
+  <trans-unit id="b93470df24579f662168423535dda49f0fcb7390" datatype="html">
+    <source>Las olas llevaron la patera hasta unas rocas de la costa de Fuerteventura. Volcó, y todavía no sé cómo conseguí salir del mar con vida, ya que no sé nadar. Tenía los pies llenos de pinchos y heridas de andar descalzo por el desierto. Muchos de mis compañeros, besaban la arena con las pocas fuerzas que les quedaban, como si hubiesen llegado a la tierra prometida. La cruz roja vino a rescatarnos y me llevaron a un lugar caliente. Estaba en el paraíso. Me llevaron al CIE y me pareció un hotel de 5 estrellas, pero hoy, viéndolo con perspectiva, era lo más parecido a una cárcel. Allí estuve 1 mes, y me comunicaron que la ley Española me amparaba; podía residir en España. </source>
+    <target>The waves took the dinghy to the rocks on the coast of Fuerteventura.  It capsized and I still don’t know how I managed to get out of the sea alive as I don’t know how to swim.  My feet were full of wounds and thorns from having walked barefoot through the desert.  Many of my companions kissed the sand with the little strength they had left, as if they had arrived to the Promised Land.  The Red Cross came to rescue us and took me to a warm place.  I was in paradise.  I was taken to the CIE and to me it seemed like a five star hotel. In retrospect, it was just like a prison.  I spent one month there and was told that the Spanish law would protect me and therefore I would be able to live in Spain.</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">357,365</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="4acaf3c08c2124747773957011d759920430b734" datatype="html">
+    <source>Nos sacaron del CIE de Fuerteventura esposados, vigilados por policías armados, y volamos así hasta Málaga. Cuando llegamos, nos llevaron en furgoneta hasta otro centro de inmigración. Allí pasé tres días, y fue donde me preguntaron dónde quería residir. Yo dije “Barça”, ya que era lo único que conocía de España, y entendieron que quería decir Barcelona. Me dieron un billete de tren, una botella de agua, un bocadillo de atún y un documento que indicaba que yo era el número 101. </source>
+    <target>We were handcuffed and led out of the CIE and kept under close watch by armed police and then flown to Malaga.  Upon our arrival we were taken by van to an immigration center.  I spent 3 days there and was asked where I wanted to live.  I said “Barça” as this was the only thing I knew in Spain and of course they understood that I meant Barcelona.  I was given a train ticket, a bottle of water and a tuna sandwich and a document stating that I was number 101.</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">371,377</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="be4cebe56405d1c9d81615a2a4f2cf7864e4a610" datatype="html">
+    <source>Al pisar el suelo de mi nueva ciudad, Barcelona, sentí una gran felicidad. Luego sentí miedo. Todo me resultaba nuevo y excitante. Era el 24 de febrero de 2005. Pero entonces me di cuenta que el paraíso no era tal y como lo había imaginado. Hacía mucho frío y no tenía donde dormir. Tras varios meses viviendo en la calle, me acogió una familia. La primera noche que dormí en su casa, lloré como un niño. ¿Por qué había sufrido tanto? ¿Por qué tanta lucha? ¿Qué había hecho mal? A la mañana siguiente entendí que la pregunta no era por qué sino para qué. ¿Para qué me serviría todo ese sufrimiento? Lo vi claro: para evitar que futuras víctimas caigan en las mismas trampas mortales en las que yo caí. Estudié castellano y catalán, me saqué el graduado escolar, dos carreras universitarias y un máster de ONGs en ESADE. En 2012 fundé NASCO Feeding Minds para brindar educación a los niños y jóvenes de Ghana y así puedan descubrir que el verdadero paraíso está en sus casas. El futuro de su país depende de ellos. Descubrí que la clave está en alimentar mentes, y desde entonces me dedico únicamente a perseguir este sueño.</source>
+    <target>When I set foot in my new city, Barcelona, I felt jubilant.  Later on, I was afraid.  Everything was so new and exciting.  It was the 24th of February 2005.  But then I realized that this paradise was not quite what I had imagined.  It was very cold and I had no place to sleep.  After several months living in the streets, a family took me in.  The first night I slept in their house I cried uncontrollably just like a child.  Why had I suffered so much?  Why such a fight?  What had I done wrong?  The following morning I understood that the question was not “why”, but “for what reason”.  What purpose did all of this suffering have?  It became clear to me.  It was to avoid that future victims fall into the hands of the same deadly traps that I had been a victim of. I studied Castellano and Catalan, graduated from high school, did two university degrees and graduated with a Master’s degree in NGO management at ESADE.  In 2012 I founded the NGO, NASCO Feeding Minds to provide an education to children and the youth of Ghana and therefore they will be able to discover that the true paradise is in their homes.  The future of the country lies in their hands.  I discovered that the key is to feed minds and since then I am fully committed to pursue this dream.</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">382,393</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="49b56138c77457f8b7aa85b00fcc85f1b2266949" datatype="html">
+    <source>ha recorrido <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
 km con Ousman</source>
-<target>has completed <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
+    <target>has completed <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
 km with Ousman</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">32</context>
-</context-group>
-</trans-unit>
-<trans-unit id="61d4deef20be7017e558d775feb78e0292d2c222" datatype="html">
-<source>ha recorrido <x id="INTERPOLATION" equiv-text="r&quot;&gt;
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">32</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="61d4deef20be7017e558d775feb78e0292d2c222" datatype="html">
+    <source>ha recorrido <x id="INTERPOLATION" equiv-text="r&quot;&gt;
                     &lt;s"/>
  km con Ousman</source>
-<target>has completed <x id="INTERPOLATION" equiv-text="r&quot;&gt;
+    <target>has completed <x id="INTERPOLATION" equiv-text="r&quot;&gt;
                     &lt;s"/>
  km with Ousman</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">50</context>
-</context-group>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">69</context>
-</context-group>
-</trans-unit>
-<trans-unit id="bab92ce5f84e168bf3ac2073a53cc4d6710e8ac1" datatype="html">
-<source>Anónimo</source>
-<target>Anonymous</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">66</context>
-</context-group>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/map/map.component.html</context>
-<context context-type="linenumber">75</context>
-</context-group>
-</trans-unit>
-<trans-unit id="01ee56cd898c4723a826740ee71b185bce0da78c" datatype="html">
-<source>¡Gracias <x id="INTERPOLATION" equiv-text=" {{ contribution.firstName }"/>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">50</context>
+    </context-group>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">69</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="bab92ce5f84e168bf3ac2073a53cc4d6710e8ac1" datatype="html">
+    <source>Anónimo</source>
+    <target>Anonymous</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">66</context>
+    </context-group>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">75</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="01ee56cd898c4723a826740ee71b185bce0da78c" datatype="html">
+    <source>¡Gracias <x id="INTERPOLATION" equiv-text=" {{ contribution.firstName }"/>
 !</source>
-<target>Thank you <x id="INTERPOLATION" equiv-text=" {{ contribution.firstName }"/>
+    <target>Thank you <x id="INTERPOLATION" equiv-text=" {{ contribution.firstName }"/>
 !</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
-<context context-type="linenumber">2</context>
-</context-group>
-</trans-unit>
-<trans-unit id="3d728bd500572fbf07e47633ba050e41c63ccf47" datatype="html">
-<source>Te hemos enviado un email con la confirmación de tu participación</source>
-<target>We have sent you an email confirming your participation</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
-<context context-type="linenumber">4</context>
-</context-group>
-</trans-unit>
-<trans-unit id="590950f2f21bbce0938456dc5d2e638433ca4d62" datatype="html">
-<source> Comparte en: </source>
-<target>Share on</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
-<context context-type="linenumber">7,8</context>
-</context-group>
-</trans-unit>
-<trans-unit id="c0795e2e7924787bdc1a527ee1ed4cd5da8ca366" datatype="html">
-<source>Mira tu contribuición en el mapa</source>
-<target>See your contribution on the map</target>
-<context-group purpose="location">
-<context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
-<context context-type="linenumber">24</context>
-</context-group>
-</trans-unit>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+      <context context-type="linenumber">2</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="3d728bd500572fbf07e47633ba050e41c63ccf47" datatype="html">
+    <source>Te hemos enviado un email con la confirmación de tu participación</source>
+    <target>We have sent you an email confirming your participation</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+      <context context-type="linenumber">4</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="590950f2f21bbce0938456dc5d2e638433ca4d62" datatype="html">
+    <source> Comparte en: </source>
+    <target>Share on</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+      <context context-type="linenumber">7,8</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="c0795e2e7924787bdc1a527ee1ed4cd5da8ca366" datatype="html">
+    <source>Mira tu contribuición en el mapa</source>
+    <target>See your contribution on the map</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+      <context context-type="linenumber">24</context>
+    </context-group>
+  </trans-unit>
 </body>
 </file>
 </xliff>

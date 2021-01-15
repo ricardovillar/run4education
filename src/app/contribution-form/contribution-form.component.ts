@@ -76,27 +76,36 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
     }
   }
 
+  onParticipateButtonClick(captchaRef: any) {
+    if (this.isProcessing) {
+      return;
+    }
+    this.isProcessing = true;
+    captchaRef.execute();
+  }
+
   onCaptchaError(errorDetails: RecaptchaErrorParameters): void {
+    this.isProcessing = false;
     console.log(`reCAPTCHA error encountered; details:`, errorDetails);
   }
 
-  async onCaptchaResolved(captcha: string, submit: any) {
+  async onCaptchaResolved(captcha: string, submitBtn: any) {
     this.cardErrorMessage = null;
     this.captcha = captcha;
-    submit.click();
+    submitBtn.click();
   }
 
   async contribute(form: any) {
     if (form.invalid) {
+      this.isProcessing = false;
       return;
     }
     if (!this.termsAccepted) {
+      this.isProcessing = false;
       return;
     }
-    this.isProcessing = true;
     const { token, error } = await stripe.createToken(this.card);
     if (this.captcha && token && token.id) {
-
       this.startContributionProcess(token);
     } else {
       this.isProcessing = false;
@@ -151,7 +160,6 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
         contribution => {
           if (contribution) {
             this.store.dispatch(addJourneyContribution({ contribution }));
-            this.isProcessing = false;
             this.router.navigate(['./gracias'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
           }
         },

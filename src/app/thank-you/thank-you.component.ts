@@ -72,47 +72,19 @@ export class ThankYouComponent implements OnDestroy {
   }
 
   private setupFacebookSharing() {
-    let quote = this.getFacebookShareQuote();
+    const quote = $localize`:@@fb_share_quote:Hola, acabo de recorrer ${this.contribution.distance} km con Ousman Umar, lo puedes ver en:`;
     this.facebookSharing = `//www.facebook.com/sharer.php?u=${this.contributionUrl}&quote=${quote}`;
   }
 
-  private getFacebookShareQuote() {
-    switch (this.contribution.sport) {
-      case SportEnum.Cycling:
-        return $localize`:@@acaba_de_pedalear:${this.contribution.firstName} acaba de pedalear ${this.contribution.distance} km con Ousman`;
-      case SportEnum.Swimming:
-        return $localize`:@@acaba_de_nadar:${this.contribution.firstName} acaba de nadar ${this.contribution.distance} km con Ousman`;
-      case SportEnum.Trekking:
-        return $localize`:@@acaba_de_caminar:${this.contribution.firstName} acaba de caminar ${this.contribution.distance} km con Ousman`;
-      case SportEnum.Running:
-      default:
-        return $localize`:@@acaba_de_correr:${this.contribution.firstName} acaba de correr ${this.contribution.distance} km con Ousman`;
-    }
-  }
-
   private setupWhatsappSharing() {
-    const wpShareQuote = this.getWhatsappShareQuote();
+    const text = $localize`:@@wp_share_quote:Hola, acabo de recorrer ${this.contribution.distance} km con Ousman Umar, lo puedes ver en: ${this.contributionUrl}`;
     if (this._isMobile || this._isTablet) {
-      const encodedText = encodeURIComponent(wpShareQuote);
+      const encodedText = encodeURIComponent(text);
       const shareUrl = `whatsapp://send?text=${encodedText}`;
       this.whatsappSharing = this.sanitizer.bypassSecurityTrustUrl(shareUrl);
     }
     else {
-      this.whatsappSharing = `https://web.whatsapp.com/send?text=${wpShareQuote}`;
-    }
-  }
-
-  private getWhatsappShareQuote() {
-    switch (this.contribution.sport) {
-      case SportEnum.Cycling:
-        return $localize`:@@Hola_acabo_de_pedalear:Hola, acabo de pedalear ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
-      case SportEnum.Swimming:
-        return $localize`:@@Hola_acabo_de_nadar:Hola, acabo de nadar ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
-      case SportEnum.Trekking:
-        return $localize`:@@Hola_acabo_de_caminar:Hola, acabo de caminar ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
-      case SportEnum.Running:
-      default:
-        return $localize`:@@Hola_acabo_de_correr:Hola, acabo de correr ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
+      this.whatsappSharing = `https://web.whatsapp.com/send?text=${text}`;
     }
   }
 

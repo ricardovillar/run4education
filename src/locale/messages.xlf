@@ -396,67 +396,20 @@
           <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="acaba_de_pedalear" datatype="html">
-        <source><x id="PH" equiv-text="
-      case SportEnum.Cycli"/> acaba de pedalear <x id="PH_1" equiv-text="ocalize`:@@acaba_de_pedale"/> km con Ousman</source>
+      <trans-unit id="fb_share_quote" datatype="html">
+        <source>Hola, acabo de recorrer <x id="PH" equiv-text="
+    const quote = $local"/> km con Ousman Umar, lo puedes ver en:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="acaba_de_nadar" datatype="html">
-        <source><x id="PH" equiv-text="n`;
-      case SportEnum.S"/> acaba de nadar <x id="PH_1" equiv-text="eturn $localize`:@@acaba_d"/> km con Ousman</source>
+      <trans-unit id="wp_share_quote" datatype="html">
+        <source>Hola, acabo de recorrer <x id="PH" equiv-text="ng() {
+    const text = $"/> km con Ousman Umar, lo puedes ver en: <x id="PH_1" equiv-text="recorrer ${this.cont"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">83</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="acaba_de_caminar" datatype="html">
-        <source><x id="PH" equiv-text="n`;
-      case SportEnum.T"/> acaba de caminar <x id="PH_1" equiv-text="urn $localize`:@@acaba_de_"/> km con Ousman</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">85</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="acaba_de_correr" datatype="html">
-        <source><x id="PH" equiv-text="case SportEnum.Running:
-  "/> acaba de correr <x id="PH_1" equiv-text="  return $localize`:@@acab"/> km con Ousman</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">88</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="Hola_acabo_de_pedalear" datatype="html">
-        <source>Hola, acabo de pedalear <x id="PH" equiv-text="    case SportEnum.Cycling"/> km con Ousman, véalo en <x id="PH_1" equiv-text=":@@Hola_acabo_de_ped"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">107</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="Hola_acabo_de_nadar" datatype="html">
-        <source>Hola, acabo de nadar <x id="PH" equiv-text="}`;
-      case SportEnum."/> km con Ousman, véalo en <x id="PH_1" equiv-text="ocalize`:@@Hola_acab"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">109</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="Hola_acabo_de_caminar" datatype="html">
-        <source>Hola, acabo de caminar <x id="PH" equiv-text=";
-      case SportEnum.Tr"/> km con Ousman, véalo en <x id="PH_1" equiv-text="alize`:@@Hola_acabo_"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">111</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="Hola_acabo_de_correr" datatype="html">
-        <source>Hola, acabo de correr <x id="PH" equiv-text="ase SportEnum.Running:
-  "/> km con Ousman, véalo en <x id="PH_1" equiv-text=" $localize`:@@Hola_a"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="01ee56cd898c4723a826740ee71b185bce0da78c" datatype="html">

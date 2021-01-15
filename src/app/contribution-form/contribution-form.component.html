@@ -114,12 +114,12 @@
     </div>
 
     <div class="float-right">
-        <button (click)="captchaRef.execute()" type="button">
+        <button (click)="onParticipateButtonClick(captchaRef)" type="button" [disabled]="isProcessing">
             <span class="float-left" i18n>PARTICIPA</span>
             <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
         </button>
-        <button type="submit" [hidden]="true" #submit></button>
-        <re-captcha #captchaRef="reCaptcha" (resolved)="onCaptchaResolved($event, submit)"
+        <button type="submit" [hidden]="true" #submitBtn></button>
+        <re-captcha #captchaRef="reCaptcha" (resolved)="onCaptchaResolved($event, submitBtn)"
             (error)="onCaptchaError($event)" errorMode="handled">
         </re-captcha>
     </div>
