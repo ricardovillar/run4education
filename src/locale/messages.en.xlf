@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2"
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="b16985250585d295e95a5d82dc6c7cfa59734c5d" datatype="html">
+        <source> Formulario de participación </source>
+        <target>Registration Form</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="809205e98c7af7376081300ca7b4d4067254dedb" datatype="html">
+        <source> La donación mínima es de 0,5 € por kilómetro recorrido pero, si quieres, tienes la posibilidad de donar los € que consideres por cada kilómetro. </source>
+        <target>Minimum donation 0,5 € per km, however it is also possible to donate any amount per km you choose.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dd2a11ebc737589080ed400dacc33a8c8c84728b" datatype="html">
+        <source>Nombre</source>
+        <target>First Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7cc7d4e5b5cae80ca5d7c2d9227dc7fad54ce195" datatype="html">
+        <source>Apellidos</source>
+        <target>Surnames</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c91af3d2d1fe225221fdc3464a7a1048502c1635" datatype="html">
+        <source>Km recorridos</source>
+        <target>Kilometers completed</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9a2665b939fcbe7d3d1f50e9fb70e4f957e07d9c" datatype="html">
+        <source>€ por km</source>
+        <target>€ per km</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c168b8e1bbb2724e3dec9c75445fd059c4087d3a" datatype="html">
+        <source>Modalidad</source>
+        <target>Modality</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5313ed0ade72712bce609294913bfa277d6b4597" datatype="html">
+        <source>Corriendo</source>
+        <target>Running</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="673f66f29d7765863ce319cdc89a3ab693e69ca2" datatype="html">
+        <source>Andando</source>
+        <target>Walking</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cf9c35783cc0106460760d3b90e89e782c84f58d" datatype="html">
+        <source>Pedaleando</source>
+        <target>Cycling</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="89c7a2fb5ee34216073e0564635fb6b70dfe9062" datatype="html">
+        <source>Nadando</source>
+        <target>Swimming</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e9e588741024086a4b24d5db5da4f5c540a07f30" datatype="html">
+        <source>Correo electrónico</source>
+        <target>E-mail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8d969e4c0154306bb08cdd9df3cd331a262cf013" datatype="html">
+        <source>País</source>
+        <target>Country</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e14f04cded78339c3375ca12d3ebc08508cd3954" datatype="html">
+        <source>Ciudad</source>
+        <target>City</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4dc7773ccdcc33e196aae8dbb5264ea0ef266e83" datatype="html">
+        <source>Subir mi foto (opcional)</source>
+        <target>Upload my photo (optional)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="74130afdcb8dc19a77fffcfa4521cae2375f63dd" datatype="html">
+        <source>Tu foto se publicará en el mapa virtual y podrá ser compartida en los perfiles de redes sociales de Corre al País de los Blancos y/o NASCO Feeding Minds. </source>
+        <target>Your photo will be published on the virtual map and might be shared in the profiles on social networks of "Run to the country of the White Man" and or NASCO Feeding Minds.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">82,84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7700adc82b6e1929a55928f997f6cde25a5169c3" datatype="html">
+        <source>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</source>
+        <target>I would like to know more about Ousman Umar and the solidarity projects of NASCO Feeding Minds.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="53e313474764620648614ea52e54081fc19b8414" datatype="html">
+        <source>Quiero que mis kilómetros se publiquen de forma anónima, aparecerá mi tramo recorrido sin nombre.</source>
+        <target>I prefer to have my kilometers published anonymously and my completed trajectory will appear without my name.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c867439324305e64b5cd5be424de4f10290717bb" datatype="html">
+        <source>He leído y acepto los</source>
+        <target>I have read and accept the</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d75578f6740d60d36c8a35ea24e19078235e0a07" datatype="html">
+        <source>términos legales</source>
+        <target>legal conditions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d643c85c1c2a0f319a5b7a046434be706989439" datatype="html">
+        <source>PARTICIPA</source>
+        <target>PARTICIPATE</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6bf2eed052042dabb630036b4244ce1786cde4af" datatype="html">
+        <source>Ousman ha empezado su viaje al país de los blancos</source>
+        <target>Ousman started his journey to the country of the whites</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c18b5b5c7ce910a8e624f2b441995e03172d3bcb" datatype="html">
+        <source>Nací en Fiaso, y viví una infancia feliz hasta los 9 años. Ahora, mirando atrás entiendo que no es más rico quien más tiene, sino quien menos necesita. No tenía ni zapatos, pero me sentía el niño más feliz del mundo. Para estudiar, andaba 14 kilómetros al día. Un día, jugando en el patio de mi casa con los juguetes que había fabricado yo mismo, vi un avión volar en el cielo. Me dijeron que sólo los blancos podían fabricar aquellos objetos. Sentí una gran curiosidad. ¿Qué había que hacer para ser uno de esos blancos? Entendí que el mundo no terminaba en la frontera de mi pueblo y quise ir más allá.</source>
+        <target>I was born in Fiaso and had a happy childhood until I was 9 years old.  In retrospect, I understand that one is not richer from material things, but who needs less.  I didn’t even have shoes but I felt like the happiest child in the world.  In order for me to go to school, I had to walk 14 kilometers each day.  One day, playing on the patio of my house with the toys I made, I saw an airplane high up in the sky.  I was told that only the white people could create these objects.  I felt an enormous sense of curiosity.  What would I have to do to become one of these white people? I understood that the world did not end at the border of my village and I wanted to travel beyond my borders.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">100,106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="228c0fb31e2d773c9e19017ee5dfcc6cde74cba6" datatype="html">
+        <source>A los 9 años me marché de mi pueblo natal para ir a la ciudad más cercana, Techiman. Allí empezó mi universidad de la vida. Trabajaba como chapista de sol a sol, en un taller. Mi finalidad era aprender el oficio, pero pasaba mucha hambre y no aguanté. Escapé de allí un año más tarde.</source>
+        <target>At 9 years old I left my village to go to the closest city, Techiman.  There I began my “Life University”.  I had a job as a sheet metal worker in a workshop from sun to sun.   My objective was to learn the trade, but I was constantly hungry and couldn’t hold out. I ended up escaping after one year.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">112,115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6540d802f9f1433dbec3ba8edcc0eff9712fe4a3" datatype="html">
+        <source>A los 10 años llegué a Kumasi y estuve trabajando en otro taller, esta vez de camiones. Arreglaba la chapa, colocaba parabrisas, soldaba… todo sin protección. Pero en ningún momento había tenido sueldo a fin de mes. Trabajaba a cambio de un plato de arroz y si había suerte, propinas</source>
+        <target>At 10 years old I went to Kumasi where I worked with trucks. My job was to repair sheet metal, install windshields, welding, all without protection and no salary at the end of the month.  I worked in exchange for a bowl of rice and with luck, some tips.</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">121,123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d37a2c2a9adf8206a92cb79f5ef2002aafaa3e3" datatype="html">
+        <source>En Tema vi el mar por primera vez, a los 12 años. Me sentí mucho más cerca del paraíso, ya que veía que los barcos que descargaban en el puerto traían tesoros de Europa. Tocaba el polvo que quedaba encima de los camiones y el material que llegaba, con una gran ilusión, como si estuviera tocando un pedacito de paraíso.</source>
+        <target>In Tema, I was 12 years old when I saw the sea for the first time.  I felt closer to “paradise” because I could see boats unloading at the port, bringing treasures from Europe.  I touched the dust that was left on the surface of the trucks from the material that had arrived which was so exciting, just as if I had been touching a small piece of paradise.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">128,132</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3657504b24dbc1c9b2eae633dcbcfc94ad91cfc7" datatype="html">
+        <source>Empiezo el camino para marcharme de Ghana, dirección Níger, con el objetivo de llegar a Libia. Allí, me dijeron que tendría un sueldo a fin de mes. ¿Podría ser eso cierto? En Bolgatanga mi ilusión se vio amenazada al ver que el camión donde íbamos se había estropeado. No fuimos capaces de repararlo y estuvimos una semana esperando hasta que vino gente de Kumasi para repararlo.</source>
+        <target>I began my journey to leave Ghana en route to Niger with the objective of reaching Libya.  One there, I was told that I would receive a salary at the end of each month.  Could this be true?  My excitement turned to grim disappointment when our truck had broken down.  As we were unable to repair the truck we had to wait one week for repairmen from Kumasi to intervene.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">138,142</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="033879a505bb05ebd52fe0d64d2d5e4f07a94486" datatype="html">
+        <source>Niamey era el final del trayecto del camión de sal donde viajábamos. Yo tenía que continuar por mi camino, sin camionero. Después de muchas trabas conseguí llegar a la estación de autobuses donde se coge el bus para ir hasta Agadez, al norte de Níger, justo en la frontera con el desierto del Sáhara. Allí conocí a un grupo de personas que también querían llegar hasta Libia, y decidimos viajar juntos.</source>
+        <target>Niamey marked the end of the journey in the salt truck which we travelled in.  I had to continue on my own, without a driver.  After many obstacles, I was able to reach a bus station where I got a bus going to Agadez, in the north of Niger and at the border of the Sahara desert.  Once there, I met a group of people who also wanted to go to Libya, so we decided to travel together.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">147,151</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4d36f331ac14c8aaf44c887671c9583104c0d89e" datatype="html">
+        <source>La primera sorpresa fue en el último control de aduanas antes de entrar en la ciudad de Agadez. Mis compañeros de viaje y yo fuimos forzados a bajar del bus en el que viajábamos, por la policía. Nos pidieron documentación, pero aunque la tuviéramos, no nos permitían estar allí sin pagar. Empezaron por pegar al más fuerte del grupo para asustarnos. Todos, asustados, nos vimos obligados a pagar para poder llegar a la ciudad de Agadez. En Agadez nos dijeron que había dos caminos para llegar a Libia, y nos decantamos por la mejor: los land rovers que en 3 días nos dejaban en Libia. No fui consciente de que se trataba de una emboscada. No hay caminos que crucen el desierto. Salimos 46 en 3 land rovers, y 5 horas más tarde nos vimos abandonados en mitad del desierto del Sáhara. Fueron tres semanas caminando, meando para poder beber y sobrevivir, especialmente en las últimas etapas. Finalmente solo 6 logramos llegar con vida hasta Libia. La realidad supera la ficción.</source>
+        <target>The first surprise was at the last customs control before entering the city of Agadez. My travel companions and I were forced by the police to get off the bus. We were asked for our documents, but even if we had them, we weren’t allowed to be there without paying. The police began to hit the strongest in the group just to scare us. We of course were, and finally they made us pay in order to get to Agadez. In Agadez we were told that there were two trucks going to Libya and we chose the best one: the Land Rovers that in 3 days would take us to Libya. I wasn’t aware that this was an ambush. There are no pathways to cross the desert.  There were 46 of us distributed in 3 Land Rovers and 5 hours later we were abandoned in the middle of the Sahara desert. We spent three weeks walking, urinating in order to drink and to survive, especially in the final stages of our journey. Eventually, only 6 of us managed to survive by the time we reached Libya. The reality surpassed fiction.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">156,167</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d841aa0c13003bb5772a1508587f1b53453c90ad" datatype="html">
+        <source>Durante el proceso que he explicado en el punto anterior, pasé por In Guezzam, con un nombre que ni recuerdo.</source>
+        <target>During this process that I explained in the previous point, I passed through Guezzam with a name I don’t even remember.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">172,174</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="581416199eb724a35b77d0eb105f8036ab077582" datatype="html">
+        <source>Por fin estábamos en Libia. Habíamos sobrevivido y nos sentíamos afortunados, pero no teníamos recursos para pagar un taxi de una ciudad a otra, y teníamos que llegar a la capital. Quisimos caminar de Ghat hasta Alawenat. Durante el camino, empecé a sangrar por la nariz y fuimos a pedir ayuda sanitaria en un campamento militar que encontramos por el camino. Literalmente, el médico me dijo que no podía tocar mi sangre, porque era como tocar la sangre de un perro. Allí descubrí que yo era negro, y las consecuencias de serlo. Conocí el racismo por primera vez.</source>
+        <target>Finally we made it to Libya. We were lucky to have survived but at the same time had no resources to pay for a taxi to get from one city to another. We needed to go to the capital. We wanted to walk from Ghat to Alawenat. During this journey on foot I had a nosebleed and went to ask for help at a military base we found along the way. Literally, the doctor told me that he couldn’t touch my blood as it was like touching the blood of a dog. There I realized that I was black and what the consequences were of being so. For the first time I experienced what racism meant.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">179,185</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="260ce4c0447b23d3118a87e47b0f06f8b1e58d92" datatype="html">
+        <source>En Alawenat me movía con una serie de personas que estaban en mi misma situación. Íbamos a recoger de las basuras la comida que sobraba de los restaurantes, para poder comer algo. Vivíamos en la calle. A pesar de la situación en la que vivíamos, a veces te encontrabas con buena gente. Un día, un camión nos lanzó sandías para que pudiéramos comer.</source>
+        <target>In Alawenat I moved around with different people who were in the same situation as I.    When we were hungry, we had to look for leftover food from restaurants in rubbish bins.  We lived on the streets.  In spite of the way we were living, sometimes we found good people.  One day we had the good fortune that someone from a truck threw watermelons our way.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">190,194</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7810223671149ad48342a57cf4664008783e0b5d" datatype="html">
+        <source>En Ubari, el único trabajo que tenía era trabajo de campo. Aunque yo llegaba primero, como era tan pequeño nadie me quería contratar. Esto implicaba muchas dificultades y acabé mendigando comida por la calle. Un día, un hombre intentó abusar de mí a cambio de comida. Afortunadamente me pude escapar.</source>
+        <target>In Ubari we worked in the fields which was the only job we had. Even though I arrived first, the fact that I was the smallest meant that no one would hire me. This implied more suffering on my part, having to peddle for food on the streets. One day a man tried to abuse me in exchange for food.  Fortunately, I managed to escape.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">199,202</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="afe0469d571fc86ffc48d1abc8ed8264ac553e83" datatype="html">
+        <source>En Sabha vivía en la Connection House, un lugar donde nadie merece vivir. Se venden drogas y las mujeres se prostituyen. Encontré un trabajo en un taller, de chapista, pero el propietario era tan radical que apenas me dejaba salir; me sentía encarcelado. No podía ni siquiera ir a rezar, y después de 3 meses salté la valla y me escapé.</source>
+        <target>In Sabha I lived in the Connection House, a place where no one deserved to live. It was full of drug trafficking and prostitution. I found a job as a sheet metal worker but I could hardly leave the place because the owner was so strict. I felt as if I was in jail. I couldn’t even go to pray, so after 3 months’ time I jumped the fence and escaped.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">207,211</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7dcb9175d8ff937d2ba245c5d12b9ed677f05c30" datatype="html">
+        <source>Acabé trabajando como soldador en el puerto, soldando barcos. Dormía en los barcos, en el taller... donde podía. Conseguí trabajar aquí ́durante dos años y reuní 1.800 dólares, que serían mi salvoconducto para la patera. Conseguí superar el control de Gadafi para subir al avión, con documentos falsos.</source>
+        <target>I ended up working with boats as a welder in the port.  I slept in the boats, in the garage, wherever I could.  I managed to work there for two years and saved up 1800 dollars which would be a safeguard for the dinghy.  I was able to surpass the controls of Gadafi to board a plane with false documents.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">216,219</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5f7e39277cb308bbd105abc82dd51598417a8c74" datatype="html">
+        <source>Viví de nuevo en una Connection House y tuve la gran suerte de que un día, cuando fui a buscar agua, rodearon la casa los policías. Cuando volví, me encontré con un grupo de coches de policía rodeando la casa porque alguien les había delatado. Afortunadamente yo estaba fuera y conseguí escaparme de aquella redada, que podría haber acabado con mi vida.</source>
+        <target>Once again I lived in another Connection House and was very fortunate one day when I went to fetch water I saw that the house was surrounded by police. When I returned I found police cars all around because someone had squealed on them. Fortunately, I was outside and managed to escape this police raid where I could have been killed.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">224,228</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cdefc9fdf13c03c30c875d71bfbe459759614ff0" datatype="html">
+        <source>Ya conocía los intríngulis de la vida en Libia, era un experto. En un restaurante africano conocí a Gorden, el agente de la mafia que me llevaría hasta Ghadames, el primer paso para llegar algún día a coger una patera.</source>
+        <target>As I already knew the nuts and bolts of life in Libya, I was an expert.  In an African restaurant called Gordon, an agent from the mafia who would take me to Ghadames which was the first step to getting on a dinghy.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">233,236</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="51bc9613a6db6820483d819965c09899c47a95bd" datatype="html">
+        <source>En Benghazi viví aproximadamente tres años. Llegué con la ilusión de encontrar una familia que me acogiera para trabajar en su casa como “houseboy”. Los primeros meses viví en un gueto, junto a más de cincuenta personas, donde había solo dos baños. Trabajaba como chapista.</source>
+        <target>I lived in Benghazi for approximately three years. I felt enthusiastic to find a family to take me in to work as a houseboy. For the first few months I lived in a ghetto with fifty people and I had a job as a sheet metal worker.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">241,244</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ab03dc4901a4bb562d93fbccd726df7020e3a4ce" datatype="html">
+        <source>Fui a Tubruk a trabajar como chapista en una empresa alemana que se llamaba Belfinga. Fui con pasaporte falso y estuve dos semanas trabajando con ellos, para hacer una prueba. Finalmente decidí volver a Benghazi porque me pedían dinero para trabajar, y no tenía suficiente.</source>
+        <target>I went to Tobruk to work in a body shop for a German company called Belfinga. I had a false passport and had two weeks to prove I could do the job. In the end I decided to return to Benghazi because I was asked to pay money in order to work but I didn’t have enough.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">249,252</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1e55625dde81f1b70063caf07e31d39f93f02e4c" datatype="html">
+        <source>Vivíamos en una casa con mucha gente, esperando a que nos organizaran el viaje para cruzar de Libia a Túnez. En este recorrido conocí a Olú.</source>
+        <target>We lived in a house with many people, waiting for our trip to be organized to cross Libya to Tunez. On this particular part of the journey I met Olú.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">257,259</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="069aa1d169ea7eef44dc0f52b6a2699a846e1a9d" datatype="html">
+        <source>En Túnez nos escondimos en una granja de animales, ya que estábamos solo de paso, intentando llegar a Argelia, esquivando los controles policiales fronterizos. Al día siguiente un conjunto de coches llegaron para llevarnos hasta Argelia. En el camino, tuvimos la mala suerte de que el viaje se interrumpió por un tiroteo de la policía mientras intentábamos coger agua de un pozo. Nos arrestaron. Parte de la gente se escapó, otros con menos suerte fueron alcanzados por las balas, y a mí, me capturaron.</source>
+        <target>In Tunez we hid in farmhouse with animals as we were only passing through, trying to get to Algeria and sidestepping police controls at the border.  The following day a bunch of cars arrived to take us to Algeria.  On the way we had the misfortune that our trip was interrupted by a police shootout while we were fetching water from a well.  We were arrested.  Some of the people managed to escape, others not so lucky and were shot to death. I was arrested.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">265,270</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9f53ab5dc32b915ecb52deb67a41ce54416410e8" datatype="html">
+        <source>En Argelia descubrí que la mafia y la policía están estrechamente conectados. Fiché mínimo 10 veces con nombres distintos en ciudades distintas, y dormía en cárceles, para que el gobierno argelino pudiera cobrar la ayuda de Francia por interceptarme como inmigrante. Con el dinero que pagaba el gobierno francés, debían enviarme a mi país de vuelta, pero en lugar de eso, me llevaban a otra ciudad y me cambiaban el nombre. Así cobraban el doble. </source>
+        <target>In Algeria I discovered that the mafia and the police were closely tied.  I was registered with at least 10 different names in different cities and I slept in prisons so that the Algerian government could receive help from France by intercepting me as an immigrant.  With the money that the French government paid, they had to send me back to my country, however, instead of this, they took me to another city and changed my name.  By doing so, they got paid double.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">275,281</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deff246836a395cac682b0f1cd0e387029905d81" datatype="html">
+        <source>Me escondía constantemente de la policía. Se trata sin duda de la peor ciudad en la que he estado. Fue la peor cárcel, comías al lado del baño, y estaba muy sucio. Estuve una semana en estas condiciones. </source>
+        <target>I was constantly hiding from the police.  This was by far the worst city that I had been in.  It was the worst prison, we ate next to the bathrooms and were very dirty.  I lived in these conditions for a week.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">287,290</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7c0a1336e7a9778de9ad23b170b394f4f6631fbd" datatype="html">
+        <source>Una vez llegados a Mali, me abandonaron en la tierra de nadie, entre Mali y Argelia. Unas horas más tarde, aparecieron otras furgonetas, esta vez con personas vestidas de paisanos, que nos pidieron 100 dólares para llevarnos de vuelta a Tamanrasset. </source>
+        <target>Once in Mali, I was abandoned in no man’s land between Mali and Algeria.  Some hours later, other trucks arrived and this time dressed in plain clothes.  They asked us for 100 dollars to take us back to Tamanrasset.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">295,299</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f26bef615a9b1d8cd1d60d34696d5b17ac3a5de7" datatype="html">
+        <source>Había un montón muy grande de pasaportes de muchos países, especialmente de Libia. Me cogieron, me miraron a la cara y me dieron un pasaporte de Mali. Unos minutos más tarde, me preguntaron cuál era mi nombre, y si no decía el nombre del nuevo pasaporte, me daban una bofetada. Más tarde lo entendí ... yo ya no era Ousman, era otra persona. Ahora ya podía seguir el trayecto. </source>
+        <target>There was a huge amount of passports from many countries, especially from Libya.  They took me, looked at my face and gave me a passport from Mali.  Some minutes later I was asked my name and if I didn’t say the name on the passport, I got slapped.  Later on, I understood that I was no longer Ousman. I was someone else.  Then I could carry on with my journey.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">304,309</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9a7bece65e580a21306ea4e2e49e9ca27b77be84" datatype="html">
+        <source>Había llegado a la ciudad de la mafia: el valley. Aprendí a vivir con la mafia, los traficantes ... era como un pequeño país, en la tierra de nadie. Allí tenían su policía, su primer ministro… todo estaba organizado como si fue un país, pero era “el país sin ley”. Solo comía una vez al día, pasé mucha hambre. Los mafiosos cantaban canciones con melodías bonitas pero letras muy crueles. </source>
+        <target>I arrived to the city of the mafia:  the Valley.  I learned to live with the mafia, traffickers, as if it were a country of its own, in no man’s land.  They had their own police, prime minister… everything was organized but at the same time, a lawless country.  I ate only once a day and was overcome by hunger.  The mafia sang songs with beautiful melodies but with very cruel lyrics.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">314,319</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="239c5347f1a52581aa62ce58f8b55986c52a8645" datatype="html">
+        <source>Llegamos hasta debajo de un puente, en camiones frigoríficos. Estábamos en Rabat. Allí había los representantes de cada líder de la patera: había tres caminos, y escogí el primero: el camino liderado por Rahman Connection. Este camino me llevaría a la patera. ¿Habría escogido bien? Me llevaron a una casa, me pude duchar y me puse ropa limpia. Salimos de tres en tres, infiltrados en autobús, camino a Casablanca. </source>
+        <target>We travelled inside refrigerated trucks and arrived to an area which was underneath a bridge.  We were in Rabat.  There we found the agents of every leader of the dinghies: there were 3 trucks and I chose the first:  the journey was led by Rahman Connection.  This route would lead me to the dinghy.  Had I made the right choice?  I was taken to a house, I showered and dressed in clean clothes.  We left in threes, infiltrated on a bus toward Casablanca.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">325,329</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0797a010b633fd53129e4615516f11a8ca63a0fb" datatype="html">
+        <source>Llegamos a Casablanca y nos metieron en un piso subterráneo. Me destinaron a un gueto, dormíamos 50 juntos. Una noche explotó el fuego del camping gas y pensamos que la policía nos pillaría, pero tuvimos suerte y no nos descubrieron. Un primo me mandó dinero y me sacaron para ir a la casa oficial de los jefes de la mafia. En aquel momento nos tomaron una foto. </source>
+        <target>We got to Casablanca and were taken to an underground flat.  I was in a ghetto, sleeping with 50 people.  One night the camping gas stove exploded and we thought the police would catch us but we were lucky and we weren’t discovered.  A cousin of mine sent me money and with that I was taken to the official house of the mafia bosses.  At that moment a photo of us was taken.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">334,339</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9fc9aeb000adaa2ba92243bcfa5f082b3285b6c8" datatype="html">
+        <source>En Mauritania nos facilitaron maderas para construir nosotros mismos las pateras. No éramos expertos, no éramos carpinteros, pero debíamos hacerlo. Lo que no sabíamos, es que muchos estaban construyendo su propio ataúd. Salimos dos pateras, y en el primer intento, la patera en la que viajaban mis compañeros naufragó, y no sobrevivió ninguno. Musa, mi amigo, con quien había compartido todo hasta entonces, también murió. Fue demasiado duro. Hicimos un segundo intento, de nuevo dos pateras, y la otra naufragó de nuevo. Nadie sobrevivió. Milagrosamente, la mía se mantuvo flotando, y el viento nos llevó hasta Fuerteventura, 48 horas más tarde. </source>
+        <target>In Mauritania we were given wood to build our own dinghy.  We weren’t experts or carpenters but we had to get this done.  What we didn’t know was that many were building their own coffin.  We left in two dinghies and in the first attempt the dinghy in which my friends we aboard got shipwrecked and there were no survivors. Musa, my close friend with whom I shared all my experiences up to that point lost his life.  This was too hard for me to cope with.  Two dinghies made a second attempt.  One of them got shipwrecked.  Miraculously mine stayed afloat and the wind took us to Fuerteventura 48 hours later.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">344,352</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b93470df24579f662168423535dda49f0fcb7390" datatype="html">
+        <source>Las olas llevaron la patera hasta unas rocas de la costa de Fuerteventura. Volcó, y todavía no sé cómo conseguí salir del mar con vida, ya que no sé nadar. Tenía los pies llenos de pinchos y heridas de andar descalzo por el desierto. Muchos de mis compañeros, besaban la arena con las pocas fuerzas que les quedaban, como si hubiesen llegado a la tierra prometida. La cruz roja vino a rescatarnos y me llevaron a un lugar caliente. Estaba en el paraíso. Me llevaron al CIE y me pareció un hotel de 5 estrellas, pero hoy, viéndolo con perspectiva, era lo más parecido a una cárcel. Allí estuve 1 mes, y me comunicaron que la ley Española me amparaba; podía residir en España. </source>
+        <target>The waves took the dinghy to the rocks on the coast of Fuerteventura.  It capsized and I still don’t know how I managed to get out of the sea alive as I don’t know how to swim.  My feet were full of wounds and thorns from having walked barefoot through the desert.  Many of my companions kissed the sand with the little strength they had left, as if they had arrived to the Promised Land.  The Red Cross came to rescue us and took me to a warm place.  I was in paradise.  I was taken to the CIE and to me it seemed like a five star hotel. In retrospect, it was just like a prison.  I spent one month there and was told that the Spanish law would protect me and therefore I would be able to live in Spain.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">357,365</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4acaf3c08c2124747773957011d759920430b734" datatype="html">
+        <source>Nos sacaron del CIE de Fuerteventura esposados, vigilados por policías armados, y volamos así hasta Málaga. Cuando llegamos, nos llevaron en furgoneta hasta otro centro de inmigración. Allí pasé tres días, y fue donde me preguntaron dónde quería residir. Yo dije “Barça”, ya que era lo único que conocía de España, y entendieron que quería decir Barcelona. Me dieron un billete de tren, una botella de agua, un bocadillo de atún y un documento que indicaba que yo era el número 101. </source>
+        <target>We were handcuffed and led out of the CIE and kept under close watch by armed police and then flown to Malaga.  Upon our arrival we were taken by van to an immigration center.  I spent 3 days there and was asked where I wanted to live.  I said “Barça” as this was the only thing I knew in Spain and of course they understood that I meant Barcelona.  I was given a train ticket, a bottle of water and a tuna sandwich and a document stating that I was number 101.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">371,377</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="be4cebe56405d1c9d81615a2a4f2cf7864e4a610" datatype="html">
+        <source>Al pisar el suelo de mi nueva ciudad, Barcelona, sentí una gran felicidad. Luego sentí miedo. Todo me resultaba nuevo y excitante. Era el 24 de febrero de 2005. Pero entonces me di cuenta que el paraíso no era tal y como lo había imaginado. Hacía mucho frío y no tenía donde dormir. Tras varios meses viviendo en la calle, me acogió una familia. La primera noche que dormí en su casa, lloré como un niño. ¿Por qué había sufrido tanto? ¿Por qué tanta lucha? ¿Qué había hecho mal? A la mañana siguiente entendí que la pregunta no era por qué sino para qué. ¿Para qué me serviría todo ese sufrimiento? Lo vi claro: para evitar que futuras víctimas caigan en las mismas trampas mortales en las que yo caí. Estudié castellano y catalán, me saqué el graduado escolar, dos carreras universitarias y un máster de ONGs en ESADE. En 2012 fundé NASCO Feeding Minds para brindar educación a los niños y jóvenes de Ghana y así puedan descubrir que el verdadero paraíso está en sus casas. El futuro de su país depende de ellos. Descubrí que la clave está en alimentar mentes, y desde entonces me dedico únicamente a perseguir este sueño.</source>
+        <target>When I set foot in my new city, Barcelona, I felt jubilant.  Later on, I was afraid.  Everything was so new and exciting.  It was the 24th of February 2005.  But then I realized that this paradise was not quite what I had imagined.  It was very cold and I had no place to sleep.  After several months living in the streets, a family took me in.  The first night I slept in their house I cried uncontrollably just like a child.  Why had I suffered so much?  Why such a fight?  What had I done wrong?  The following morning I understood that the question was not “why”, but “for what reason”.  What purpose did all of this suffering have?  It became clear to me.  It was to avoid that future victims fall into the hands of the same deadly traps that I had been a victim of. I studied Castellano and Catalan, graduated from high school, did two university degrees and graduated with a Master’s degree in NGO management at ESADE.  In 2012 I founded the NGO, NASCO Feeding Minds to provide an education to children and the youth of Ghana and therefore they will be able to discover that the true paradise is in their homes.  The future of the country lies in their hands.  I discovered that the key is to feed minds and since then I am fully committed to pursue this dream.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">382,393</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="49b56138c77457f8b7aa85b00fcc85f1b2266949" datatype="html">
+        <source>ha recorrido <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
+km con Ousman</source>
+        <target>has completed <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
+km with Ousman</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="61d4deef20be7017e558d775feb78e0292d2c222" datatype="html">
+        <source>ha recorrido <x id="INTERPOLATION" equiv-text="r&quot;&gt;
+                    &lt;s"/>
+ km con Ousman</source>
+        <target>has completed <x id="INTERPOLATION" equiv-text="r&quot;&gt;
+                    &lt;s"/>
+ km with Ousman</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bab92ce5f84e168bf3ac2073a53cc4d6710e8ac1" datatype="html">
+        <source>Anónimo</source>
+        <target>Anonymous</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/map/map.component.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="01ee56cd898c4723a826740ee71b185bce0da78c" datatype="html">
+        <source>¡Gracias <x id="INTERPOLATION" equiv-text=" {{ contribution.firstName }"/>
+!</source>
+        <target>Thank you <x id="INTERPOLATION" equiv-text=" {{ contribution.firstName }"/>
+!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d728bd500572fbf07e47633ba050e41c63ccf47" datatype="html">
+        <source>Te hemos enviado un email con la confirmación de tu participación</source>
+        <target>We have sent you an email confirming your participation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="590950f2f21bbce0938456dc5d2e638433ca4d62" datatype="html">
+        <source> Comparte en: </source>
+        <target>Share on</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c0795e2e7924787bdc1a527ee1ed4cd5da8ca366" datatype="html">
+        <source>Mira tu contribuición en el mapa</source>
+        <target>See your contribution on the map</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

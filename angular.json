@@ -93,6 +93,11 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "localize": [
+                "en"
+              ]
             }
           }
         },
@@ -104,13 +109,17 @@
           "configurations": {
             "production": {
               "browserTarget": "run4education:build:production"
+            },
+            "en": {
+              "browserTarget": "run4education:build:en"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "run4education:build"
+            "browserTarget": "run4education:build",
+            "outputPath": "src/locale"
           }
         },
         "test": {
@@ -154,6 +163,12 @@
               "devServerTarget": "run4education:serve:production"
             }
           }
+        }
+      },
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
         }
       }
     }

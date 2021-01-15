@@ -8,7 +8,7 @@
             <img src="https://correalpaisdelosblancos.com/avatars/avatar-1610641236854.jpeg" />
         </div>
         <div class="w-100 text-center">
-            <span>Ousman ha empezado su viaje al país de los blancos</span>
+            <span i18n>Ousman ha empezado su viaje al país de los blancos</span>
         </div>
     </div>
 
@@ -29,7 +29,7 @@
                     <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
                 </div>
                 <div class="w-100 text-center">
-                    <span>ha sumado {{ contribution.distance }}km con Ousman</span>
+                    <span i18n>ha recorrido {{ contribution.distance }}km con Ousman</span>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                     <span>{{ contribution.firstName }}</span>
                 </div>
                 <div class="w-100 text-center">
-                    <span>ha recorrido {{ contribution.distance }} km con Ousman</span>
+                    <span i18n>ha recorrido {{ contribution.distance }} km con Ousman</span>
                 </div>
             </div>
 
@@ -63,16 +63,16 @@
                     <img src="assets/images/avatar.png" />
                 </div>
                 <div class="w-100 text-center">
-                    <span>Anónimo</span>
+                    <span i18n>Anónimo</span>
                 </div>
                 <div class="w-100 text-center">
-                    <span>ha recorrido {{ contribution.distance }} km con Ousman</span>
+                    <span i18n>ha recorrido {{ contribution.distance }} km con Ousman</span>
                 </div>
             </div>
 
             <div class="tooltip-card-person" [id]="'tooltip-card-' + contribution._id">
                 <img src="assets/images/avatar.png" />
-                <span>Anónimo</span>
+                <span i18n>Anónimo</span>
             </div>
         </ng-template>
 

@@ -164,8 +164,6 @@ export class MapComponent implements OnDestroy {
     return polyline(coordinates, { color, dashArray, weight });
   }
 
-
-
   private addRouteMarkersTo(layers: Layer[]) {
     this._fullRoute.map(routePoint => {
       if (routePoint.elementId) {

@@ -10,7 +10,6 @@ import { RECAPTCHA_V3_SITE_KEY, RECAPTCHA_SETTINGS, RecaptchaSettings, Recaptcha
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '@app/app.component';
 import { MapComponent } from '@app/map/map.component';
-import { ContributionComponent } from '@app/contribution/contribution.component';
 import { ContributeComponent } from '@app/contribute/contribute.component';
 import { ThankYouComponent } from '@app/thank-you/thank-you.component';
 import { StoreModule } from '@ngrx/store';
@@ -28,7 +27,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     AppComponent,
     MapComponent,
-    ContributionComponent,
     ContributeComponent,
     ThankYouComponent,
     ContributionFormComponent
