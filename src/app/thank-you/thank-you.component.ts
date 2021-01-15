@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, LOCALE_ID, Inject } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -32,7 +32,8 @@ export class ThankYouComponent implements OnDestroy {
     route: ActivatedRoute,
     deviceService: DeviceDetectorService,
     private store: Store<fromStore.State>,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    @Inject(LOCALE_ID) private language: string,) {
     this.subscribeJourneyContributions();
     route.queryParamMap.subscribe((params) => this.setContributionId(params.get('c')));
     this._isMobile = deviceService.isMobile();
@@ -65,7 +66,7 @@ export class ThankYouComponent implements OnDestroy {
     if (!this.contribution) {
       return;
     }
-    this.contributionUrl = `${environment.MAP_URL}?c=${this.contribution._id}`;
+    this.contributionUrl = `${environment.MAP_URL}${this.language}?c=${this.contribution._id}`;
     this.setupFacebookSharing();
     this.setupWhatsappSharing();
   }
@@ -78,14 +79,14 @@ export class ThankYouComponent implements OnDestroy {
   private getFacebookShareQuote() {
     switch (this.contribution.sport) {
       case SportEnum.Cycling:
-        return `${this.contribution.firstName} acaba de pedalear ${this.contribution.distance} km con Ousman`;
+        return $localize`:@@acaba_de_pedalear:${this.contribution.firstName} acaba de pedalear ${this.contribution.distance} km con Ousman`;
       case SportEnum.Swimming:
-        return `${this.contribution.firstName} acaba de nadar ${this.contribution.distance} km con Ousman`;
+        return $localize`:@@acaba_de_nadar:${this.contribution.firstName} acaba de nadar ${this.contribution.distance} km con Ousman`;
       case SportEnum.Trekking:
-        return `${this.contribution.firstName} acaba de caminar ${this.contribution.distance} km con Ousman`;
+        return $localize`:@@acaba_de_caminar:${this.contribution.firstName} acaba de caminar ${this.contribution.distance} km con Ousman`;
       case SportEnum.Running:
       default:
-        return `${this.contribution.firstName} acaba de correr ${this.contribution.distance} km con Ousman`;
+        return $localize`:@@acaba_de_correr:${this.contribution.firstName} acaba de correr ${this.contribution.distance} km con Ousman`;
     }
   }
 
@@ -104,14 +105,14 @@ export class ThankYouComponent implements OnDestroy {
   private getWhatsappShareQuote() {
     switch (this.contribution.sport) {
       case SportEnum.Cycling:
-        return `Hola, acabo de pedalear ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
+        return $localize`:@@Hola_acabo_de_pedalear:Hola, acabo de pedalear ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
       case SportEnum.Swimming:
-        return `Hola, acabo de nadar ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
+        return $localize`:@@Hola_acabo_de_nadar:Hola, acabo de nadar ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
       case SportEnum.Trekking:
-        return `Hola, acabo de caminar ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
+        return $localize`:@@Hola_acabo_de_caminar:Hola, acabo de caminar ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
       case SportEnum.Running:
       default:
-        return `Hola, acabo de correr ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
+        return $localize`:@@Hola_acabo_de_correr:Hola, acabo de correr ${this.contribution.distance} km con Ousman, véalo en ${this.contributionUrl}`;
     }
   }
 

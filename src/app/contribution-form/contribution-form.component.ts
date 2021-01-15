@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SportEnum } from '@model/sport.enum';
@@ -6,23 +6,19 @@ import { Contribution } from '@model/contribution';
 import { ContributionsService } from '@services/contributions.service';
 import { addJourneyContribution } from '@store/actions/map/map.actions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { RecaptchaErrorParameters } from 'ng-recaptcha';
 
 import * as fromStore from "@store/reducers/index";
-import { RecaptchaErrorParameters } from 'ng-recaptcha';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'contribution-form',
   templateUrl: './contribution-form.component.html',
   styleUrls: ['./contribution-form.component.css']
 })
-export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ContributionFormComponent implements OnDestroy, AfterViewInit {
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
   faSpinner = faSpinner;
-
-  registerForm: FormGroup;
-  submitted = false;
 
   firstName: string;
   lastName: string;
@@ -57,28 +53,7 @@ export class ContributionFormComponent implements OnInit, OnDestroy, AfterViewIn
     private store: Store<fromStore.State>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private contributionsService: ContributionsService,
-    private formBuilder: FormBuilder) {
-  }
-
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      distance: ['', Validators.required],
-      value: ['', Validators.required],
-      sport: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      termsAccepted: [false, Validators.requiredTrue]
-
-    });
-  }
-
-  get f() { return this.registerForm.controls; }
-
-  onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
+    private contributionsService: ContributionsService) {
   }
 
   ngOnDestroy() {

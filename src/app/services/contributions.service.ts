@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, LOCALE_ID, Inject } from '@angular/core';
 import { JourneyContribution } from '@model/journey-contribution';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -8,7 +8,9 @@ import { environment } from '@environment';
 @Injectable({ providedIn: 'root' })
 export class ContributionsService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    @Inject(LOCALE_ID) private language: string,
+    private http: HttpClient) {
   }
 
   getJourneyContributions(): Observable<JourneyContribution[]> {
@@ -34,6 +36,7 @@ export class ContributionsService {
     formData.append('anonymous', anonymous.toString());
     formData.append('tid', stripeToken);
     formData.append('cpt', captcha);
+    formData.append('language', this.language);
 
     if (contribution.avatar) {
       formData.append('avatar', contribution.avatar);
