@@ -203,6 +203,7 @@ export class MapComponent implements OnDestroy {
     this.contributedRoutes = [this._fullRoute[0].latLng];
     let contributedPoints = [this._fullRoute[0].latLng];
     let contributedKMsCounted = 0;
+    let endPoint: LatLng;
 
     this.journeyContributions.forEach(contribution => {
       let distanceInKm = contribution.distance * R;
@@ -232,15 +233,28 @@ export class MapComponent implements OnDestroy {
       journeyContributionsPolyline['contributionId'] = contribution._id;
 
       layers.push(journeyContributionsPolyline);
-      contributedPoints.splice(0, contributedPoints.length - 1);
+
+      let last = contributedPoints.length - 1;
+
+      endPoint = contributedPoints[last];
+
+      contributedPoints.splice(0, last);
 
       this._markers[contribution._id] = journeyContributionsPolyline;
       if (this._highlightId && this._highlightId == contribution._id) {
         this.highlight(this._highlightId);
       }
-
     });
 
+    if (endPoint != null) {
+      let endPointIcon = icon({
+        iconSize: [30, 39],
+        iconAnchor: [15, 39],
+        iconUrl: 'assets/images/ousman_01.png',
+        iconRetinaUrl: 'assets/images/ousman_01.png'
+      });
+      layers.push(marker(endPoint, { icon: endPointIcon }));
+    }
   }
 
   private getColorForContribution(contribution: JourneyContribution): string {
