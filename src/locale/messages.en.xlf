@@ -179,6 +179,16 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="61554c289b41a8d7724f76adc84273ac1f215eef" datatype="html">
+        <source> Tu donación es de <x id="INTERPOLATION" equiv-text="ass=&quot;mr-2 float-left donati"/>
+        </source>
+        <target> Your donation is <x id="INTERPOLATION" equiv-text="ass=&quot;mr-2 float-left donati"/>
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">119,121</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="c18b5b5c7ce910a8e624f2b441995e03172d3bcb" datatype="html">
         <source>Nací en Fiaso, y viví una infancia feliz hasta los 9 años. Ahora, mirando atrás entiendo que no es más rico quien más tiene, sino quien menos necesita. No tenía ni zapatos, pero me sentía el niño más feliz del mundo. Para estudiar, andaba 14 kilómetros al día. Un día, jugando en el patio de mi casa con los juguetes que había fabricado yo mismo, vi un avión volar en el cielo. Me dijeron que sólo los blancos podían fabricar aquellos objetos. Sentí una gran curiosidad. ¿Qué había que hacer para ser uno de esos blancos? Entendí que el mundo no terminaba en la frontera de mi pueblo y quise ir más allá.</source>
         <target>I was born in Fiaso and had a happy childhood until I was 9 years old.  In retrospect, I understand that one is not richer from material things, but who needs less.  I didn’t even have shoes but I felt like the happiest child in the world.  In order for me to go to school, I had to walk 14 kilometers each day.  One day, playing on the patio of my house with the toys I made, I saw an airplane high up in the sky.  I was told that only the white people could create these objects.  I felt an enormous sense of curiosity.  What would I have to do to become one of these white people? I understood that the world did not end at the border of my village and I wanted to travel beyond my borders.</target>
@@ -484,6 +494,18 @@ km with Ousman</target>
     <context-group purpose="location">
       <context context-type="sourcefile">src/app/map/map.component.html</context>
       <context context-type="linenumber">75</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="email_share_subject" datatype="html">
+    <source>Corre al país de los blancos</source>
+    <target>Run to the land of the white man</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
+      <context context-type="linenumber">109</context>
+    </context-group>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.ts</context>
+      <context context-type="linenumber">120</context>
     </context-group>
   </trans-unit>
   <trans-unit id="01ee56cd898c4723a826740ee71b185bce0da78c" datatype="html">
