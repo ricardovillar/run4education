@@ -48,6 +48,13 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
   Cycling = SportEnum.Cycling;
   Swimming = SportEnum.Swimming;
 
+  get amount(): number {
+    if (this.distance != null && this.value != null) {
+      return this.distance * this.value;
+    }
+    return null;
+  }
+
   constructor(
     private cd: ChangeDetectorRef,
     private store: Store<fromStore.State>,

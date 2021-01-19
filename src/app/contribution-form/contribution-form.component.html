@@ -114,6 +114,12 @@
     </div>
 
     <div class="float-right">
+
+        <span class="mr-2 float-left donation-label" *ngIf="this.amount">
+            <strong i18n>
+                Tu donación es de {{ amount | currency:'€' }}
+            </strong>
+        </span>
         <button (click)="onParticipateButtonClick(captchaRef)" type="button" [disabled]="isProcessing">
             <span class="float-left" i18n>PARTICIPA</span>
             <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>

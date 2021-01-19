@@ -123,3 +123,7 @@ input[type="checkbox"] {
 div.terms-not-accepted {
     border: solid 3px #dc3545;
 }
+
+.donation-label {
+    margin-top: 0.75rem;
+}

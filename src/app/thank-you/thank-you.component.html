@@ -12,11 +12,38 @@
             rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
             <input type="image" class="icon-social-media" src="assets/images/icons/facebook.png">
         </a>
-        <a *ngIf="whatsappSharing" [href]="whatsappSharing" data-label="Whatsapp"
+        <a *ngIf="whatsappSharing && !isMobileOrTablet" [href]="whatsappSharing" data-label="Whatsapp"
             onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
             rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
             <input type="image" class="icon-social-media" src="assets/images/icons/whatsapp.png">
         </a>
+        <a *ngIf="whatsappSharing && isMobileOrTablet" [href]="whatsappSharing" data-label="Whatsapp"
+            class="float-left mr-1">
+            <input type="image" class="icon-social-media" src="assets/images/icons/whatsapp.png">
+        </a>
+        <a *ngIf="twitterSharing" [href]="twitterSharing" data-label="Twitter"
+            onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+            rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
+            <input type="image" class="icon-social-media" src="assets/images/icons/twitter.png">
+        </a>
+        <a *ngIf="mailSharing" [href]="mailSharing" data-label="E-mail"
+            onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+            rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
+            <input type="image" class="icon-social-media" src="assets/images/icons/mail.png">
+        </a>
+
+        <a *ngIf="pinterestSharing" [href]="pinterestSharing" data-label="Pinterest"
+            onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+            rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
+            <input type="image" class="icon-social-media" src="assets/images/icons/pinterest.png">
+        </a>
+
+        <a *ngIf="linkedinSharing" [href]="linkedinSharing" data-label="LinkedIn"
+            onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+            rel="noopener noreferrer nofollow" target="_blank" class="float-left mr-1">
+            <input type="image" class="icon-social-media" src="assets/images/icons/linkedin.png">
+        </a>
+
     </p>
     <p class="see-contribution">
         <a routerLink="" class="float-left" [queryParams]="{ c: contribution._id }">
