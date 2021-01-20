@@ -91,7 +91,7 @@
 
     <div class="float-left w-100">
         <input type="checkbox" class="float-left mr-1" #futureCommunicationConsentField
-            name="futureCommunicationConsent" />
+            name="futureCommunicationConsent" [(ngModel)]="futureCommunicationConsent" />
         <span i18n>Quiero saber más de Ousman Umar y los proyectos solidarios de NASCO Feeding Minds.</span>
     </div>
 
@@ -113,21 +113,22 @@
         </div>
     </div>
 
-    <div class="float-right">
-
-        <span class="mr-2 float-left donation-label" *ngIf="this.amount">
-            <strong i18n>
-                Tu donación es de {{ amount | currency:'€' }}
-            </strong>
-        </span>
-        <button (click)="onParticipateButtonClick(captchaRef)" type="button" [disabled]="isProcessing">
-            <span class="float-left" i18n>PARTICIPA</span>
-            <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
-        </button>
-        <button type="submit" [hidden]="true" #submitBtn></button>
-        <re-captcha #captchaRef="reCaptcha" (resolved)="onCaptchaResolved($event, submitBtn)"
-            (error)="onCaptchaError($event)" errorMode="handled">
-        </re-captcha>
+    <div class="float-left w-100">
+        <div class="float-right">
+            <span class="mr-2 float-left donation-label" *ngIf="this.amount">
+                <strong i18n>
+                    Tu donación es de {{ amount | currency:'€' }}
+                </strong>
+            </span>
+            <button (click)="onParticipateButtonClick(captchaRef)" type="button" [disabled]="isProcessing">
+                <span class="float-left" i18n>PARTICIPA</span>
+                <fa-icon *ngIf="isProcessing" class="float-left" [icon]="faSpinner" [spin]="true"></fa-icon>
+            </button>
+            <button type="submit" [hidden]="true" #submitBtn></button>
+            <re-captcha #captchaRef="reCaptcha" (resolved)="onCaptchaResolved($event, submitBtn)"
+                (error)="onCaptchaError($event)" errorMode="handled">
+            </re-captcha>
+        </div>
     </div>
 
 </form>

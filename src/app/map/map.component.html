@@ -4,7 +4,7 @@
 
 <div [hidden]="true">
     <div class="popup-card-person" id="popup-card-60006f58be918d0020e485a1">
-        <div class="w-100 text-center">
+        <div class="w-100 text-center mt-4 mb-3">
             <img src="https://correalpaisdelosblancos.com/avatars/avatar-1610641236854.jpeg" />
         </div>
         <div class="w-100 text-center">
@@ -21,7 +21,7 @@
 
         <ng-container *ngIf="contribution.firstName; else anonymousTemplate">
             <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution._id">
-                <div class="w-100 text-center">
+                <div class="w-100 text-center mt-4 mb-3">
                     <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
                     <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
                 </div>
