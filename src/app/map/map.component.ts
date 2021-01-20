@@ -60,8 +60,6 @@ export class MapComponent implements OnDestroy {
     deviceService: DeviceDetectorService,
     route: ActivatedRoute) {
     route.queryParamMap.subscribe((params) => this._highlightId = params.get('c'));
-    this.subscribeFullRoute();
-    this.subscribeJourneyContributions();
     this._isMobile = deviceService.isMobile();
     this._isTablet = deviceService.isTablet();
     if (this._isMobile) {
@@ -72,6 +70,8 @@ export class MapComponent implements OnDestroy {
 
   ngOnInit() {
     this.loadYoutubeApi();
+    this.subscribeFullRoute();
+    this.subscribeJourneyContributions();
   }
 
   ngOnDestroy() {
