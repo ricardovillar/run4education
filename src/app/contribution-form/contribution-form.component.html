@@ -102,6 +102,10 @@
             nombre.</span>
     </div>
 
+    <div class="float-left w-100">
+        <span class="anonymous-warning" i18n>Los participantes anónimos no podrán participar en el sorteo.</span>
+    </div>
+
     <div class="float-left w-100 mb-1">
         <div class="float-left pr-1" [class.terms-not-accepted]="f.submitted && !termsAccepted">
             <input type="checkbox" class="float-left mr-1" #termsAcceptedField="ngModel" name="termsAccepted"

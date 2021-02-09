@@ -147,6 +147,14 @@
           <context context-type="linenumber">101,102</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="41784ea9d2668104ae35ed242e47ba24ccb66b0a" datatype="html">
+        <source>Los participantes anónimos no podrán participar en el sorteo.</source>
+        <target>Anonymous participants are not included in the giveaway.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="c867439324305e64b5cd5be424de4f10290717bb" datatype="html">
         <source>He leído y acepto los</source>
         <target>I have read and accept the</target>

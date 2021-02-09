@@ -132,3 +132,8 @@ div.terms-not-accepted {
 .donation-label {
     margin-top: 0.75rem;
 }
+
+.anonymous-warning {
+    color: #dc3545;
+    margin-left: 17px;
+}

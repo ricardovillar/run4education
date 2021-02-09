@@ -128,32 +128,39 @@
           <context context-type="linenumber">101,102</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="41784ea9d2668104ae35ed242e47ba24ccb66b0a" datatype="html">
+        <source>Los participantes anónimos no podrán participar en el sorteo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="c867439324305e64b5cd5be424de4f10290717bb" datatype="html">
         <source>He leído y acepto los</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d75578f6740d60d36c8a35ea24e19078235e0a07" datatype="html">
         <source>términos legales</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3d643c85c1c2a0f319a5b7a046434be706989439" datatype="html">
         <source>PARTICIPA</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">128</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="61554c289b41a8d7724f76adc84273ac1f215eef" datatype="html">
-        <source> Tu donación es de <x id="INTERPOLATION" equiv-text="ass=&quot;mr-2 float-left donati"/> </source>
+      <trans-unit id="fc04dcd50323c53a392cfead1d049943372f21cd" datatype="html">
+        <source> Tu donación es de <x id="INTERPOLATION" equiv-text="&quot;mr-2 float-left donation-l"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
-          <context context-type="linenumber">119,121</context>
+          <context context-type="linenumber">123,125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6bf2eed052042dabb630036b4244ce1786cde4af" datatype="html">
