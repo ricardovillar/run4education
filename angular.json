@@ -113,6 +113,9 @@
             "production": {
               "browserTarget": "run4education:build:production"
             },
+            "es": {
+              "browserTarget": "run4education:build:es"
+            },
             "en": {
               "browserTarget": "run4education:build:en"
             }

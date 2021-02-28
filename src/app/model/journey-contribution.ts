@@ -6,6 +6,7 @@ export class JourneyContribution {
     public sport: SportEnum;
     public avatarUrl: string;
     public isCompany: boolean;
+    public companyId: string;
 
     public initialKm: number;
     public finalKm: number;

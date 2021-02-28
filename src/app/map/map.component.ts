@@ -107,6 +107,14 @@ export class MapComponent implements OnDestroy {
             c.sport = contribution.sport;
             c.avatarUrl = contribution.avatarUrl;
             c.isCompany = contribution.isCompany;
+            c.companyId = contribution.companyId;
+            return c;
+          }
+          if (contribution.isCompany) {
+            let c = new JourneyContribution(null, null, contribution.distance);
+            c._id = contribution._id;
+            c.isCompany = true;
+            c.companyId = contribution.companyId;
             return c;
           }
           let c = new JourneyContribution(null, null, contribution.distance);
@@ -259,7 +267,7 @@ export class MapComponent implements OnDestroy {
 
   private getColorForContribution(contribution: JourneyContribution): string {
     if (contribution.isCompany) {
-      return '#fb7400';
+      return '#04712a';
     }
     switch (contribution.sport) {
       case SportEnum.Trekking:

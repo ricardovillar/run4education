@@ -19,62 +19,71 @@
 
     <ng-container *ngFor="let contribution of journeyContributions | slice: 1">
 
-        <ng-container *ngIf="contribution.firstName; else anonymousTemplate">
-            <div *ngIf="!contribution.isCompany" class="popup-card-person" [id]="'popup-card-' + contribution._id">
-                <div class="w-100 text-center mt-4 mb-3">
-                    <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
-                    <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
+        <ng-container *ngIf="contribution.isCompany; else personTemplate">
+            <div *ngIf="contribution.companyId === 'dkv'" class="popup-card-company"
+                [id]="'popup-card-' + contribution._id">
+                <div class="w-100 text-center">
+                    <img src="assets/images/dkv.png" />
                 </div>
                 <div class="w-100 text-center">
-                    <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
-                </div>
-                <div class="w-100 text-center">
-                    <span i18n>ha recorrido {{ contribution.distance }}km con Ousman</span>
+                    <span i18n>
+                        Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas
+                        acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de
+                        viaje en este apasionante reto virtual de Corre al País de los Blancos.
+                        <br>
+                        Juntos hemos recorrido estos 300km.
+                    </span>
                 </div>
             </div>
-
-            <div *ngIf="!contribution.isCompany" class="tooltip-card-person" [id]="'tooltip-card-' + contribution._id">
-                <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
-                <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
-                <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
-            </div>
-
-            <div *ngIf="contribution.isCompany" class="popup-card-company" [id]="'popup-card-' + contribution._id">
-                <div class="w-100 text-center">
-                    <img [src]="contribution.avatarUrl" />
-                </div>
-                <div class="w-100 text-center">
-                    <span>{{ contribution.firstName }}</span>
-                </div>
-                <div class="w-100 text-center">
-                    <span i18n>ha recorrido {{ contribution.distance }} km con Ousman</span>
-                </div>
-            </div>
-
-            <div *ngIf="contribution.isCompany" class="tooltip-card-company" [id]="'tooltip-card-' + contribution._id">
-                <img [src]="contribution.avatarUrl" />
-                <span>{{ contribution.firstName }}</span>
+            <div *ngIf="contribution.companyId === 'dkv'" class="tooltip-card-company"
+                [id]="'tooltip-card-' + contribution._id">
+                <img src="assets/images/dkv.png" />
             </div>
         </ng-container>
 
-        <ng-template #anonymousTemplate>
-            <div class="popup-card-person" [id]="'popup-card-' + contribution._id">
-                <div class="w-100 text-center">
-                    <img src="assets/images/avatar.png" />
+        <ng-container *ngIf="!contribution.isCompany">
+
+            <ng-container *ngIf="contribution.firstName; else anonymousTemplate">
+                <div class="popup-card-person" [id]="'popup-card-' + contribution._id">
+                    <div class="w-100 text-center mt-4 mb-3">
+                        <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
+                        <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
+                    </div>
+                    <div class="w-100 text-center">
+                        <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
+                    </div>
+                    <div class="w-100 text-center">
+                        <span i18n>ha recorrido {{ contribution.distance }}km con Ousman</span>
+                    </div>
                 </div>
-                <div class="w-100 text-center">
+
+                <div class="tooltip-card-person" [id]="'tooltip-card-' + contribution._id">
+                    <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
+                    <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
+                    <span>{{ contribution.firstName + ' ' + contribution.lastName }}</span>
+                </div>
+
+            </ng-container>
+
+            <ng-template #anonymousTemplate>
+                <div class="popup-card-person" [id]="'popup-card-' + contribution._id">
+                    <div class="w-100 text-center">
+                        <img src="assets/images/avatar.png" />
+                    </div>
+                    <div class="w-100 text-center">
+                        <span i18n>Anónimo</span>
+                    </div>
+                    <div class="w-100 text-center">
+                        <span i18n>ha recorrido {{ contribution.distance }} km con Ousman</span>
+                    </div>
+                </div>
+
+                <div class="tooltip-card-person" [id]="'tooltip-card-' + contribution._id">
+                    <img src="assets/images/avatar.png" />
                     <span i18n>Anónimo</span>
                 </div>
-                <div class="w-100 text-center">
-                    <span i18n>ha recorrido {{ contribution.distance }} km con Ousman</span>
-                </div>
-            </div>
-
-            <div class="tooltip-card-person" [id]="'tooltip-card-' + contribution._id">
-                <img src="assets/images/avatar.png" />
-                <span i18n>Anónimo</span>
-            </div>
-        </ng-template>
+            </ng-template>
+        </ng-container>
 
     </ng-container>
 
@@ -97,7 +106,8 @@
     </div>
 
     <div id="fiaso-balloon" class="balloon">
-        <span i18n>Nací en Fiaso, y viví una infancia feliz hasta los 9 años. Ahora, mirando atrás entiendo que no es
+        <span i18n>Nací en Fiaso, y viví una infancia feliz hasta los 9 años. Ahora, mirando atrás entiendo que no
+            es
             más
             rico quien más tiene, sino quien menos necesita. No tenía ni zapatos, pero me sentía el niño más feliz
             del mundo. Para estudiar, andaba 14 kilómetros al día. Un día, jugando en el patio de mi casa con los
@@ -118,8 +128,10 @@
     </div>
 
     <div id="kumasi-balloon" class="balloon">
-        <span i18n>A los 10 años llegué a Kumasi y estuve trabajando en otro taller, esta vez de camiones. Arreglaba la
-            chapa, colocaba parabrisas, soldaba… todo sin protección. Pero en ningún momento había tenido sueldo a fin
+        <span i18n>A los 10 años llegué a Kumasi y estuve trabajando en otro taller, esta vez de camiones. Arreglaba
+            la
+            chapa, colocaba parabrisas, soldaba… todo sin protección. Pero en ningún momento había tenido sueldo a
+            fin
             de mes. Trabajaba a cambio de un plato de arroz y si había suerte, propinas</span>
         <img src="assets/images/kumasi.jpg" />
     </div>
@@ -127,7 +139,8 @@
     <div id="tema-balloon" class="balloon">
         <span i18n>En Tema vi el mar por primera vez, a los 12 años. Me sentí mucho más cerca del paraíso, ya que
             veía que
-            los barcos que descargaban en el puerto traían tesoros de Europa. Tocaba el polvo que quedaba encima de los
+            los barcos que descargaban en el puerto traían tesoros de Europa. Tocaba el polvo que quedaba encima de
+            los
             camiones y el material que llegaba, con una gran ilusión, como si estuviera tocando un pedacito de
             paraíso.</span>
         <youtube-player videoId="plcX5E0GPig" [playerVars]="playerVars" [width]="ytWidth" [height]="ytHeight">
@@ -138,16 +151,20 @@
         <span i18n>Empiezo el camino para marcharme de Ghana, dirección Níger, con el objetivo de llegar a Libia.
             Allí, me
             dijeron que tendría un sueldo a fin de mes. ¿Podría ser eso cierto? En Bolgatanga mi ilusión se vio
-            amenazada al ver que el camión donde íbamos se había estropeado. No fuimos capaces de repararlo y estuvimos
+            amenazada al ver que el camión donde íbamos se había estropeado. No fuimos capaces de repararlo y
+            estuvimos
             una semana esperando hasta que vino gente de Kumasi para repararlo.</span>
         <img src="assets/images/bolgatanga.jpg" />
     </div>
 
     <div id="niamey-balloon" class="balloon">
-        <span i18n>Niamey era el final del trayecto del camión de sal donde viajábamos. Yo tenía que continuar por mi
+        <span i18n>Niamey era el final del trayecto del camión de sal donde viajábamos. Yo tenía que continuar por
+            mi
             camino,
-            sin camionero. Después de muchas trabas conseguí llegar a la estación de autobuses donde se coge el bus para
-            ir hasta Agadez, al norte de Níger, justo en la frontera con el desierto del Sáhara. Allí conocí a un grupo
+            sin camionero. Después de muchas trabas conseguí llegar a la estación de autobuses donde se coge el bus
+            para
+            ir hasta Agadez, al norte de Níger, justo en la frontera con el desierto del Sáhara. Allí conocí a un
+            grupo
             de personas que también querían llegar hasta Libia, y decidimos viajar juntos.</span>
         <img src="assets/images/nammey.jpg" />
     </div>
@@ -155,15 +172,19 @@
     <div id="agadez-balloon" class="balloon">
         <span i18n>La primera sorpresa fue en el último control de aduanas antes de entrar en la ciudad de Agadez.
             Mis
-            compañeros de viaje y yo fuimos forzados a bajar del bus en el que viajábamos, por la policía. Nos pidieron
-            documentación, pero aunque la tuviéramos, no nos permitían estar allí sin pagar. Empezaron por pegar al más
+            compañeros de viaje y yo fuimos forzados a bajar del bus en el que viajábamos, por la policía. Nos
+            pidieron
+            documentación, pero aunque la tuviéramos, no nos permitían estar allí sin pagar. Empezaron por pegar al
+            más
             fuerte del grupo para asustarnos. Todos, asustados, nos vimos obligados a pagar para poder llegar a la
             ciudad de Agadez.
             En Agadez nos dijeron que había dos caminos para llegar a Libia, y nos decantamos por la mejor: los land
             rovers que en 3 días nos dejaban en Libia. No fui consciente de que se trataba de una emboscada. No hay
-            caminos que crucen el desierto. Salimos 46 en 3 land rovers, y 5 horas más tarde nos vimos abandonados en
+            caminos que crucen el desierto. Salimos 46 en 3 land rovers, y 5 horas más tarde nos vimos abandonados
+            en
             mitad del desierto del Sáhara.
-            Fueron tres semanas caminando, meando para poder beber y sobrevivir, especialmente en las últimas etapas.
+            Fueron tres semanas caminando, meando para poder beber y sobrevivir, especialmente en las últimas
+            etapas.
             Finalmente solo 6 logramos llegar con vida hasta Libia. La realidad supera la ficción.</span>
         <img src="assets/images/niger.jpg" />
     </div>
@@ -178,25 +199,33 @@
     <div id="ghat-balloon" class="balloon">
         <span i18n>Por fin estábamos en Libia. Habíamos sobrevivido y nos sentíamos afortunados, pero no teníamos
             recursos
-            para pagar un taxi de una ciudad a otra, y teníamos que llegar a la capital. Quisimos caminar de Ghat hasta
-            Alawenat. Durante el camino, empecé a sangrar por la nariz y fuimos a pedir ayuda sanitaria en un campamento
-            militar que encontramos por el camino. Literalmente, el médico me dijo que no podía tocar mi sangre, porque
-            era como tocar la sangre de un perro. Allí descubrí que yo era negro, y las consecuencias de serlo. Conocí
+            para pagar un taxi de una ciudad a otra, y teníamos que llegar a la capital. Quisimos caminar de Ghat
+            hasta
+            Alawenat. Durante el camino, empecé a sangrar por la nariz y fuimos a pedir ayuda sanitaria en un
+            campamento
+            militar que encontramos por el camino. Literalmente, el médico me dijo que no podía tocar mi sangre,
+            porque
+            era como tocar la sangre de un perro. Allí descubrí que yo era negro, y las consecuencias de serlo.
+            Conocí
             el racismo por primera vez.</span>
         <img src="assets/images/ghat.jpg" />
     </div>
 
     <div id="alawenat-balloon" class="balloon">
-        <span i18n>En Alawenat me movía con una serie de personas que estaban en mi misma situación. Íbamos a recoger
+        <span i18n>En Alawenat me movía con una serie de personas que estaban en mi misma situación. Íbamos a
+            recoger
             de las
-            basuras la comida que sobraba de los restaurantes, para poder comer algo. Vivíamos en la calle. A pesar de
-            la situación en la que vivíamos, a veces te encontrabas con buena gente. Un día, un camión nos lanzó sandías
+            basuras la comida que sobraba de los restaurantes, para poder comer algo. Vivíamos en la calle. A pesar
+            de
+            la situación en la que vivíamos, a veces te encontrabas con buena gente. Un día, un camión nos lanzó
+            sandías
             para que pudiéramos comer.</span>
         <img src="assets/images/alawenat.jpg" />
     </div>
 
     <div id="ubari-balloon" class="balloon">
-        <span i18n>En Ubari, el único trabajo que tenía era trabajo de campo. Aunque yo llegaba primero, como era tan
+        <span i18n>En Ubari, el único trabajo que tenía era trabajo de campo. Aunque yo llegaba primero, como era
+            tan
             pequeño
             nadie me quería contratar. Esto implicaba muchas dificultades y acabé mendigando comida por la calle. Un
             día, un hombre intentó abusar de mí a cambio de comida. Afortunadamente me pude escapar.</span>
@@ -207,7 +236,8 @@
         <span i18n>En Sabha vivía en la Connection House, un lugar donde nadie merece vivir. Se venden drogas y las
             mujeres
             se prostituyen. Encontré un trabajo en un taller, de chapista, pero el propietario era tan radical que
-            apenas me dejaba salir; me sentía encarcelado. No podía ni siquiera ir a rezar, y después de 3 meses salté
+            apenas me dejaba salir; me sentía encarcelado. No podía ni siquiera ir a rezar, y después de 3 meses
+            salté
             la valla y me escapé.</span>
         <img src="assets/images/sabha.jpg" />
     </div>
@@ -215,7 +245,8 @@
     <div id="sirte-balloon" class="balloon">
         <span i18n>Acabé trabajando como soldador en el puerto, soldando barcos. Dormía en los barcos, en el
             taller... donde
-            podía. Conseguí trabajar aquí ́durante dos años y reuní 1.800 dólares, que serían mi salvoconducto para la
+            podía. Conseguí trabajar aquí ́durante dos años y reuní 1.800 dólares, que serían mi salvoconducto para
+            la
             patera. Conseguí superar el control de Gadafi para subir al avión, con documentos falsos.</span>
         <img src="assets/images/sirte.jpg" />
     </div>
@@ -223,8 +254,10 @@
     <div id="tripoli-balloon" class="balloon">
         <span i18n>Viví de nuevo en una Connection House y tuve la gran suerte de que un día, cuando fui a buscar
             agua,
-            rodearon la casa los policías. Cuando volví, me encontré con un grupo de coches de policía rodeando la casa
-            porque alguien les había delatado. Afortunadamente yo estaba fuera y conseguí escaparme de aquella redada,
+            rodearon la casa los policías. Cuando volví, me encontré con un grupo de coches de policía rodeando la
+            casa
+            porque alguien les había delatado. Afortunadamente yo estaba fuera y conseguí escaparme de aquella
+            redada,
             que podría haber acabado con mi vida.</span>
         <img src="assets/images/tripoli.jpg" />
     </div>
@@ -232,7 +265,8 @@
     <div id="zwaia-balloon" class="balloon">
         <span i18n>Ya conocía los intríngulis de la vida en Libia, era un experto. En un restaurante africano conocí
             a
-            Gorden, el agente de la mafia que me llevaría hasta Ghadames, el primer paso para llegar algún día a coger
+            Gorden, el agente de la mafia que me llevaría hasta Ghadames, el primer paso para llegar algún día a
+            coger
             una patera.</span>
         <img src="assets/images/zwaia.jpg" />
     </div>
@@ -248,7 +282,8 @@
     <div id="tobruk-balloon" class="balloon">
         <span i18n>Fui a Tubruk a trabajar como chapista en una empresa alemana que se llamaba Belfinga. Fui con
             pasaporte
-            falso y estuve dos semanas trabajando con ellos, para hacer una prueba. Finalmente decidí volver a Benghazi
+            falso y estuve dos semanas trabajando con ellos, para hacer una prueba. Finalmente decidí volver a
+            Benghazi
             porque me pedían dinero para trabajar, y no tenía suficiente.</span>
         <img src="assets/images/tobruk.jpg" />
     </div>
@@ -264,7 +299,8 @@
     <div id="tunez-balloon" class="balloon">
         <span i18n>En Túnez nos escondimos en una granja de animales, ya que estábamos solo de paso, intentando
             llegar a
-            Argelia, esquivando los controles policiales fronterizos. Al día siguiente un conjunto de coches llegaron
+            Argelia, esquivando los controles policiales fronterizos. Al día siguiente un conjunto de coches
+            llegaron
             para llevarnos hasta Argelia. En el camino, tuvimos la mala suerte de que el viaje se interrumpió por un
             tiroteo de la policía mientras intentábamos coger agua de un pozo. Nos arrestaron. Parte de la gente se
             escapó, otros con menos suerte fueron alcanzados por las balas, y a mí, me capturaron.</span>
@@ -274,9 +310,12 @@
     <div id="ouargla-balloon" class="balloon">
         <span i18n>En Argelia descubrí que la mafia y la policía están estrechamente conectados. Fiché mínimo 10
             veces con
-            nombres distintos en ciudades distintas, y dormía en cárceles, para que el gobierno argelino pudiera cobrar
-            la ayuda de Francia por interceptarme como inmigrante. Con el dinero que pagaba el gobierno francés, debían
-            enviarme a mi país de vuelta, pero en lugar de eso, me llevaban a otra ciudad y me cambiaban el nombre. Así
+            nombres distintos en ciudades distintas, y dormía en cárceles, para que el gobierno argelino pudiera
+            cobrar
+            la ayuda de Francia por interceptarme como inmigrante. Con el dinero que pagaba el gobierno francés,
+            debían
+            enviarme a mi país de vuelta, pero en lugar de eso, me llevaban a otra ciudad y me cambiaban el nombre.
+            Así
             cobraban el doble.
         </span>
         <youtube-player videoId="83c7-JYeVCg" [playerVars]="playerVars" [width]="ytWidth" [height]="ytHeight">
@@ -284,7 +323,8 @@
     </div>
 
     <div id="tamanrasset-balloon" class="balloon">
-        <span i18n>Me escondía constantemente de la policía. Se trata sin duda de la peor ciudad en la que he estado.
+        <span i18n>Me escondía constantemente de la policía. Se trata sin duda de la peor ciudad en la que he
+            estado.
             Fue la
             peor cárcel, comías al lado del baño, y estaba muy sucio. Estuve una semana en estas condiciones.
         </span>
@@ -294,17 +334,21 @@
     <div id="mali-balloon" class="balloon">
         <span i18n>Una vez llegados a Mali, me abandonaron en la tierra de nadie, entre Mali y Argelia. Unas horas
             más tarde,
-            aparecieron otras furgonetas, esta vez con personas vestidas de paisanos, que nos pidieron 100 dólares para
+            aparecieron otras furgonetas, esta vez con personas vestidas de paisanos, que nos pidieron 100 dólares
+            para
             llevarnos de vuelta a Tamanrasset.
         </span>
         <img src="assets/images/mali.jpg" />
     </div>
 
     <div id="ghardaia-balloon" class="balloon">
-        <span i18n>Había un montón muy grande de pasaportes de muchos países, especialmente de Libia. Me cogieron, me
+        <span i18n>Había un montón muy grande de pasaportes de muchos países, especialmente de Libia. Me cogieron,
+            me
             miraron
-            a la cara y me dieron un pasaporte de Mali. Unos minutos más tarde, me preguntaron cuál era mi nombre, y si
-            no decía el nombre del nuevo pasaporte, me daban una bofetada. Más tarde lo entendí ... yo ya no era Ousman,
+            a la cara y me dieron un pasaporte de Mali. Unos minutos más tarde, me preguntaron cuál era mi nombre, y
+            si
+            no decía el nombre del nuevo pasaporte, me daban una bofetada. Más tarde lo entendí ... yo ya no era
+            Ousman,
             era otra persona. Ahora ya podía seguir el trayecto.
         </span>
         <img src="assets/images/ghardaia.jpg" />
@@ -314,7 +358,8 @@
         <span i18n>Había llegado a la ciudad de la mafia: el valley. Aprendí a vivir con la mafia, los traficantes
             ... era
             como un pequeño país, en la tierra de nadie. Allí tenían su policía, su primer ministro… todo estaba
-            organizado como si fue un país, pero era “el país sin ley”. Solo comía una vez al día, pasé mucha hambre.
+            organizado como si fue un país, pero era “el país sin ley”. Solo comía una vez al día, pasé mucha
+            hambre.
             Los mafiosos cantaban canciones con melodías bonitas pero letras muy crueles.
         </span>
         <youtube-player videoId="zgXSNrG0cu4" [playerVars]="playerVars" [width]="ytWidth" [height]="ytHeight">
@@ -323,8 +368,10 @@
 
     <div id="rabat-balloon" class="balloon">
         <span i18n>Llegamos hasta debajo de un puente, en camiones frigoríficos. Estábamos en Rabat. Allí había los
-            representantes de cada líder de la patera: había tres caminos, y escogí el primero: el camino liderado por
-            Rahman Connection. Este camino me llevaría a la patera. ¿Habría escogido bien? Me llevaron a una casa, me
+            representantes de cada líder de la patera: había tres caminos, y escogí el primero: el camino liderado
+            por
+            Rahman Connection. Este camino me llevaría a la patera. ¿Habría escogido bien? Me llevaron a una casa,
+            me
             pude duchar y me puse ropa limpia. Salimos de tres en tres, infiltrados en autobús, camino a Casablanca.
         </span>
         <img src="assets/images/rabat.jpg" />
@@ -334,7 +381,8 @@
         <span i18n>Llegamos a Casablanca y nos metieron en un piso subterráneo. Me destinaron a un gueto, dormíamos
             50
             juntos. Una noche explotó el fuego del camping gas y pensamos que la policía nos pillaría, pero tuvimos
-            suerte y no nos descubrieron. Un primo me mandó dinero y me sacaron para ir a la casa oficial de los jefes
+            suerte y no nos descubrieron. Un primo me mandó dinero y me sacaron para ir a la casa oficial de los
+            jefes
             de la mafia. En aquel momento nos tomaron una foto.
         </span>
         <img src="assets/images/casablanca.jpg" />
@@ -343,11 +391,15 @@
     <div id="nouakchott-balloon" class="balloon">
         <span i18n>En Mauritania nos facilitaron maderas para construir nosotros mismos las pateras. No éramos
             expertos, no
-            éramos carpinteros, pero debíamos hacerlo. Lo que no sabíamos, es que muchos estaban construyendo su propio
-            ataúd. Salimos dos pateras, y en el primer intento, la patera en la que viajaban mis compañeros naufragó, y
-            no sobrevivió ninguno. Musa, mi amigo, con quien había compartido todo hasta entonces, también murió. Fue
+            éramos carpinteros, pero debíamos hacerlo. Lo que no sabíamos, es que muchos estaban construyendo su
+            propio
+            ataúd. Salimos dos pateras, y en el primer intento, la patera en la que viajaban mis compañeros
+            naufragó, y
+            no sobrevivió ninguno. Musa, mi amigo, con quien había compartido todo hasta entonces, también murió.
+            Fue
             demasiado duro. Hicimos un segundo intento, de nuevo dos pateras, y la otra naufragó de nuevo. Nadie
-            sobrevivió. Milagrosamente, la mía se mantuvo flotando, y el viento nos llevó hasta Fuerteventura, 48 horas
+            sobrevivió. Milagrosamente, la mía se mantuvo flotando, y el viento nos llevó hasta Fuerteventura, 48
+            horas
             más tarde.
         </span>
         <img src="assets/images/mauritania.jpg" />
@@ -357,10 +409,13 @@
         <span i18n>Las olas llevaron la patera hasta unas rocas de la costa de Fuerteventura. Volcó, y todavía no sé
             cómo
             conseguí salir del mar con vida, ya que no sé nadar. Tenía los pies llenos de pinchos y heridas de andar
-            descalzo por el desierto. Muchos de mis compañeros, besaban la arena con las pocas fuerzas que les quedaban,
+            descalzo por el desierto. Muchos de mis compañeros, besaban la arena con las pocas fuerzas que les
+            quedaban,
             como si hubiesen llegado a la tierra prometida. La cruz roja vino a rescatarnos y me llevaron a un lugar
-            caliente. Estaba en el paraíso. Me llevaron al CIE y me pareció un hotel de 5 estrellas, pero hoy, viéndolo
-            con perspectiva, era lo más parecido a una cárcel. Allí estuve 1 mes, y me comunicaron que la ley Española
+            caliente. Estaba en el paraíso. Me llevaron al CIE y me pareció un hotel de 5 estrellas, pero hoy,
+            viéndolo
+            con perspectiva, era lo más parecido a una cárcel. Allí estuve 1 mes, y me comunicaron que la ley
+            Española
             me amparaba; podía residir en España.
         </span>
         <youtube-player videoId="OxXP5kZpqsE" [playerVars]="playerVars" [width]="ytWidth" [height]="ytHeight">
@@ -370,26 +425,37 @@
     <div id="malaga-balloon" class="balloon">
         <span i18n>Nos sacaron del CIE de Fuerteventura esposados, vigilados por policías armados, y volamos así
             hasta
-            Málaga. Cuando llegamos, nos llevaron en furgoneta hasta otro centro de inmigración. Allí pasé tres días, y
-            fue donde me preguntaron dónde quería residir. Yo dije “Barça”, ya que era lo único que conocía de España, y
-            entendieron que quería decir Barcelona. Me dieron un billete de tren, una botella de agua, un bocadillo de
+            Málaga. Cuando llegamos, nos llevaron en furgoneta hasta otro centro de inmigración. Allí pasé tres
+            días, y
+            fue donde me preguntaron dónde quería residir. Yo dije “Barça”, ya que era lo único que conocía de
+            España, y
+            entendieron que quería decir Barcelona. Me dieron un billete de tren, una botella de agua, un bocadillo
+            de
             atún y un documento que indicaba que yo era el número 101.
         </span>
         <img src="assets/images/malaga.jpg" />
     </div>
 
     <div id="barcelona-balloon" class="balloon">
-        <span i18n>Al pisar el suelo de mi nueva ciudad, Barcelona, sentí una gran felicidad. Luego sentí miedo. Todo
+        <span i18n>Al pisar el suelo de mi nueva ciudad, Barcelona, sentí una gran felicidad. Luego sentí miedo.
+            Todo
             me
-            resultaba nuevo y excitante. Era el 24 de febrero de 2005. Pero entonces me di cuenta que el paraíso no era
-            tal y como lo había imaginado. Hacía mucho frío y no tenía donde dormir. Tras varios meses viviendo en la
+            resultaba nuevo y excitante. Era el 24 de febrero de 2005. Pero entonces me di cuenta que el paraíso no
+            era
+            tal y como lo había imaginado. Hacía mucho frío y no tenía donde dormir. Tras varios meses viviendo en
+            la
             calle, me acogió una familia. La primera noche que dormí en su casa, lloré como un niño. ¿Por qué había
-            sufrido tanto? ¿Por qué tanta lucha? ¿Qué había hecho mal? A la mañana siguiente entendí que la pregunta no
-            era por qué sino para qué. ¿Para qué me serviría todo ese sufrimiento? Lo vi claro: para evitar que futuras
-            víctimas caigan en las mismas trampas mortales en las que yo caí. Estudié castellano y catalán, me saqué el
+            sufrido tanto? ¿Por qué tanta lucha? ¿Qué había hecho mal? A la mañana siguiente entendí que la pregunta
+            no
+            era por qué sino para qué. ¿Para qué me serviría todo ese sufrimiento? Lo vi claro: para evitar que
+            futuras
+            víctimas caigan en las mismas trampas mortales en las que yo caí. Estudié castellano y catalán, me saqué
+            el
             graduado escolar, dos carreras universitarias y un máster de ONGs en ESADE. En 2012 fundé NASCO
-            Feeding Minds para brindar educación a los niños y jóvenes de Ghana y así puedan descubrir que el verdadero
-            paraíso está en sus casas. El futuro de su país depende de ellos. Descubrí que la clave está en alimentar
+            Feeding Minds para brindar educación a los niños y jóvenes de Ghana y así puedan descubrir que el
+            verdadero
+            paraíso está en sus casas. El futuro de su país depende de ellos. Descubrí que la clave está en
+            alimentar
             mentes, y desde entonces me dedico únicamente a perseguir este sueño.</span>
         <youtube-player videoId="sXhA8MbaaZA" [playerVars]="playerVars" [width]="ytWidth" [height]="ytHeight">
         </youtube-player>

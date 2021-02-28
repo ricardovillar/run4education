@@ -5,6 +5,8 @@ export class Contribution {
     public anonymous: boolean
     public country: string;
     public city: string;
+    public isCompany: boolean;
+    public companyId: string;
 
     constructor(
         public firstName: string,

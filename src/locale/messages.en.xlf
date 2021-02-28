@@ -466,6 +466,16 @@
       <context context-type="linenumber">382,393</context>
     </context-group>
   </trans-unit>
+  <trans-unit id="9259f9eeeda6001d74c928085f0211d41a060a76" datatype="html">
+    <source> Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de viaje en este apasionante reto virtual de Corre al País de los Blancos. <x id="LINE_BREAK" ctype="lb" equiv-text="ancos.
+                 "/> Juntos hemos recorrido estos 300km. </source>
+    <target> There is an African proverb that says "if you walk alone, you'll go faster, but if you go all together, you'll go much farther". For this we have chosen @DKVSeguros to join us in our journey along this great virtual challenge Corre al País de los Blancos. Journey to the Land of the Whites. <x id="LINE_BREAK" ctype="lb" equiv-text="ancos.
+      "/> Together we have done  300 km </target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">30,35</context>
+    </context-group>
+  </trans-unit>  
   <trans-unit id="49b56138c77457f8b7aa85b00fcc85f1b2266949" datatype="html">
     <source>ha recorrido <x id="INTERPOLATION" equiv-text="       &lt;span i18n&gt;ha recorr"/>
 km con Ousman</source>
