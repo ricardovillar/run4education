@@ -44,10 +44,28 @@
     position: relative;
   }
   
-  .tooltip-card-person img, .tooltip-card-company img {
+  .tooltip-card-person img {
+    max-width: 25px; 
+    max-height: 25px; 
+    float: left;
+  }
+
+  .tooltip-card-company img {
+    max-width: 50px; 
+    max-height: 50px; 
+    float: left;
+  }
+
+  .tooltip-card-company img.dkv {
     max-width: 100px; 
     max-height: 100px; 
-    float: left;
+  }
+
+  .tooltip-card-person span, .tooltip-card-company span {
+    width: 100%;
+    white-space: nowrap;
+    margin-left: 0.25rem;
+    margin-top: 0.25rem;
   }
 
   .popup-card-company img {

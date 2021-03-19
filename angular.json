@@ -97,6 +97,11 @@
                 }
               ]
             },
+            "es": {
+              "localize": [
+                "es"
+              ]
+            },
             "en": {
               "localize": [
                 "en"

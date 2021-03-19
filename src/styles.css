@@ -14,6 +14,10 @@ body {
     width: 100%;
 }
 
+.w-50 {
+    width: 50%;
+}
+
 .mb-1 {
     margin-bottom: 1em;
 }
@@ -67,4 +71,8 @@ body {
 
 .grecaptcha-badge { 
     visibility: hidden; 
+}
+
+.tooltip-card-person {
+    width: fit-content;
 }

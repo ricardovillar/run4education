@@ -466,6 +466,28 @@
       <context context-type="linenumber">382,393</context>
     </context-group>
   </trans-unit>
+
+  <trans-unit id="4a3640661048a3bf908826d080a7c8dd778d282f" datatype="html">
+    <source> Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de viaje en este apasionante reto virtual de Corre al País de los Blancos. <x id="LINE_BREAK" ctype="lb" equiv-text="os.
+                        "/> Juntos hemos recorrido estos 300km. </source>
+    <target> There is an African proverb that says "if you walk alone, you'll go faster, but if you go all together, you'll go much farther". For this we have chosen @DKVSeguros to join us in our journey along this great virtual challenge Corre al País de los Blancos. Journey to the Land of the Whites. <x id="LINE_BREAK" ctype="lb" equiv-text="ancos.
+      "/> Together we have done  300 km </target>                        
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">31,36</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="32da94cfeef2222d0903cacef18b5f3fab9c0e2f" datatype="html">
+    <source> HP hace años que nos acompaña porque acabar con la brecha digital en el mundo es uno de sus objetivos y también el nuestro. <x id="LINE_BREAK" ctype="lb" equiv-text=" y también el nuestro.
+     "/> Es por ello que ya hemos recorrido estos 300km juntos. </source>
+     <target> For years HP has been supporting us to end the digital divide around the world and is our objective as well. <x id="LINE_BREAK" ctype="lb" equiv-text=" y también el nuestro.
+      "/> As a result we have covered these 300 km together. </target>     
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">51,55</context>
+    </context-group>
+  </trans-unit>
+
   <trans-unit id="9259f9eeeda6001d74c928085f0211d41a060a76" datatype="html">
     <source> Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de viaje en este apasionante reto virtual de Corre al País de los Blancos. <x id="LINE_BREAK" ctype="lb" equiv-text="ancos.
                  "/> Juntos hemos recorrido estos 300km. </source>

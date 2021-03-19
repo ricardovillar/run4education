@@ -20,25 +20,46 @@
     <ng-container *ngFor="let contribution of journeyContributions | slice: 1">
 
         <ng-container *ngIf="contribution.isCompany; else personTemplate">
-            <div *ngIf="contribution.companyId === 'dkv'" class="popup-card-company"
-                [id]="'popup-card-' + contribution._id">
-                <div class="w-100 text-center">
+
+            <ng-container *ngIf="contribution.companyId === 'dkv'">
+                <div class="popup-card-company" [id]="'popup-card-' + contribution._id">
+                    <div class="w-100 text-center">
+                        <img src="assets/images/dkv.png" />
+                    </div>
+                    <div class="w-100 text-center">
+                        <span i18n>
+                            Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas
+                            acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de
+                            viaje en este apasionante reto virtual de Corre al País de los Blancos.
+                            <br>
+                            Juntos hemos recorrido estos 300km.
+                        </span>
+                    </div>
+                </div>
+                <div class="tooltip-card-company" [id]="'tooltip-card-' + contribution._id">
                     <img src="assets/images/dkv.png" />
                 </div>
-                <div class="w-100 text-center">
-                    <span i18n>
-                        Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas
-                        acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de
-                        viaje en este apasionante reto virtual de Corre al País de los Blancos.
-                        <br>
-                        Juntos hemos recorrido estos 300km.
-                    </span>
+            </ng-container>
+
+            <ng-container *ngIf="contribution.companyId === 'hp'">
+                <div class="popup-card-company" [id]="'popup-card-' + contribution._id">
+                    <div class="w-100 text-center">
+                        <img class="w-50" src="assets/images/hp.png" />
+                    </div>
+                    <div class="w-100 text-center">
+                        <span i18n>
+                            HP hace años que nos acompaña porque acabar con la brecha digital en el mundo es uno de sus
+                            objetivos y también el nuestro.
+                            <br>
+                            Es por ello que ya hemos recorrido estos 300km juntos.
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div *ngIf="contribution.companyId === 'dkv'" class="tooltip-card-company"
-                [id]="'tooltip-card-' + contribution._id">
-                <img src="assets/images/dkv.png" />
-            </div>
+                <div class="tooltip-card-company" [id]="'tooltip-card-' + contribution._id">
+                    <img src="assets/images/hp.png" />
+                </div>
+            </ng-container>
+
         </ng-container>
 
         <ng-container *ngIf="!contribution.isCompany">
