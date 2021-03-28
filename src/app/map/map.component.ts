@@ -101,20 +101,28 @@ export class MapComponent implements OnDestroy {
     let sub = this.store.select(fromRoot.getJourneyContributions)
       .subscribe((contributions: JourneyContribution[]) => {
         this.journeyContributions = contributions.map(contribution => {
-          if (contribution.firstName) {
-            let c = new JourneyContribution(contribution.firstName, contribution.lastName, contribution.distance);
-            c._id = contribution._id;
-            c.sport = contribution.sport;
-            c.avatarUrl = contribution.avatarUrl;
-            c.isCompany = contribution.isCompany;
-            c.companyId = contribution.companyId;
-            return c;
-          }
           if (contribution.isCompany) {
             let c = new JourneyContribution(null, null, contribution.distance);
             c._id = contribution._id;
             c.isCompany = true;
             c.companyId = contribution.companyId;
+            return c;
+          }
+          if (contribution.isGroup) {
+            let c = new JourneyContribution(null, null, contribution.distance);
+            c._id = contribution._id;
+            c.sport = contribution.sport;
+            c.avatarUrl = contribution.avatarUrl;
+            c.isGroup = contribution.isGroup;
+            c.groupName = contribution.groupName;
+            c.groupParticipants = contribution.groupParticipants;
+            return c;
+          }
+          if (contribution.firstName) {
+            let c = new JourneyContribution(contribution.firstName, contribution.lastName, contribution.distance);
+            c._id = contribution._id;
+            c.sport = contribution.sport;
+            c.avatarUrl = contribution.avatarUrl;
             return c;
           }
           let c = new JourneyContribution(null, null, contribution.distance);

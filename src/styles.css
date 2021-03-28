@@ -73,6 +73,6 @@ body {
     visibility: hidden; 
 }
 
-.tooltip-card-person {
+.tooltip-card-person, .tooltip-card-group {
     width: fit-content;
 }

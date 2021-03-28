@@ -582,6 +582,107 @@ km with Ousman</target>
       <context context-type="linenumber">24</context>
     </context-group>
   </trans-unit>
+
+  <trans-unit id="6799db2e66790f368329bf8457511fdc569c3ad1" datatype="html">
+    <source>Nombre del representante</source>
+    <target>Representant name</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">50</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="01652cddb4bc1170aa7feebbb57e66e3f4f8a3e5" datatype="html">
+    <source>Nombre del grupo/club/asociación</source>
+    <target>Group/club/association name</target>    
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">55</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="963fb3102770d534a883a294f11cabf5129815c8" datatype="html">
+    <source>Nombre de los participantes</source>
+    <target>Participants name</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">65</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="e106b401cca8f20d6f2a7413b19ba3cad7bf38dc" datatype="html">
+    <source>Donación (€)</source>
+    <target>Donation (€)</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">93</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="cb0870002624530ccfab7d33a22da02d0c736d41" datatype="html">
+    <source>Subir logo o foto del grupo (opcional)</source>
+    <target>Upload group photo or logo (optional)</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">139,140</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="acbfaeec4c354635ec8b4212ec98a2ca0160e8ab" datatype="html">
+    <source> Vuestra donación es de <x id="INTERPOLATION" equiv-text="&quot; i18n&gt;"/> </source>
+    <target> Your donation is <x id="INTERPOLATION" equiv-text="&quot; i18n&gt;"/> </target>    
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">192,194</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="cd4ed4f2f2b191ec673f60ddb091df1ffca32e2a" datatype="html">
+    <source>han recorrido <x id="INTERPOLATION" equiv-text="div class=&quot;w-100 text-cente"/>km con Ousman</source>
+    <target>have completed <x id="INTERPOLATION" equiv-text="div class=&quot;w-100 text-cente"/>km with Ousman</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">78</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="223ac17b653dc2d6037f51ad0b99dea9fa5ce1df" datatype="html">
+    <source>¡Gracias <x id="INTERPOLATION" equiv-text="s {{ contribution.groupName "/>!</source>
+    <target>Thank you <x id="INTERPOLATION" equiv-text=" {{ contribution.groupName }"/>!</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/thank-you/thank-you.component.html</context>
+      <context context-type="linenumber">3</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="43875a56439d01a45822d1f6676285c577f29e7e" datatype="html">
+    <source>Correo electrónico del representante</source>
+    <target>Representant e-mail</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">108</context>
+    </context-group>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">108</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="361ada4b27bf6f2c5f79f2f6c29753eb5a19041a" datatype="html">
+    <source> La donación mínima para grupos / clubs / asociaciones es de 200 € asignando en el mapa un recorrido de 150 km. También tenéis la posibilidad de donar otra cantidad. </source>
+    <target> The minimal donation for groups / clubs / associations is €200 assigning a route of 150 km on the map. You also have the possibility to donate another amount. </target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">28,30</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="b28fe888c1a0c91065f784dd251cb5c635a31207" datatype="html">
+    <source>Soy una persona</source>
+    <target>I'm a person</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">11</context>
+    </context-group>
+  </trans-unit>
+  <trans-unit id="28d954855b63ff5021613001dd3dd8e7dd5521ff" datatype="html">
+    <source>Somos un grupo, asociació o club</source>
+    <target>We are a group, association or club</target>
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/contribution-form/contribution-form.component.html</context>
+      <context context-type="linenumber">16</context>
+    </context-group>
+  </trans-unit>
 </body>
 </file>
 </xliff>

@@ -6,7 +6,10 @@ export class Contribution {
     public country: string;
     public city: string;
     public isCompany: boolean;
+    public isGroup: boolean;
     public companyId: string;
+    public groupName: string;
+    public groupParticipants: string;
 
     constructor(
         public firstName: string,

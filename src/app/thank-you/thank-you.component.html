@@ -1,5 +1,6 @@
 <ng-container *ngIf="contribution">
-    <p class="title" i18n>¡Gracias {{ contribution.firstName }}!</p>
+    <p *ngIf="!contribution.isGroup" class="title" i18n>¡Gracias {{ contribution.firstName }}!</p>
+    <p *ngIf="contribution.isGroup" class="title" i18n>¡Gracias {{ contribution.groupName }}!</p>
 
     <p i18n>Te hemos enviado un email con la confirmación de tu participación</p>
 

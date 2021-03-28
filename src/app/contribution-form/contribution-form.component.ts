@@ -7,6 +7,7 @@ import { ContributionsService } from '@services/contributions.service';
 import { addJourneyContribution } from '@store/actions/map/map.actions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { RecaptchaErrorParameters } from 'ng-recaptcha';
+import { ContributionTypeEnum } from '@model/contribution-type.enum';
 
 import * as fromStore from "@store/reducers/index";
 
@@ -17,6 +18,9 @@ import * as fromStore from "@store/reducers/index";
 })
 export class ContributionFormComponent implements OnDestroy, AfterViewInit {
   @ViewChild('cardInfo') cardInfo: ElementRef;
+
+  REGULAR: ContributionTypeEnum = ContributionTypeEnum.Regular;
+  GROUP: ContributionTypeEnum = ContributionTypeEnum.Group;
 
   faSpinner = faSpinner;
 
@@ -36,6 +40,13 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
   isProcessing: boolean = false;
   kms = Array.from({ length: 100 }, (_, i) => i + 1);
   valuesPerKm = [0.5, 1, 2, 3, 4, 5, 10, 20];
+  contributionType: ContributionTypeEnum = ContributionTypeEnum.Regular;
+
+  groupRepresentantName: string;
+  groupName: string;
+  groupParticipants: string;
+  groupDonationValues = [200, 225, 250, 275, 300, 325, 350, 375, 400];
+  groupDonation: number = null;
 
   card: any;
   cardHandler = this.onChange.bind(this);
@@ -49,10 +60,21 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
   Swimming = SportEnum.Swimming;
 
   get amount(): number {
-    if (this.distance != null && this.value != null) {
+    if (this.isRegular && this.distance != null && this.value != null) {
       return this.distance * this.value;
     }
+    if (this.isGroup && this.groupDonation != null) {
+      return this.groupDonation;
+    }
     return null;
+  }
+
+  get isRegular(): boolean {
+    return this.contributionType == ContributionTypeEnum.Regular;
+  }
+
+  get isGroup(): boolean {
+    return this.contributionType == ContributionTypeEnum.Group;
   }
 
   constructor(
@@ -72,6 +94,10 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     this.initiateCardElement();
+  }
+
+  setContributionType(type: ContributionTypeEnum) {
+    this.contributionType = type;
   }
 
   onPictureSelected(event) {
@@ -162,6 +188,14 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
     contribution.country = this.country;
     contribution.futureCommunicationConsent = this.futureCommunicationConsent;
     contribution.anonymous = this.anonymous;
+    if (this.isGroup) {
+      contribution.isGroup = true;
+      contribution.groupName = this.groupName;
+      contribution.groupParticipants = this.groupParticipants;
+      contribution.distance = 150;
+      contribution.valuePerKm = this.groupDonation / 150;
+    }
+
     this.contributionsService.startContributionProcess(contribution, this.captcha, token.id)
       .subscribe(
         contribution => {

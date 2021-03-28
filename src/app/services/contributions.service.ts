@@ -32,6 +32,9 @@ export class ContributionsService {
     formData.append('sport', contribution.sport.toString());
     formData.append('city', contribution.city);
     formData.append('country', contribution.country);
+    formData.append('isGroup', (contribution.isGroup ?? false).toString());
+    formData.append('groupName', contribution.groupName);
+    formData.append('groupParticipants', contribution.groupParticipants);
     formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
     formData.append('anonymous', anonymous.toString());
     formData.append('tid', stripeToken);

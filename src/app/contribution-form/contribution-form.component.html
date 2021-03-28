@@ -6,39 +6,93 @@
 
 <hr />
 
-<span class="float-left w-100 mb-1 mt-4">
-    <strong i18n>
+<div class="float-left w-100 mb-2 mt-4">
+    <div class="radio-button float-left mr-4" (click)="setContributionType(REGULAR)">
+        <strong i18n>Soy una persona</strong>
+        <input type="radio" [value]="REGULAR" [(ngModel)]="contributionType">
+        <span class="checkmark"></span>
+    </div>
+    <div class="radio-button float-left" (click)="setContributionType(GROUP)">
+        <strong i18n>Somos un grupo, asociació o club</strong>
+        <input type="radio" [value]="GROUP" [(ngModel)]="contributionType">
+        <span class="checkmark"></span>
+    </div>
+</div>
+
+<span class="float-left w-100 mb-3">
+    <strong i18n *ngIf="isRegular">
         La donación mínima es de 0,5 € por kilómetro recorrido pero, si quieres, tienes la posibilidad de donar los €
         que consideres por cada kilómetro.
+    </strong>
+    <strong i18n *ngIf="isGroup">
+        La donación mínima para grupos / clubs / asociaciones es de 200 € asignando en el mapa un recorrido de 150 km.
+        También tenéis la posibilidad de donar otra cantidad.
     </strong>
 </span>
 
 <form autocomplete="off" #f="ngForm" (ngSubmit)="contribute(f)">
+
     <div class="w-100 mb-3 float-left form-group">
 
-        <input type="text" class="first-name form-control" #firstNameField="ngModel" name="firstName"
-            [(ngModel)]="firstName" placeholder="Nombre" i18n-placeholder
-            [ngClass]="{ 'is-invalid': (firstNameField.touched || f.submitted) && firstNameField.invalid }"
-            maxlength="1000" required />
+        <ng-container *ngIf="isRegular">
+            <input type="text" class="first-name form-control" #firstNameField="ngModel" name="firstName"
+                [(ngModel)]="firstName" placeholder="Nombre" i18n-placeholder
+                [ngClass]="{ 'is-invalid': (firstNameField.touched || f.submitted) && firstNameField.invalid }"
+                maxlength="1000" required />
+            <input type="text" class="last-name form-control" #lastNameField="ngModel" name="lastName"
+                [(ngModel)]="lastName" placeholder="Apellidos" i18n-placeholder maxlength="1000"
+                [ngClass]="{ 'is-invalid': (lastNameField.touched || f.submitted) && lastNameField.invalid }"
+                required />
+        </ng-container>
 
-        <input type="text" class="last-name form-control" #lastNameField="ngModel" name="lastName"
-            [(ngModel)]="lastName" placeholder="Apellidos" i18n-placeholder maxlength="1000"
-            [ngClass]="{ 'is-invalid': (lastNameField.touched || f.submitted) && lastNameField.invalid }" required />
+        <ng-container *ngIf="isGroup">
+            <input type="text" class="group-representant-name form-control" #groupRepresentantNameField="ngModel"
+                name="groupRepresentantName" [(ngModel)]="groupRepresentantName" placeholder="Nombre del representante"
+                i18n-placeholder
+                [ngClass]="{ 'is-invalid': (groupRepresentantNameField.touched || f.submitted) && groupRepresentantNameField.invalid }"
+                maxlength="1000" required />
+            <input type="text" class="group-name form-control" #groupNameField="ngModel" name="groupName"
+                [(ngModel)]="groupName" placeholder="Nombre del grupo/club/asociación" i18n-placeholder maxlength="1000"
+                [ngClass]="{ 'is-invalid': (groupNameField.touched || f.submitted) && groupNameField.invalid }"
+                required />
+        </ng-container>
+
+    </div>
+
+    <div class="w-100 mb-3 float-left form-group" *ngIf="isGroup">
+
+        <input type="text" class="group-participants form-control" #groupParticipantsField="ngModel"
+            name="groupParticipants" [(ngModel)]="groupParticipants" placeholder="Nombre de los participantes"
+            i18n-placeholder maxlength="1000" />
+
     </div>
 
     <div class="w-100 mb-3 float-left">
 
-        <select class="distance form-control" #distanceField="ngModel" name="distance" [(ngModel)]="distance"
-            [ngClass]="{ 'is-invalid': (distanceField.touched || f.submitted) && distanceField.invalid }" required>
-            <option selected hidden [value]="null" i18n>Km recorridos</option>
-            <option *ngFor="let km of kms" [value]="km">{{ km }}</option>
-        </select>
+        <ng-container *ngIf="isRegular">
 
+            <select class="distance form-control" #distanceField="ngModel" name="distance" [(ngModel)]="distance"
+                [ngClass]="{ 'is-invalid': (distanceField.touched || f.submitted) && distanceField.invalid }" required>
+                <option selected hidden [value]="null" i18n>Km recorridos</option>
+                <option *ngFor="let km of kms" [value]="km">{{ km }}</option>
+            </select>
 
-        <select class="value form-control" #valueField="ngModel" name="value" [(ngModel)]="value"
-            [ngClass]="{ 'is-invalid': (valueField.touched || f.submitted) && valueField.invalid }" required>
-            <option selected hidden [value]="null" i18n>€ por km</option>
-            <option *ngFor="let valuePerKm of valuesPerKm" [value]="valuePerKm">{{ valuePerKm | currency:'€' }}</option>
+            <select class="value form-control" #valueField="ngModel" name="value" [(ngModel)]="value"
+                [ngClass]="{ 'is-invalid': (valueField.touched || f.submitted) && valueField.invalid }" required>
+                <option selected hidden [value]="null" i18n>€ por km</option>
+                <option *ngFor="let valuePerKm of valuesPerKm" [value]="valuePerKm">{{ valuePerKm | currency:'€' }}
+                </option>
+            </select>
+
+        </ng-container>
+
+        <select *ngIf="isGroup" class="value form-control" #groupDonationField="ngModel" name="groupDonation"
+            [(ngModel)]="groupDonation"
+            [ngClass]="{ 'is-invalid': (groupDonationField.touched || f.submitted) && groupDonationField.invalid }"
+            required>
+            <option selected hidden [value]="null" i18n>Donación (€)</option>
+            <option *ngFor="let donationValue of groupDonationValues" [value]="donationValue">{{ donationValue |
+                currency:'€' }}</option>
         </select>
 
         <select class="sport form-control" #sportField="ngModel" name="sport" [(ngModel)]="sport"
@@ -49,9 +103,15 @@
             <option [value]="Cycling" i18n>Pedaleando</option>
             <option [value]="Swimming" i18n>Nadando</option>
         </select>
+
+        <input *ngIf="isGroup" type="email" class="email form-control" #emailField="ngModel" name="email"
+            placeholder="Correo electrónico del representante" i18n-placeholder maxlength="1000" autocomplete="none"
+            [(ngModel)]="email" [ngClass]="{ 'is-invalid': (emailField.touched || f.submitted) && emailField.invalid }"
+            required />
+
     </div>
 
-    <div class="w-100 mb-3 float-left">
+    <div class="w-100 mb-3 float-left" *ngIf="isRegular">
         <input type="email" class="email form-control" #emailField="ngModel" name="email"
             placeholder="Correo electrónico" i18n-placeholder maxlength="1000" autocomplete="none" [(ngModel)]="email"
             [ngClass]="{ 'is-invalid': (emailField.touched || f.submitted) && emailField.invalid }" required />
@@ -75,10 +135,16 @@
         <input style="display: none" type="file"
             accept="image/apng, image/bmp, image/gif, image/jpeg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
             (change)="onPictureSelected($event)" #fileInput>
-        <button type="button" (click)="fileInput.click()" i18n>Subir mi foto (opcional)</button>
+        <button *ngIf="isRegular" type="button" (click)="fileInput.click()" i18n>Subir mi foto (opcional)</button>
+        <button *ngIf="isGroup" type="button" (click)="fileInput.click()" i18n>Subir logo o foto del grupo
+            (opcional)</button>
     </div>
     <div class="w-100 mb-1 float-left">
-        <span class="font-italic image-consent" i18n>
+        <span *ngIf="isRegular" class="font-italic image-consent" i18n>
+            Tu foto se publicará en el mapa virtual y podrá ser compartida en los perfiles de redes sociales de Corre al
+            País de los Blancos y/o NASCO Feeding Minds.
+        </span>
+        <span *ngIf="isGroup" class="font-italic image-consent" i18n>
             Tu foto se publicará en el mapa virtual y podrá ser compartida en los perfiles de redes sociales de Corre al
             País de los Blancos y/o NASCO Feeding Minds.
         </span>
@@ -120,8 +186,11 @@
     <div class="float-left w-100">
         <div class="float-right">
             <span class="mr-2 float-left donation-label" *ngIf="this.amount">
-                <strong i18n>
+                <strong *ngIf="isRegular" i18n>
                     Tu donación es de {{ amount | currency:'€' }}
+                </strong>
+                <strong *ngIf="isGroup" i18n>
+                    Vuestra donación es de {{ amount | currency:'€' }}
                 </strong>
             </span>
             <button (click)="onParticipateButtonClick(captchaRef)" type="button" [disabled]="isProcessing">

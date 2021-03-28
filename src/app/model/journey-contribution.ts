@@ -5,8 +5,13 @@ export class JourneyContribution {
     public _id: string;
     public sport: SportEnum;
     public avatarUrl: string;
+
     public isCompany: boolean;
     public companyId: string;
+
+    public isGroup: boolean;
+    public groupName: string;
+    public groupParticipants: string;
 
     public initialKm: number;
     public finalKm: number;
@@ -19,5 +24,6 @@ export class JourneyContribution {
         public distance: number
     ) {
         this.isCompany = false;
+        this.isGroup = false;
     }
 }

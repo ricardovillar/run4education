@@ -19,7 +19,7 @@
 
     <ng-container *ngFor="let contribution of journeyContributions | slice: 1">
 
-        <ng-container *ngIf="contribution.isCompany; else personTemplate">
+        <ng-container *ngIf="contribution.isCompany">
 
             <ng-container *ngIf="contribution.companyId === 'dkv'">
                 <div class="popup-card-company" [id]="'popup-card-' + contribution._id">
@@ -62,7 +62,31 @@
 
         </ng-container>
 
-        <ng-container *ngIf="!contribution.isCompany">
+        <ng-container *ngIf="contribution.isGroup">
+            <div class="popup-card-group" [id]="'popup-card-' + contribution._id">
+                <div class="w-100 text-center mt-4 mb-3">
+                    <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
+                    <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
+                </div>
+                <div class="w-100 text-center">
+                    <span>{{ contribution.groupName }}</span>
+                </div>
+                <div class="w-100 text-center">
+                    <span>{{ contribution.groupParticipants }}</span>
+                </div>
+                <div class="w-100 text-center">
+                    <span i18n>han recorrido {{ contribution.distance }}km con Ousman</span>
+                </div>
+            </div>
+
+            <div class="tooltip-card-group" [id]="'tooltip-card-' + contribution._id">
+                <img *ngIf="contribution.avatarUrl" [src]="contribution.avatarUrl" />
+                <img *ngIf="!contribution.avatarUrl" src="assets/images/avatar.png" />
+                <span>{{ contribution.groupName }}</span>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="!contribution.isCompany && !contribution.isGroup">
 
             <ng-container *ngIf="contribution.firstName; else anonymousTemplate">
                 <div class="popup-card-person" [id]="'popup-card-' + contribution._id">

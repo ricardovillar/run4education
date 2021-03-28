@@ -21,30 +21,32 @@
   }
 
   .popup-card-person span, 
+  .popup-card-group span, 
   .popup-card-company span, 
   .tooltip-card-person span, 
+  .tooltip-card-group span,
   .tooltip-card-company span {
     margin-right: 5px; 
     font-size: 0.9em;    
   }
 
-  .popup-card-person img, .tooltip-card-person img {
+  .popup-card-person img, .tooltip-card-person img, .tooltip-card-group img {
     border-radius: 50%;
   }
 
-  .popup-card-person img {
+  .popup-card-person img, .popup-card-group img {
     max-width: 130px; 
     width: 130px; 
     max-height: 130px; 
     height: 130px;
   }
 
-  .tooltip-card-person, .tooltip-card-company {
+  .tooltip-card-person, .tooltip-card-group, .tooltip-card-company {
     display: inline-block;
     position: relative;
   }
   
-  .tooltip-card-person img {
+  .tooltip-card-person img, .tooltip-card-group img {
     max-width: 25px; 
     max-height: 25px; 
     float: left;
@@ -61,7 +63,7 @@
     max-height: 100px; 
   }
 
-  .tooltip-card-person span, .tooltip-card-company span {
+  .tooltip-card-person span, .tooltip-card-group span, .tooltip-card-company span {
     width: 100%;
     white-space: nowrap;
     margin-left: 0.25rem;
