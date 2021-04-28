@@ -128,6 +128,7 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
     submitBtn.click();
   }
 
+
   async contribute(form: any) {
     if (form.invalid) {
       this.isProcessing = false;
@@ -137,13 +138,18 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
       this.isProcessing = false;
       return;
     }
-    const { token, error } = await stripe.createToken(this.card);
-    if (this.captcha && token && token.id) {
-      this.startContributionProcess(token);
-    } else {
-      this.isProcessing = false;
-      this.onError(error);
-    }
+
+    let contribution = this.getContribution();
+
+    this.startPaymentProcess(contribution);
+
+    // const { token, error } = await stripe.createToken(this.card);
+    // if (this.captcha && token && token.id) {
+
+    // } else {
+    //   this.isProcessing = false;
+    //   this.onError(error);
+    // }
   }
 
   private initiateCardElement() {
@@ -183,18 +189,7 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
   }
 
   private startContributionProcess(token: { id: string }) {
-    let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
-    contribution.city = this.city;
-    contribution.country = this.country;
-    contribution.futureCommunicationConsent = this.futureCommunicationConsent;
-    contribution.anonymous = this.anonymous;
-    if (this.isGroup) {
-      contribution.isGroup = true;
-      contribution.groupName = this.groupName;
-      contribution.groupParticipants = this.groupParticipants;
-      contribution.distance = 150;
-      contribution.valuePerKm = this.groupDonation / 150;
-    }
+    let contribution = this.getContribution();
 
     this.contributionsService.startContributionProcess(contribution, this.captcha, token.id)
       .subscribe(
@@ -208,6 +203,71 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
           this.isProcessing = false;
         }
       );
+  }
+
+  private startPaymentProcess(contribution: Contribution) {
+    this.contributionsService.startPaymentProcess(contribution, this.captcha)
+      .subscribe(
+        paymentIntent => {
+          if (paymentIntent && paymentIntent.client_secret) {
+            this.completePaymentProcess(contribution, paymentIntent.client_secret);
+          }
+          else {
+            this.isProcessing = false;
+            this.onError({ message: 'Something went wrong, please try again.' });
+          }
+        },
+        _ => {
+          this.isProcessing = false;
+        }
+      );
+  }
+
+  async completePaymentProcess(contribution: Contribution, clientSecret: string) {
+    const payload = {
+      payment_method: {
+        card: this.card,
+        billing_details: {
+          name: contribution.anonymous ? 'correalpaisdelosblancos - Anónimo' : `correalpaisdelosblancos - ${contribution.firstName} ${contribution.lastName}`
+        }
+      }
+    };
+    const result = await stripe.confirmCardPayment(clientSecret, payload);
+    if (result.error) {
+      this.isProcessing = false;
+      this.onError(result.error);
+    } else {
+      if (result.paymentIntent.status === 'succeeded') {
+        this.contributionsService.finishContributionProcess(contribution)
+          .subscribe(
+            contribution => {
+              if (contribution) {
+                this.store.dispatch(addJourneyContribution({ contribution }));
+                this.router.navigate(['./gracias'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
+              }
+            },
+            _ => {
+              this.isProcessing = false;
+            }
+          );
+      }
+    }
+  }
+
+  private getContribution() {
+    let contribution = new Contribution(this.firstName, this.lastName, this.email, this.distance, this.value, this.sport, this.picture);
+    contribution.city = this.city;
+    contribution.country = this.country;
+    contribution.futureCommunicationConsent = this.futureCommunicationConsent;
+    contribution.anonymous = this.anonymous;
+    if (this.isGroup) {
+      contribution.isGroup = true;
+      contribution.groupName = this.groupName;
+      contribution.groupParticipants = this.groupParticipants;
+      contribution.distance = 150;
+      contribution.valuePerKm = this.groupDonation / 150;
+    }
+    return contribution;
   }
 
   private onError(error) {

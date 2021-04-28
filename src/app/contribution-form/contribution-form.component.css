@@ -199,3 +199,7 @@ div.terms-not-accepted {
     border-radius: 50%;
     background: #000000;
 }
+
+.card-error {
+    color: #dc3545;
+}
