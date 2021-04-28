@@ -18,38 +18,7 @@ export class ContributionsService {
     return this.http.get<JourneyContribution[]>(url);
   }
 
-  startContributionProcess(contribution: Contribution, captcha: string, stripeToken: string): Observable<JourneyContribution> {
-    const formData = new FormData();
-
-    let futureCommunicationConsent = contribution.futureCommunicationConsent || false;
-    let anonymous = contribution.anonymous || false;
-
-    formData.append('firstName', contribution.firstName);
-    formData.append('lastName', contribution.lastName);
-    formData.append('email', contribution.email);
-    formData.append('distance', contribution.distance.toString());
-    formData.append('valuePerKm', contribution.valuePerKm.toString());
-    formData.append('sport', contribution.sport.toString());
-    formData.append('city', contribution.city);
-    formData.append('country', contribution.country);
-    formData.append('isGroup', (contribution.isGroup ?? false).toString());
-    formData.append('groupName', contribution.groupName);
-    formData.append('groupParticipants', contribution.groupParticipants);
-    formData.append('futureCommunicationConsent', futureCommunicationConsent.toString());
-    formData.append('anonymous', anonymous.toString());
-    formData.append('tid', stripeToken);
-    formData.append('cpt', captcha);
-    formData.append('language', this.language);
-
-    if (contribution.avatar) {
-      formData.append('avatar', contribution.avatar);
-    }
-
-    const url = environment.API_URL + '/contribution'
-    return this.http.post<JourneyContribution>(url, formData);
-  }
-
-  startPaymentProcess(contribution: Contribution, captcha: string): Observable<{ client_secret: string }> {
+  startContributionProcess(contribution: Contribution, captcha: string): Observable<{ client_secret: string }> {
     const formData = new FormData();
 
     let anonymous = contribution.anonymous || false;
@@ -68,7 +37,7 @@ export class ContributionsService {
     return this.http.post<{ client_secret: string }>(url, formData);
   }
 
-  finishContributionProcess(contribution: Contribution): Observable<JourneyContribution> {
+  completeContributionProcess(contribution: Contribution): Observable<JourneyContribution> {
     const formData = new FormData();
 
     let futureCommunicationConsent = contribution.futureCommunicationConsent || false;
@@ -93,7 +62,7 @@ export class ContributionsService {
       formData.append('avatar', contribution.avatar);
     }
 
-    const url = environment.API_URL + '/finish-contribution'
+    const url = environment.API_URL + '/complete-contribution'
     return this.http.post<JourneyContribution>(url, formData);
   }
 }

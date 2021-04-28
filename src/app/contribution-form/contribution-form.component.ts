@@ -141,15 +141,7 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
 
     let contribution = this.getContribution();
 
-    this.startPaymentProcess(contribution);
-
-    // const { token, error } = await stripe.createToken(this.card);
-    // if (this.captcha && token && token.id) {
-
-    // } else {
-    //   this.isProcessing = false;
-    //   this.onError(error);
-    // }
+    this.startContributionProcess(contribution);
   }
 
   private initiateCardElement() {
@@ -188,29 +180,12 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
     this.cd.detectChanges();
   }
 
-  private startContributionProcess(token: { id: string }) {
-    let contribution = this.getContribution();
-
-    this.contributionsService.startContributionProcess(contribution, this.captcha, token.id)
-      .subscribe(
-        contribution => {
-          if (contribution) {
-            this.store.dispatch(addJourneyContribution({ contribution }));
-            this.router.navigate(['./gracias'], { relativeTo: this.activatedRoute, queryParams: { c: contribution._id } });
-          }
-        },
-        _ => {
-          this.isProcessing = false;
-        }
-      );
-  }
-
-  private startPaymentProcess(contribution: Contribution) {
-    this.contributionsService.startPaymentProcess(contribution, this.captcha)
+  private startContributionProcess(contribution: Contribution) {
+    this.contributionsService.startContributionProcess(contribution, this.captcha)
       .subscribe(
         paymentIntent => {
           if (paymentIntent && paymentIntent.client_secret) {
-            this.completePaymentProcess(contribution, paymentIntent.client_secret);
+            this.confirmePaymentAndCompleteContributionProcess(contribution, paymentIntent.client_secret);
           }
           else {
             this.isProcessing = false;
@@ -223,7 +198,7 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
       );
   }
 
-  async completePaymentProcess(contribution: Contribution, clientSecret: string) {
+  async confirmePaymentAndCompleteContributionProcess(contribution: Contribution, clientSecret: string) {
     const payload = {
       payment_method: {
         card: this.card,
@@ -238,7 +213,7 @@ export class ContributionFormComponent implements OnDestroy, AfterViewInit {
       this.onError(result.error);
     } else {
       if (result.paymentIntent.status === 'succeeded') {
-        this.contributionsService.finishContributionProcess(contribution)
+        this.contributionsService.completeContributionProcess(contribution)
           .subscribe(
             contribution => {
               if (contribution) {
