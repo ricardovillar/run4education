@@ -274,7 +274,7 @@ export class MapComponent implements OnDestroy {
   }
 
   private getColorForContribution(contribution: JourneyContribution): string {
-    if (contribution.isCompany) {
+    if (contribution.isCompany && contribution.companyId !== 'quadpack') {
       return '#04712a';
     }
     switch (contribution.sport) {

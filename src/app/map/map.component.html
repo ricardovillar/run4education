@@ -60,6 +60,26 @@
                 </div>
             </ng-container>
 
+            <ng-container *ngIf="contribution.companyId === 'quadpack'">
+                <div class="popup-card-company" [id]="'popup-card-' + contribution._id">
+                    <div class="w-100 text-center">
+                        <img class="w-50" src="assets/images/quadpack.png" />
+                    </div>
+                    <div class="w-100 text-center">
+                        <span i18n>
+                            La Fundación Quadpack está muy comprometida socialmente con especial interés en jóvenes y
+                            niños.
+                            <br>
+                            Ha sido un placer recorrer una parte importante del continente africano con el equipo de
+                            Quadpack.
+                        </span>
+                    </div>
+                </div>
+                <div class="tooltip-card-company" [id]="'tooltip-card-' + contribution._id">
+                    <img src="assets/images/quadpack.png" />
+                </div>
+            </ng-container>
+
         </ng-container>
 
         <ng-container *ngIf="contribution.isGroup">

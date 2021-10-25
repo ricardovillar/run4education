@@ -487,7 +487,16 @@
       <context context-type="linenumber">51,55</context>
     </context-group>
   </trans-unit>
-
+  <trans-unit id="3adce7358d94c61ffdafb0ef90cf168875c37e22" datatype="html">
+    <source> La Fundación Quadpack está muy comprometida socialmente con especial interés en jóvenes y niños. <x id="LINE_BREAK" ctype="lb" equiv-text="nes y
+                      "/> Ha sido un placer recorrer una parte importante del continente africano con el equipo de Quadpack. </source>
+    <target> The Quadpack Foundation is socially committed with a special interest in young people and children. <x id="LINE_BREAK" ctype="lb" equiv-text="nes y
+      "/> It has been a pleasure to travel an important part of the African continent with the Quadpack team. </target>                      
+    <context-group purpose="location">
+      <context context-type="sourcefile">src/app/map/map.component.html</context>
+      <context context-type="linenumber">70,75</context>
+    </context-group>
+  </trans-unit>
   <trans-unit id="9259f9eeeda6001d74c928085f0211d41a060a76" datatype="html">
     <source> Dice el proverbio africano que si caminas solo, irás más rápido, pero que si caminas acompañado, llegarás más lejos. Por eso, hemos escogido a @DKVSeguros como compañeros de viaje en este apasionante reto virtual de Corre al País de los Blancos. <x id="LINE_BREAK" ctype="lb" equiv-text="ancos.
                  "/> Juntos hemos recorrido estos 300km. </source>
